@@ -1,0 +1,268 @@
+2026-02-24 16:48:42,787 [INFO] core.database: Database initialised.
+2026-02-24 16:48:43,624 [INFO] agents.analyse: === Analyse Agent starting ===
+2026-02-24 16:48:43,632 [INFO] agents.analyse: Analysing 67 articles from last 24h
+2026-02-24 16:48:43,632 [INFO] agents.analyse: VPS  42.3 — The Future of Auto Claims – Part 2: Operationalizing Claims 
+2026-02-24 16:48:43,632 [INFO] agents.analyse: VPS  42.3 — Agentic-AI End-to-End Claims-Management: Was steckt dahinter
+2026-02-24 16:48:43,632 [INFO] agents.analyse: VPS  40.3 — A smarter approach to communicating our regulatory prioritie
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  49.3 — Influencers fined for issuing unauthorised financial promoti
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  46.3 — Statement on notifications relating to admissions to trading
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Tribunal upholds bans and fines for reckless adviser and fun
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  46.3 — FCA fines former chief executive of Carillion plc (in liquid
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — FCA takes action against HTX to stop illegal financial promo
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  49.9 — HTX (formerly Huobi): legal proceedings information
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — FCA stops Advantage Wealth Management Ltd from carrying out 
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — FCA and SRA issue joint warning to firms representing motor 
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — FCA and SRA joint message to professional representatives on
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Upper Tribunal finds that Banque Havilland devised a plan to
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Insurance in the round: Innovation, growth and trust
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  43.3 — Ombudsman News issue 194
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 193
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  43.3 — Ombudsman News issue 192
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 191
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 190
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  43.3 — Ombudsman News issue 189
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 188
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 187
+2026-02-24 16:48:43,633 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 186
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 185
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — The Future of Auto Claims – Part 1: Liability, Data, and the
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Epic's AI Road Map Should Concern Insurers
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  46.3 — Rising Dog Bite Claims Drive Insurance Innovation
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Hidden Insurance Costs in Healthcare
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — 2026: The Year AI Goes Operational in Insurance
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  49.3 — Nachhaltigkeitsberichterstattung: „Die Vorschläge sind bishe
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  43.9 — Blue Owl-Turbulenzen rücken Verflechtungen mit Versicherern 
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  43.3 — Fitch: Anerkennung von Klimaanpassungsmaßnahmen könnte Solve
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Zurich: „Cyberrisiken gehören 2026 auf die oberste Führungse
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  46.3 — Im Alltag sicher, unterwegs oft brenzlig – Versicherer forde
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — ROI-Erwartungen: Wenn KI zur Kostenfalle wird
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  46.3 — Verdi verhandelt mit AGV über KI-Transformation: Ergo-Tarifv
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — NIS-2-Umsetzungsgesetz: „Versicherer sollten ihre Antragspro
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  43.3 — „Die Deutsche Bahn ist faktisch einer der größten Online-Hän
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Open Insurance: Chancen, Risiken und Entwicklungspotenziale
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  52.9 — UAE Says It Foiled a Wave of Cyberattacks on Vital Sectors
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — AIG’s Zaffino: Outcomes From AI Use Went From ‘Aspirational’
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  49.3 — Berkshire’s PacifiCorp Paying $575M to Settle Claims for Ore
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  49.3 — EV Collision Claims Rise in US And Canada as Sales Of New Mo
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Delaware High Court Rescues Cyber Insurers’ Subrogation Clai
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  33.1 — Breaking the Spell: Alternatives to Our Ingrained Collective
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — AI Won’t Save Your Dysfunctional Organisation
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  33.1 — Marshall’s Law
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  40.3 — Artificial Intelligence and the Quintessential Organisation
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  33.1 — Control Freaks: Why the Tightest Grip Often Loses the Most
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  39.1 — The Quintessential Mindset: 79 Essential Organisational Meme
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  36.1 — The Software Quality and Productivity Crisis Executives Won’
+2026-02-24 16:48:43,634 [INFO] agents.analyse: VPS  33.1 — People are NOT our greatest asset; it’s the relationships BE
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  33.1 — The Comfortable Lie: Why We Don’t Actually Learn From Our Mi
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  40.3 — If you die with crypto/online accounts, can your executor ac
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  40.3 — Salary Survey - 2025 H2
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  46.3 — Erwerbsminderungsrenten sind stärker gestiegen als Altersren
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  46.3 — Nicht mal ein Drittel hält gesetzliche Rente für gerecht – M
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  49.3 — Mehr Transparenz mit neuer Bonitätsberechnung
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  39.1 — HOA Tree Totaled My Car
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  46.3 — My deceased mother got an insurance offer at my new residenc
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  45.1 — How much do my neighbors claims affect my own condo premiums
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  33.1 — How would you decompose ‘human life’ into top-level domains 
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  42.1 — WDYT: Dagen H and the Death of Systemic Change
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  33.1 — Frameworks/Methodologies of Systems Thinking
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  33.1 — An observation about closed loops vs open systems (no framew
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  33.1 — Thinking in Systems As A Student
+2026-02-24 16:48:43,635 [INFO] agents.analyse: VPS  47.3 — Welche Versicherer-Apps wirklich überzeugen: Ergo vor Debeka
+2026-02-24 16:48:43,635 [INFO] agents.analyse: No articles above VPS threshold today
+2026-02-24 16:58:40,705 [INFO] core.database: Migrated: added vps_score column to articles.
+2026-02-24 16:58:40,705 [INFO] core.database: Database initialised.
+2026-02-24 16:58:41,410 [INFO] agents.analyse: === Analyse Agent starting ===
+2026-02-24 16:58:41,414 [INFO] agents.analyse: Analysing 67 articles from last 24h
+2026-02-24 16:58:41,414 [INFO] agents.analyse: VPS  42.3 — The Future of Auto Claims – Part 2: Operationalizing Claims 
+2026-02-24 16:58:41,419 [INFO] agents.analyse: VPS  42.3 — Agentic-AI End-to-End Claims-Management: Was steckt dahinter
+2026-02-24 16:58:41,423 [INFO] agents.analyse: VPS  40.3 — A smarter approach to communicating our regulatory prioritie
+2026-02-24 16:58:41,431 [INFO] agents.analyse: VPS  49.3 — Influencers fined for issuing unauthorised financial promoti
+2026-02-24 16:58:41,436 [INFO] agents.analyse: VPS  46.3 — Statement on notifications relating to admissions to trading
+2026-02-24 16:58:41,443 [INFO] agents.analyse: VPS  40.3 — Tribunal upholds bans and fines for reckless adviser and fun
+2026-02-24 16:58:41,450 [INFO] agents.analyse: VPS  46.3 — FCA fines former chief executive of Carillion plc (in liquid
+2026-02-24 16:58:41,455 [INFO] agents.analyse: VPS  40.3 — FCA takes action against HTX to stop illegal financial promo
+2026-02-24 16:58:41,462 [INFO] agents.analyse: VPS  49.9 — HTX (formerly Huobi): legal proceedings information
+2026-02-24 16:58:41,468 [INFO] agents.analyse: VPS  40.3 — FCA stops Advantage Wealth Management Ltd from carrying out 
+2026-02-24 16:58:41,474 [INFO] agents.analyse: VPS  40.3 — FCA and SRA issue joint warning to firms representing motor 
+2026-02-24 16:58:41,482 [INFO] agents.analyse: VPS  40.3 — FCA and SRA joint message to professional representatives on
+2026-02-24 16:58:41,486 [INFO] agents.analyse: VPS  40.3 — Upper Tribunal finds that Banque Havilland devised a plan to
+2026-02-24 16:58:41,492 [INFO] agents.analyse: VPS  40.3 — Insurance in the round: Innovation, growth and trust
+2026-02-24 16:58:41,498 [INFO] agents.analyse: VPS  43.3 — Ombudsman News issue 194
+2026-02-24 16:58:41,502 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 193
+2026-02-24 16:58:41,507 [INFO] agents.analyse: VPS  43.3 — Ombudsman News issue 192
+2026-02-24 16:58:41,513 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 191
+2026-02-24 16:58:41,518 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 190
+2026-02-24 16:58:41,523 [INFO] agents.analyse: VPS  43.3 — Ombudsman News issue 189
+2026-02-24 16:58:41,529 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 188
+2026-02-24 16:58:41,534 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 187
+2026-02-24 16:58:41,539 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 186
+2026-02-24 16:58:41,545 [INFO] agents.analyse: VPS  40.3 — Ombudsman News issue 185
+2026-02-24 16:58:41,551 [INFO] agents.analyse: VPS  40.3 — The Future of Auto Claims – Part 1: Liability, Data, and the
+2026-02-24 16:58:41,556 [INFO] agents.analyse: VPS  40.3 — Epic's AI Road Map Should Concern Insurers
+2026-02-24 16:58:41,564 [INFO] agents.analyse: VPS  46.3 — Rising Dog Bite Claims Drive Insurance Innovation
+2026-02-24 16:58:41,569 [INFO] agents.analyse: VPS  40.3 — Hidden Insurance Costs in Healthcare
+2026-02-24 16:58:41,573 [INFO] agents.analyse: VPS  40.3 — 2026: The Year AI Goes Operational in Insurance
+2026-02-24 16:58:41,580 [INFO] agents.analyse: VPS  49.3 — Nachhaltigkeitsberichterstattung: „Die Vorschläge sind bishe
+2026-02-24 16:58:41,585 [INFO] agents.analyse: VPS  43.9 — Blue Owl-Turbulenzen rücken Verflechtungen mit Versicherern 
+2026-02-24 16:58:41,589 [INFO] agents.analyse: VPS  43.3 — Fitch: Anerkennung von Klimaanpassungsmaßnahmen könnte Solve
+2026-02-24 16:58:41,596 [INFO] agents.analyse: VPS  40.3 — Zurich: „Cyberrisiken gehören 2026 auf die oberste Führungse
+2026-02-24 16:58:41,601 [INFO] agents.analyse: VPS  46.3 — Im Alltag sicher, unterwegs oft brenzlig – Versicherer forde
+2026-02-24 16:58:41,606 [INFO] agents.analyse: VPS  40.3 — ROI-Erwartungen: Wenn KI zur Kostenfalle wird
+2026-02-24 16:58:41,613 [INFO] agents.analyse: VPS  46.3 — Verdi verhandelt mit AGV über KI-Transformation: Ergo-Tarifv
+2026-02-24 16:58:41,618 [INFO] agents.analyse: VPS  40.3 — NIS-2-Umsetzungsgesetz: „Versicherer sollten ihre Antragspro
+2026-02-24 16:58:41,623 [INFO] agents.analyse: VPS  43.3 — „Die Deutsche Bahn ist faktisch einer der größten Online-Hän
+2026-02-24 16:58:41,630 [INFO] agents.analyse: VPS  40.3 — Open Insurance: Chancen, Risiken und Entwicklungspotenziale
+2026-02-24 16:58:41,637 [INFO] agents.analyse: VPS  52.9 — UAE Says It Foiled a Wave of Cyberattacks on Vital Sectors
+2026-02-24 16:58:41,643 [INFO] agents.analyse: VPS  40.3 — AIG’s Zaffino: Outcomes From AI Use Went From ‘Aspirational’
+2026-02-24 16:58:41,649 [INFO] agents.analyse: VPS  49.3 — Berkshire’s PacifiCorp Paying $575M to Settle Claims for Ore
+2026-02-24 16:58:41,654 [INFO] agents.analyse: VPS  49.3 — EV Collision Claims Rise in US And Canada as Sales Of New Mo
+2026-02-24 16:58:41,659 [INFO] agents.analyse: VPS  40.3 — Delaware High Court Rescues Cyber Insurers’ Subrogation Clai
+2026-02-24 16:58:41,664 [INFO] agents.analyse: VPS  33.1 — Breaking the Spell: Alternatives to Our Ingrained Collective
+2026-02-24 16:58:41,668 [INFO] agents.analyse: VPS  40.3 — AI Won’t Save Your Dysfunctional Organisation
+2026-02-24 16:58:41,673 [INFO] agents.analyse: VPS  33.1 — Marshall’s Law
+2026-02-24 16:58:41,678 [INFO] agents.analyse: VPS  40.3 — Artificial Intelligence and the Quintessential Organisation
+2026-02-24 16:58:41,683 [INFO] agents.analyse: VPS  33.1 — Control Freaks: Why the Tightest Grip Often Loses the Most
+2026-02-24 16:58:41,688 [INFO] agents.analyse: VPS  39.1 — The Quintessential Mindset: 79 Essential Organisational Meme
+2026-02-24 16:58:41,693 [INFO] agents.analyse: VPS  36.1 — The Software Quality and Productivity Crisis Executives Won’
+2026-02-24 16:58:41,698 [INFO] agents.analyse: VPS  33.1 — People are NOT our greatest asset; it’s the relationships BE
+2026-02-24 16:58:41,703 [INFO] agents.analyse: VPS  33.1 — The Comfortable Lie: Why We Don’t Actually Learn From Our Mi
+2026-02-24 16:58:41,708 [INFO] agents.analyse: VPS  40.3 — If you die with crypto/online accounts, can your executor ac
+2026-02-24 16:58:41,713 [INFO] agents.analyse: VPS  40.3 — Salary Survey - 2025 H2
+2026-02-24 16:58:41,718 [INFO] agents.analyse: VPS  46.3 — Erwerbsminderungsrenten sind stärker gestiegen als Altersren
+2026-02-24 16:58:41,724 [INFO] agents.analyse: VPS  46.3 — Nicht mal ein Drittel hält gesetzliche Rente für gerecht – M
+2026-02-24 16:58:41,730 [INFO] agents.analyse: VPS  49.3 — Mehr Transparenz mit neuer Bonitätsberechnung
+2026-02-24 16:58:41,734 [INFO] agents.analyse: VPS  39.1 — HOA Tree Totaled My Car
+2026-02-24 16:58:41,739 [INFO] agents.analyse: VPS  46.3 — My deceased mother got an insurance offer at my new residenc
+2026-02-24 16:58:41,746 [INFO] agents.analyse: VPS  45.1 — How much do my neighbors claims affect my own condo premiums
+2026-02-24 16:58:41,752 [INFO] agents.analyse: VPS  33.1 — How would you decompose ‘human life’ into top-level domains 
+2026-02-24 16:58:41,757 [INFO] agents.analyse: VPS  42.1 — WDYT: Dagen H and the Death of Systemic Change
+2026-02-24 16:58:41,763 [INFO] agents.analyse: VPS  33.1 — Frameworks/Methodologies of Systems Thinking
+2026-02-24 16:58:41,768 [INFO] agents.analyse: VPS  33.1 — An observation about closed loops vs open systems (no framew
+2026-02-24 16:58:41,772 [INFO] agents.analyse: VPS  33.1 — Thinking in Systems As A Student
+2026-02-24 16:58:41,778 [INFO] agents.analyse: VPS  47.3 — Welche Versicherer-Apps wirklich überzeugen: Ergo vor Debeka
+2026-02-24 16:58:41,782 [INFO] agents.analyse: VPS scores persisted for 67 articles
+2026-02-24 16:58:41,782 [INFO] agents.analyse: No articles above VPS threshold today
+2026-02-24 17:03:08,516 [INFO] core.database: Database initialised.
+2026-02-24 17:03:09,318 [INFO] agents.analyse: === Analyse Agent starting ===
+2026-02-24 17:03:09,322 [INFO] agents.analyse: Analysing 67 articles from last 24h
+2026-02-24 17:03:09,323 [INFO] agents.analyse: VPS  74.6 — The Future of Auto Claims – Part 2: Operationalizing Claims 
+2026-02-24 17:03:09,328 [INFO] agents.analyse: VPS  76.7 — Agentic-AI End-to-End Claims-Management: Was steckt dahinter
+2026-02-24 17:03:09,334 [INFO] agents.analyse: VPS  53.8 — A smarter approach to communicating our regulatory prioritie
+2026-02-24 17:03:09,341 [INFO] agents.analyse: VPS  62.8 — Influencers fined for issuing unauthorised financial promoti
+2026-02-24 17:03:09,349 [INFO] agents.analyse: VPS  57.2 — Statement on notifications relating to admissions to trading
+2026-02-24 17:03:09,356 [INFO] agents.analyse: VPS  60.8 — Tribunal upholds bans and fines for reckless adviser and fun
+2026-02-24 17:03:09,362 [INFO] agents.analyse: VPS  57.2 — FCA fines former chief executive of Carillion plc (in liquid
+2026-02-24 17:03:09,369 [INFO] agents.analyse: VPS  61.0 — FCA takes action against HTX to stop illegal financial promo
+2026-02-24 17:03:09,374 [INFO] agents.analyse: VPS  79.6 — HTX (formerly Huobi): legal proceedings information
+2026-02-24 17:03:09,378 [INFO] agents.analyse: VPS  61.0 — FCA stops Advantage Wealth Management Ltd from carrying out 
+2026-02-24 17:03:09,383 [INFO] agents.analyse: VPS  68.8 — FCA and SRA issue joint warning to firms representing motor 
+2026-02-24 17:03:09,387 [INFO] agents.analyse: VPS  68.8 — FCA and SRA joint message to professional representatives on
+2026-02-24 17:03:09,392 [INFO] agents.analyse: VPS  57.2 — Upper Tribunal finds that Banque Havilland devised a plan to
+2026-02-24 17:03:09,396 [INFO] agents.analyse: VPS  53.8 — Insurance in the round: Innovation, growth and trust
+2026-02-24 17:03:09,401 [INFO] agents.analyse: VPS  76.0 — Ombudsman News issue 194
+2026-02-24 17:03:09,405 [INFO] agents.analyse: VPS  76.0 — Ombudsman News issue 193
+2026-02-24 17:03:09,409 [INFO] agents.analyse: VPS  76.0 — Ombudsman News issue 192
+2026-02-24 17:03:09,413 [INFO] agents.analyse: VPS  65.5 — Ombudsman News issue 191
+2026-02-24 17:03:09,417 [INFO] agents.analyse: VPS  65.5 — Ombudsman News issue 190
+2026-02-24 17:03:09,422 [INFO] agents.analyse: VPS  76.0 — Ombudsman News issue 189
+2026-02-24 17:03:09,428 [INFO] agents.analyse: VPS  65.5 — Ombudsman News issue 188
+2026-02-24 17:03:09,434 [INFO] agents.analyse: VPS  72.5 — Ombudsman News issue 187
+2026-02-24 17:03:09,439 [INFO] agents.analyse: VPS  65.5 — Ombudsman News issue 186
+2026-02-24 17:03:09,443 [INFO] agents.analyse: VPS  76.0 — Ombudsman News issue 185
+2026-02-24 17:03:09,450 [INFO] agents.analyse: VPS  74.8 — The Future of Auto Claims – Part 1: Liability, Data, and the
+2026-02-24 17:03:09,455 [INFO] agents.analyse: VPS  74.8 — Epic's AI Road Map Should Concern Insurers
+2026-02-24 17:03:09,460 [INFO] agents.analyse: VPS  78.6 — Rising Dog Bite Claims Drive Insurance Innovation
+2026-02-24 17:03:09,465 [INFO] agents.analyse: VPS  68.8 — Hidden Insurance Costs in Healthcare
+2026-02-24 17:03:09,469 [INFO] agents.analyse: VPS  82.0 — 2026: The Year AI Goes Operational in Insurance
+2026-02-24 17:03:09,473 [INFO] agents.analyse: VPS  59.0 — Nachhaltigkeitsberichterstattung: „Die Vorschläge sind bishe
+2026-02-24 17:03:09,477 [INFO] agents.analyse: VPS  53.6 — Blue Owl-Turbulenzen rücken Verflechtungen mit Versicherern 
+2026-02-24 17:03:09,480 [INFO] agents.analyse: VPS  71.8 — Fitch: Anerkennung von Klimaanpassungsmaßnahmen könnte Solve
+2026-02-24 17:03:09,485 [INFO] agents.analyse: VPS  76.0 — Zurich: „Cyberrisiken gehören 2026 auf die oberste Führungse
+2026-02-24 17:03:09,489 [INFO] agents.analyse: VPS  74.8 — Im Alltag sicher, unterwegs oft brenzlig – Versicherer forde
+2026-02-24 17:03:09,494 [INFO] agents.analyse: VPS  59.5 — ROI-Erwartungen: Wenn KI zur Kostenfalle wird
+2026-02-24 17:03:09,498 [INFO] agents.analyse: VPS  66.8 — Verdi verhandelt mit AGV über KI-Transformation: Ergo-Tarifv
+2026-02-24 17:03:09,503 [INFO] agents.analyse: VPS  66.8 — NIS-2-Umsetzungsgesetz: „Versicherer sollten ihre Antragspro
+2026-02-24 17:03:09,509 [INFO] agents.analyse: VPS  71.8 — „Die Deutsche Bahn ist faktisch einer der größten Online-Hän
+2026-02-24 17:03:09,516 [INFO] agents.analyse: VPS  53.8 — Open Insurance: Chancen, Risiken und Entwicklungspotenziale
+2026-02-24 17:03:09,522 [INFO] agents.analyse: VPS  81.4 — UAE Says It Foiled a Wave of Cyberattacks on Vital Sectors
+2026-02-24 17:03:09,526 [INFO] agents.analyse: VPS  71.2 — AIG’s Zaffino: Outcomes From AI Use Went From ‘Aspirational’
+2026-02-24 17:03:09,530 [INFO] agents.analyse: VPS  77.8 — Berkshire’s PacifiCorp Paying $575M to Settle Claims for Ore
+2026-02-24 17:03:09,534 [INFO] agents.analyse: VPS  72.1 — EV Collision Claims Rise in US And Canada as Sales Of New Mo
+2026-02-24 17:03:09,538 [INFO] agents.analyse: VPS  82.0 — Delaware High Court Rescues Cyber Insurers’ Subrogation Clai
+2026-02-24 17:03:09,546 [INFO] agents.analyse: VPS  68.8 — Breaking the Spell: Alternatives to Our Ingrained Collective
+2026-02-24 17:03:09,552 [INFO] agents.analyse: VPS  53.1 — AI Won’t Save Your Dysfunctional Organisation
+2026-02-24 17:03:09,559 [INFO] agents.analyse: VPS  50.1 — Marshall’s Law
+2026-02-24 17:03:09,565 [INFO] agents.analyse: VPS  71.2 — Artificial Intelligence and the Quintessential Organisation
+2026-02-24 17:03:09,569 [INFO] agents.analyse: VPS  75.9 — Control Freaks: Why the Tightest Grip Often Loses the Most
+2026-02-24 17:03:09,577 [INFO] agents.analyse: VPS  45.9 — The Quintessential Mindset: 79 Essential Organisational Meme
+2026-02-24 17:03:09,583 [INFO] agents.analyse: VPS  59.6 — The Software Quality and Productivity Crisis Executives Won’
+2026-02-24 17:03:09,587 [INFO] agents.analyse: VPS  75.9 — People are NOT our greatest asset; it’s the relationships BE
+2026-02-24 17:03:09,596 [INFO] agents.analyse: VPS  66.2 — The Comfortable Lie: Why We Don’t Actually Learn From Our Mi
+2026-02-24 17:03:09,603 [INFO] agents.analyse: VPS  74.8 — If you die with crypto/online accounts, can your executor ac
+2026-02-24 17:03:09,612 [INFO] agents.analyse: VPS  58.2 — Salary Survey - 2025 H2
+2026-02-24 17:03:09,619 [INFO] agents.analyse: VPS  66.8 — Erwerbsminderungsrenten sind stärker gestiegen als Altersren
+2026-02-24 17:03:09,625 [INFO] agents.analyse: VPS  69.0 — Nicht mal ein Drittel hält gesetzliche Rente für gerecht – M
+2026-02-24 17:03:09,631 [INFO] agents.analyse: VPS  62.8 — Mehr Transparenz mit neuer Bonitätsberechnung
+2026-02-24 17:03:09,636 [INFO] agents.analyse: VPS  65.0 — HOA Tree Totaled My Car
+2026-02-24 17:03:09,642 [INFO] agents.analyse: VPS  76.0 — My deceased mother got an insurance offer at my new residenc
+2026-02-24 17:03:09,649 [INFO] agents.analyse: VPS  72.6 — How much do my neighbors claims affect my own condo premiums
+2026-02-24 17:03:09,653 [INFO] agents.analyse: VPS  66.6 — How would you decompose ‘human life’ into top-level domains 
+2026-02-24 17:03:09,661 [INFO] agents.analyse: VPS  51.9 — WDYT: Dagen H and the Death of Systemic Change
+2026-02-24 17:03:09,670 [INFO] agents.analyse: VPS  38.7 — Frameworks/Methodologies of Systems Thinking
+2026-02-24 17:03:09,680 [INFO] agents.analyse: VPS  68.7 — An observation about closed loops vs open systems (no framew
+2026-02-24 17:03:09,690 [INFO] agents.analyse: VPS  38.7 — Thinking in Systems As A Student
+2026-02-24 17:03:09,696 [INFO] agents.analyse: VPS  60.5 — Welche Versicherer-Apps wirklich überzeugen: Ergo vor Debeka
+2026-02-24 17:03:09,703 [INFO] agents.analyse: VPS scores persisted for 67 articles
+2026-02-24 17:03:27,293 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:03:50,743 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:03:50,746 [ERROR] agents.analyse: Deep analysis failed for article 34: Unterminated string starting at: line 24 column 14 (char 3059)
+2026-02-24 17:04:02,009 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:04:20,135 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:04:31,515 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:04:49,116 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:04:59,970 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:05:11,041 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:05:30,195 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:05:47,896 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:06:04,384 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:06:20,263 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:06:43,298 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:06:59,990 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:07:16,892 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:07:36,242 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:07:51,398 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:09,113 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:21,532 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:40,041 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:56,733 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:09:12,912 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:09:30,732 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:09:47,423 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:10:06,572 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:10:27,668 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:10:43,892 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:11:00,233 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:11:18,210 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:11:36,177 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:11:47,340 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:12:06,693 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:12:34,241 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:12:34,243 [ERROR] agents.analyse: Deep analysis failed for article 43: Unterminated string starting at: line 26 column 21 (char 3413)
+2026-02-24 17:12:53,493 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:13:09,673 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:13:27,390 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:13:50,534 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:14:07,028 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:14:23,203 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:14:40,714 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:15:02,119 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:15:16,045 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:15:32,432 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:15:54,860 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:16:13,804 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:16:33,973 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:16:50,053 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:17:07,978 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:17:24,464 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:17:40,337 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:17:40,363 [INFO] agents.analyse: === Analyse done. 50 signals above VPS 60 ===

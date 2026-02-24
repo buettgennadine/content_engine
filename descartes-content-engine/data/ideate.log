@@ -1,0 +1,6 @@
+2026-02-24 17:07:18,761 [INFO] core.database: Database initialised.
+2026-02-24 17:07:19,495 [INFO] agents.ideate: === Ideate Agent starting ===
+2026-02-24 17:07:19,500 [INFO] agents.ideate: Working with 66 articles from this week
+2026-02-24 17:08:18,025 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:18,072 [INFO] agents.ideate: Generated 12 content ideas
+2026-02-24 17:08:18,217 [INFO] agents.ideate: Stored 12 ideas in DB

@@ -1,0 +1,744 @@
+2026-02-24 16:17:12,099 [INFO] core.database: Database initialised.
+2026-02-24 16:17:15,439 [INFO] agents.monitor: === Monitor Agent starting ===
+2026-02-24 16:17:15,443 [INFO] agents.monitor: Fetching: FCA News
+2026-02-24 16:17:16,216 [INFO] core.rss_reader: Fetched 20 entries from FCA News
+2026-02-24 16:17:16,326 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,326 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,326 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,326 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,335 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,336 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,337 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:17:16,348 [INFO] agents.monitor: Fetching: Insurance Times
+2026-02-24 16:17:17,940 [WARNING] core.rss_reader: Malformed feed: https://www.insurancetimes.co.uk/feed/
+2026-02-24 16:17:17,960 [INFO] agents.monitor: Fetching: ABI News
+2026-02-24 16:17:19,338 [ERROR] core.rss_reader: Request error for https://www.abi.org.uk/news/rss/: 404 Client Error: Not Found for url: https://www.abi.org.uk/news/rss/
+2026-02-24 16:17:19,361 [INFO] agents.monitor: Fetching: FOS News
+2026-02-24 16:17:20,776 [INFO] core.rss_reader: Fetched 10 entries from FOS News
+2026-02-24 16:17:20,830 [INFO] agents.monitor: Rate limit pause: 54.6s
+2026-02-24 16:18:15,444 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:15,459 [INFO] agents.monitor: Fetching: VersicherungsJournal
+2026-02-24 16:18:17,708 [ERROR] core.rss_reader: Request error for https://www.versicherungsjournal.de/rss/versicherungsjournal.rss: 404 Client Error: Not Found for url: https://www.versicherungsjournal.de/rss/versicherungsjournal.rss
+2026-02-24 16:18:17,724 [INFO] agents.monitor: Fetching: GDV Pressemitteilungen
+2026-02-24 16:18:18,748 [ERROR] core.rss_reader: Request error for https://www.gdv.de/rss/presse.rss: 404 Client Error: Not Found for url: https://www.gdv.de/rss/presse.rss
+2026-02-24 16:18:18,771 [INFO] agents.monitor: Fetching: BaFin Meldungen
+2026-02-24 16:18:19,281 [ERROR] core.rss_reader: Request error for https://www.bafin.de/SiteGlobals/Functions/RSS/DE/Feed/RSSNewsFeed_Meldungen.xml: 404 Client Error: Not Found for url: https://www.bafin.de/SiteGlobals/Functions/RSS/DE/Feed/RSSNewsFeed_Meldungen.xml
+2026-02-24 16:18:19,300 [INFO] agents.monitor: Fetching: BaFin Meldungen
+2026-02-24 16:18:19,752 [ERROR] core.rss_reader: Request error for https://www.bafin.de/SiteGlobals/Functions/RSS/DE/rss_Meldungen.xml: 404 Client Error: Not Found for url: https://www.bafin.de/SiteGlobals/Functions/RSS/DE/rss_Meldungen.xml
+2026-02-24 16:18:19,771 [INFO] agents.monitor: Fetching: GDV Pressemitteilungen
+2026-02-24 16:18:20,375 [ERROR] core.rss_reader: Request error for https://www.gdv.de/gdv/presse/rss: 404 Client Error: Not Found for url: https://www.gdv.de/gdv/presse/rss
+2026-02-24 16:18:20,405 [INFO] agents.monitor: Fetching: VersicherungsJournal
+2026-02-24 16:18:21,201 [WARNING] core.rss_reader: Malformed feed: https://www.versicherungsjournal.de/rss/
+2026-02-24 16:18:21,222 [INFO] agents.monitor: Fetching: Insurance Post
+2026-02-24 16:18:22,316 [ERROR] core.rss_reader: Request error for https://www.postonline.co.uk/feed: 404 Client Error: Not Found for url: https://www.postonline.co.uk/feed
+2026-02-24 16:18:22,330 [INFO] agents.monitor: Fetching: Insurance Age
+2026-02-24 16:18:23,443 [ERROR] core.rss_reader: Request error for https://www.insuranceage.co.uk/feed: 404 Client Error: Not Found for url: https://www.insuranceage.co.uk/feed
+2026-02-24 16:18:23,456 [INFO] agents.monitor: Fetching: The Actuary
+2026-02-24 16:18:24,057 [ERROR] core.rss_reader: Request error for https://www.theactuary.com/rss: 403 Client Error: Forbidden for url: https://www.theactuary.com/rss
+2026-02-24 16:18:24,079 [INFO] agents.monitor: Fetching: TPR Press
+2026-02-24 16:18:24,979 [ERROR] core.rss_reader: Request error for https://www.thepensionsregulator.gov.uk/en/media-hub/press-releases.rss: 404 Client Error: Not Found for url: https://www.thepensionsregulator.gov.uk/en/media-hub/press-releases.rss
+2026-02-24 16:18:24,997 [INFO] agents.monitor: Fetching: Modern Insurance
+2026-02-24 16:18:25,183 [ERROR] core.rss_reader: Request error for https://www.modern-insurance-magazine.co.uk/feed/: HTTPSConnectionPool(host='www.modern-insurance-magazine.co.uk', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("HTTPSConnection(host='www.modern-insurance-magazine.co.uk', port=443): Failed to resolve 'www.modern-insurance-magazine.co.uk' ([Errno 11001] getaddrinfo failed)"))
+2026-02-24 16:18:25,209 [INFO] agents.monitor: Fetching: Insurance Thought Leadership
+2026-02-24 16:18:26,733 [INFO] core.rss_reader: Fetched 10 entries from Insurance Thought Leadership
+2026-02-24 16:18:26,783 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,783 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,783 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,783 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,783 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,783 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,784 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,784 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,784 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,784 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:18:26,826 [INFO] agents.monitor: Fetching: Clyde & Co Insurance
+2026-02-24 16:18:27,526 [ERROR] core.rss_reader: Request error for https://www.clydeco.com/en/insights/rss?category=Insurance: 404 Client Error: Page not found for url: https://www.clydeco.com/en/insights/rss?category=Insurance
+2026-02-24 16:18:27,548 [INFO] agents.monitor: Fetching: Versicherungsbote
+2026-02-24 16:18:28,256 [ERROR] core.rss_reader: Request error for https://www.versicherungsbote.de/rss/: 404 Client Error: Not Found for url: https://www.versicherungsbote.de/rss/
+2026-02-24 16:18:28,279 [INFO] agents.monitor: Fetching: Versicherungswirtschaft heute
+2026-02-24 16:18:31,167 [INFO] core.rss_reader: Fetched 25 entries from Versicherungswirtschaft heute
+2026-02-24 16:18:31,252 [INFO] agents.monitor: Rate limit pause: 44.2s
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:19:15,446 [INFO] agents.monitor: Rate limit pause: 60.0s
+2026-02-24 16:20:15,445 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:15,470 [INFO] agents.monitor: Fetching: AssCompact
+2026-02-24 16:20:16,134 [ERROR] core.rss_reader: Request error for https://www.asscompact.de/feed: 404 Client Error: Not Found for url: https://www.asscompact.de/feed
+2026-02-24 16:20:16,156 [INFO] agents.monitor: Fetching: Map-Report
+2026-02-24 16:20:17,791 [ERROR] core.rss_reader: Request error for https://map-report.com/feed: HTTPSConnectionPool(host='map-report.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'map-report.com'. (_ssl.c:1081)")))
+2026-02-24 16:20:17,810 [INFO] agents.monitor: Fetching: Versicherungsforen Leipzig Blog
+2026-02-24 16:20:20,134 [WARNING] core.rss_reader: Malformed feed: https://blog.versicherungsforen.net/feed/
+2026-02-24 16:20:20,153 [INFO] agents.monitor: Fetching: Claims Journal
+2026-02-24 16:20:21,630 [INFO] core.rss_reader: Fetched 15 entries from Claims Journal
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,679 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,680 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,680 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,680 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,680 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,680 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,680 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:20:21,698 [INFO] agents.monitor: Fetching: FlowChainSensei (Vanguard/Seddon)
+2026-02-24 16:20:22,866 [INFO] core.rss_reader: Fetched 20 entries from FlowChainSensei (Vanguard/Seddon)
+2026-02-24 16:20:22,969 [INFO] agents.monitor: Rate limit pause: 52.5s
+2026-02-24 16:21:15,446 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:21:15,468 [INFO] agents.monitor: Fetching: Squire to the Giants
+2026-02-24 16:21:15,516 [ERROR] core.rss_reader: Request error for https://squiretothegiant.com/feed/: HTTPSConnectionPool(host='squiretothegiant.com', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("HTTPSConnection(host='squiretothegiant.com', port=443): Failed to resolve 'squiretothegiant.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-24 16:21:15,527 [INFO] agents.monitor: Fetching: TOC for Startups
+2026-02-24 16:21:16,307 [ERROR] core.rss_reader: Request error for https://tocforstartups.substack.com/feed: 404 Client Error: Not Found for url: https://tocforstartups.substack.com/feed
+2026-02-24 16:21:16,329 [INFO] agents.monitor: Fetching: r/UKPersonalFinance
+2026-02-24 16:21:18,064 [INFO] core.rss_reader: Fetched 25 entries from r/UKPersonalFinance
+2026-02-24 16:21:18,193 [INFO] agents.monitor: Rate limit pause: 57.3s
+2026-02-24 16:22:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:22:15,449 [INFO] agents.monitor: Rate limit pause: 60.0s
+2026-02-24 16:23:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:15,469 [INFO] agents.monitor: Fetching: r/ActuaryUK
+2026-02-24 16:23:17,082 [INFO] core.rss_reader: Fetched 25 entries from r/ActuaryUK
+2026-02-24 16:23:17,280 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,280 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:23:17,281 [INFO] agents.monitor: Rate limit pause: 58.2s
+2026-02-24 16:24:15,447 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,448 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:15,474 [INFO] agents.monitor: Fetching: VJ Medienspiegel
+2026-02-24 16:24:16,223 [INFO] core.rss_reader: Fetched 5 entries from VJ Medienspiegel
+2026-02-24 16:24:16,241 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:16,241 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:16,241 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:16,241 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:16,241 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:16,258 [INFO] agents.monitor: Fetching: Versicherungswirtschaft heute
+2026-02-24 16:24:19,130 [WARNING] core.rss_reader: Malformed feed: https://www.vwheute.de/rss
+2026-02-24 16:24:19,152 [INFO] agents.monitor: Fetching: AssCompact
+2026-02-24 16:24:20,126 [ERROR] core.rss_reader: Request error for https://www.asscompact.de/rss/alle-nachrichten: 404 Client Error: Not Found for url: https://www.asscompact.de/rss/alle-nachrichten
+2026-02-24 16:24:20,148 [INFO] agents.monitor: Fetching: Versicherungsforen Leipzig Blog
+2026-02-24 16:24:21,253 [ERROR] core.rss_reader: Request error for https://www.versicherungsforen.net/blog/feed/: 404 Client Error: Not Found for url: https://www.versicherungsforen.net/blog/feed/
+2026-02-24 16:24:21,277 [INFO] agents.monitor: Fetching: Open Insurance Observatory
+2026-02-24 16:24:22,482 [ERROR] core.rss_reader: Request error for https://openinsurance.substack.com/feed: 404 Client Error: Not Found for url: https://openinsurance.substack.com/feed
+2026-02-24 16:24:22,503 [INFO] agents.monitor: Fetching: Dragan's Newsletter (TOC/Lean)
+2026-02-24 16:24:23,615 [INFO] core.rss_reader: Fetched 1 entries from Dragan's Newsletter (TOC/Lean)
+2026-02-24 16:24:23,618 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:23,630 [INFO] agents.monitor: Fetching: Squire to the Giants (Deming/Ohno)
+2026-02-24 16:24:25,189 [WARNING] core.rss_reader: Malformed feed: https://squiretothegiantscom.wordpress.com/feed/
+2026-02-24 16:24:25,210 [INFO] agents.monitor: Fetching: InsTech Podcast
+2026-02-24 16:24:27,661 [WARNING] core.rss_reader: Malformed feed: https://www.instech.london/feed
+2026-02-24 16:24:27,667 [INFO] agents.monitor: Fetching: VJ Medienspiegel
+2026-02-24 16:24:28,191 [ERROR] core.rss_reader: Request error for https://www.versicherungsjournal.de/rss/medienspiegel.rss: 404 Client Error: Not Found for url: https://www.versicherungsjournal.de/rss/medienspiegel.rss
+2026-02-24 16:24:28,213 [INFO] agents.monitor: Fetching: Dragan's Newsletter TOC
+2026-02-24 16:24:28,934 [ERROR] core.rss_reader: Request error for https://dragannastic.substack.com/feed: 404 Client Error: Not Found for url: https://dragannastic.substack.com/feed
+2026-02-24 16:24:28,953 [INFO] agents.monitor: Fetching: r/insurance
+2026-02-24 16:24:30,193 [INFO] core.rss_reader: Fetched 25 entries from r/insurance
+2026-02-24 16:24:30,318 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:30,321 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:30,321 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:30,321 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:24:30,321 [INFO] agents.monitor: Rate limit pause: 45.1s
+2026-02-24 16:25:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,451 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,451 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,451 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:25:15,451 [INFO] agents.monitor: Rate limit pause: 60.0s
+2026-02-24 16:26:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:15,472 [INFO] agents.monitor: Fetching: r/systemsthinking
+2026-02-24 16:26:17,369 [INFO] core.rss_reader: Fetched 25 entries from r/systemsthinking
+2026-02-24 16:26:17,526 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,526 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,527 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,528 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:26:17,528 [INFO] agents.monitor: Rate limit pause: 57.9s
+2026-02-24 16:27:15,449 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:15,450 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:15,471 [INFO] agents.monitor: Fetching: Reddit: UKPersonalFinance
+2026-02-24 16:27:17,128 [INFO] core.rss_reader: Fetched 25 entries from Reddit: UKPersonalFinance
+2026-02-24 16:27:17,280 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,280 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,281 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,282 [ERROR] core.llm: Classification failed: ANTHROPIC_API_KEY not set in .env
+2026-02-24 16:27:17,282 [INFO] agents.monitor: Rate limit pause: 58.2s
+2026-02-24 16:32:12,130 [INFO] core.database: Database initialised.
+2026-02-24 16:32:12,964 [INFO] agents.monitor: === Monitor Agent starting ===
+2026-02-24 16:32:12,967 [INFO] agents.monitor: Fetching: FCA News
+2026-02-24 16:32:13,621 [INFO] core.rss_reader: Fetched 20 entries from FCA News
+2026-02-24 16:32:16,214 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:19,080 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:20,822 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:22,679 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:24,200 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:26,557 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:29,221 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:31,677 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:33,008 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:36,284 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:38,950 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:42,121 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:44,988 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:46,729 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:48,369 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:50,416 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:52,464 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:54,002 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:56,458 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:59,939 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:32:59,961 [INFO] agents.monitor: Fetching: Insurance Times
+2026-02-24 16:33:00,999 [WARNING] core.rss_reader: Malformed feed: https://www.insurancetimes.co.uk/feed/
+2026-02-24 16:33:01,010 [INFO] agents.monitor: Fetching: ABI News
+2026-02-24 16:33:02,603 [ERROR] core.rss_reader: Request error for https://www.abi.org.uk/news/rss/: 404 Client Error: Not Found for url: https://www.abi.org.uk/news/rss/
+2026-02-24 16:33:02,621 [INFO] agents.monitor: Fetching: FOS News
+2026-02-24 16:33:03,432 [INFO] core.rss_reader: Fetched 10 entries from FOS News
+2026-02-24 16:33:03,486 [INFO] agents.monitor: Rate limit pause: 9.5s
+2026-02-24 16:33:15,714 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:17,759 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:20,626 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:22,983 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:25,235 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:28,204 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:30,662 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:32,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:35,168 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:37,627 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:37,672 [INFO] agents.monitor: Fetching: VersicherungsJournal
+2026-02-24 16:33:38,359 [ERROR] core.rss_reader: Request error for https://www.versicherungsjournal.de/rss/versicherungsjournal.rss: 404 Client Error: Not Found for url: https://www.versicherungsjournal.de/rss/versicherungsjournal.rss
+2026-02-24 16:33:38,382 [INFO] agents.monitor: Fetching: GDV Pressemitteilungen
+2026-02-24 16:33:39,014 [ERROR] core.rss_reader: Request error for https://www.gdv.de/rss/presse.rss: 404 Client Error: Not Found for url: https://www.gdv.de/rss/presse.rss
+2026-02-24 16:33:39,042 [INFO] agents.monitor: Fetching: BaFin Meldungen
+2026-02-24 16:33:39,811 [ERROR] core.rss_reader: Request error for https://www.bafin.de/SiteGlobals/Functions/RSS/DE/Feed/RSSNewsFeed_Meldungen.xml: 404 Client Error: Not Found for url: https://www.bafin.de/SiteGlobals/Functions/RSS/DE/Feed/RSSNewsFeed_Meldungen.xml
+2026-02-24 16:33:39,837 [INFO] agents.monitor: Fetching: BaFin Meldungen
+2026-02-24 16:33:40,456 [ERROR] core.rss_reader: Request error for https://www.bafin.de/SiteGlobals/Functions/RSS/DE/rss_Meldungen.xml: 404 Client Error: Not Found for url: https://www.bafin.de/SiteGlobals/Functions/RSS/DE/rss_Meldungen.xml
+2026-02-24 16:33:40,467 [INFO] agents.monitor: Fetching: GDV Pressemitteilungen
+2026-02-24 16:33:40,993 [ERROR] core.rss_reader: Request error for https://www.gdv.de/gdv/presse/rss: 404 Client Error: Not Found for url: https://www.gdv.de/gdv/presse/rss
+2026-02-24 16:33:41,014 [INFO] agents.monitor: Fetching: VersicherungsJournal
+2026-02-24 16:33:41,491 [WARNING] core.rss_reader: Malformed feed: https://www.versicherungsjournal.de/rss/
+2026-02-24 16:33:41,512 [INFO] agents.monitor: Fetching: Insurance Post
+2026-02-24 16:33:42,662 [ERROR] core.rss_reader: Request error for https://www.postonline.co.uk/feed: 404 Client Error: Not Found for url: https://www.postonline.co.uk/feed
+2026-02-24 16:33:42,674 [INFO] agents.monitor: Fetching: Insurance Age
+2026-02-24 16:33:43,569 [ERROR] core.rss_reader: Request error for https://www.insuranceage.co.uk/feed: 404 Client Error: Not Found for url: https://www.insuranceage.co.uk/feed
+2026-02-24 16:33:43,593 [INFO] agents.monitor: Fetching: The Actuary
+2026-02-24 16:33:44,313 [ERROR] core.rss_reader: Request error for https://www.theactuary.com/rss: 403 Client Error: Forbidden for url: https://www.theactuary.com/rss
+2026-02-24 16:33:44,332 [INFO] agents.monitor: Fetching: TPR Press
+2026-02-24 16:33:44,976 [ERROR] core.rss_reader: Request error for https://www.thepensionsregulator.gov.uk/en/media-hub/press-releases.rss: 404 Client Error: Not Found for url: https://www.thepensionsregulator.gov.uk/en/media-hub/press-releases.rss
+2026-02-24 16:33:44,998 [INFO] agents.monitor: Fetching: Modern Insurance
+2026-02-24 16:33:45,008 [ERROR] core.rss_reader: Request error for https://www.modern-insurance-magazine.co.uk/feed/: HTTPSConnectionPool(host='www.modern-insurance-magazine.co.uk', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("HTTPSConnection(host='www.modern-insurance-magazine.co.uk', port=443): Failed to resolve 'www.modern-insurance-magazine.co.uk' ([Errno 11001] getaddrinfo failed)"))
+2026-02-24 16:33:45,016 [INFO] agents.monitor: Fetching: Insurance Thought Leadership
+2026-02-24 16:33:46,545 [INFO] core.rss_reader: Fetched 10 entries from Insurance Thought Leadership
+2026-02-24 16:33:49,710 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:51,246 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:52,884 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:55,137 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:57,902 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:33:59,542 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:01,490 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:04,457 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:06,096 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:08,042 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:08,074 [INFO] agents.monitor: Fetching: Clyde & Co Insurance
+2026-02-24 16:34:08,905 [ERROR] core.rss_reader: Request error for https://www.clydeco.com/en/insights/rss?category=Insurance: 404 Client Error: Page not found for url: https://www.clydeco.com/en/insights/rss?category=Insurance
+2026-02-24 16:34:08,927 [INFO] agents.monitor: Fetching: Versicherungsbote
+2026-02-24 16:34:09,680 [ERROR] core.rss_reader: Request error for https://www.versicherungsbote.de/rss/: 404 Client Error: Not Found for url: https://www.versicherungsbote.de/rss/
+2026-02-24 16:34:09,705 [INFO] agents.monitor: Fetching: Versicherungswirtschaft heute
+2026-02-24 16:34:14,577 [INFO] core.rss_reader: Fetched 25 entries from Versicherungswirtschaft heute
+2026-02-24 16:34:17,260 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:19,819 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:22,071 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:23,709 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:26,066 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:28,215 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:30,263 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:32,330 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:34,861 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:37,022 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:39,686 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:42,040 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:43,987 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:46,854 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:50,131 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:52,690 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:55,765 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:34:59,449 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:01,190 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:04,369 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:04,371 [INFO] agents.monitor: Rate limit pause: 10.3s
+2026-02-24 16:35:18,703 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:21,775 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:24,029 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:27,306 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:28,944 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:28,967 [INFO] agents.monitor: Fetching: AssCompact
+2026-02-24 16:35:29,489 [ERROR] core.rss_reader: Request error for https://www.asscompact.de/feed: 404 Client Error: Not Found for url: https://www.asscompact.de/feed
+2026-02-24 16:35:29,503 [INFO] agents.monitor: Fetching: Map-Report
+2026-02-24 16:35:30,473 [ERROR] core.rss_reader: Request error for https://map-report.com/feed: HTTPSConnectionPool(host='map-report.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'map-report.com'. (_ssl.c:1081)")))
+2026-02-24 16:35:30,491 [INFO] agents.monitor: Fetching: Versicherungsforen Leipzig Blog
+2026-02-24 16:35:35,127 [WARNING] core.rss_reader: Malformed feed: https://blog.versicherungsforen.net/feed/
+2026-02-24 16:35:35,148 [INFO] agents.monitor: Fetching: Claims Journal
+2026-02-24 16:35:38,587 [INFO] core.rss_reader: Fetched 15 entries from Claims Journal
+2026-02-24 16:35:40,413 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:42,563 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:45,123 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:47,071 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:49,220 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:51,063 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:53,931 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:55,775 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:57,826 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:35:59,359 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:00,894 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:02,747 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:05,299 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:07,244 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:08,883 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:08,930 [INFO] agents.monitor: Fetching: FlowChainSensei (Vanguard/Seddon)
+2026-02-24 16:36:10,448 [INFO] core.rss_reader: Fetched 20 entries from FlowChainSensei (Vanguard/Seddon)
+2026-02-24 16:36:10,556 [INFO] agents.monitor: Rate limit pause: 4.1s
+2026-02-24 16:36:16,563 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:19,123 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:20,556 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:22,912 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:24,244 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:26,598 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:28,136 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:30,797 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:33,153 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:34,895 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:36,848 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:39,400 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:40,833 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:42,471 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:44,008 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:45,954 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:48,310 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:50,665 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:52,305 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:54,148 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:36:54,172 [INFO] agents.monitor: Fetching: Squire to the Giants
+2026-02-24 16:36:54,218 [ERROR] core.rss_reader: Request error for https://squiretothegiant.com/feed/: HTTPSConnectionPool(host='squiretothegiant.com', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("HTTPSConnection(host='squiretothegiant.com', port=443): Failed to resolve 'squiretothegiant.com' ([Errno 11001] getaddrinfo failed)"))
+2026-02-24 16:36:54,231 [INFO] agents.monitor: Fetching: TOC for Startups
+2026-02-24 16:36:55,070 [ERROR] core.rss_reader: Request error for https://tocforstartups.substack.com/feed: 404 Client Error: Not Found for url: https://tocforstartups.substack.com/feed
+2026-02-24 16:36:55,091 [INFO] agents.monitor: Fetching: r/UKPersonalFinance
+2026-02-24 16:36:56,865 [INFO] core.rss_reader: Fetched 25 entries from r/UKPersonalFinance
+2026-02-24 16:36:56,989 [INFO] agents.monitor: Rate limit pause: 17.7s
+2026-02-24 16:37:16,984 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:19,727 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:23,027 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:24,461 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:26,508 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:28,353 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:30,706 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:33,061 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:35,929 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:38,080 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:41,230 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:42,996 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:44,839 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:46,887 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:49,777 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:51,597 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:53,543 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:55,796 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:37:58,153 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:00,404 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:00,407 [INFO] agents.monitor: Rate limit pause: 14.3s
+2026-02-24 16:38:16,585 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:19,246 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:22,012 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:23,548 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:25,801 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:25,824 [INFO] agents.monitor: Fetching: r/ActuaryUK
+2026-02-24 16:38:27,241 [INFO] core.rss_reader: Fetched 25 entries from r/ActuaryUK
+2026-02-24 16:38:28,808 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:30,614 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:32,508 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:34,814 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:37,169 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:38,807 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:40,856 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:43,108 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:45,976 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:48,023 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:50,481 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:53,246 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:55,601 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:38:57,752 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:00,415 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:00,417 [INFO] agents.monitor: Rate limit pause: 14.3s
+2026-02-24 16:39:16,597 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:18,849 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:21,613 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:24,071 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:26,017 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:27,860 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:29,703 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:31,754 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:33,698 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:36,667 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:36,691 [INFO] agents.monitor: Fetching: VJ Medienspiegel
+2026-02-24 16:39:37,448 [INFO] core.rss_reader: Fetched 5 entries from VJ Medienspiegel
+2026-02-24 16:39:40,456 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:43,016 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:45,269 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:47,624 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:49,672 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:49,707 [INFO] agents.monitor: Fetching: Versicherungswirtschaft heute
+2026-02-24 16:39:52,521 [WARNING] core.rss_reader: Malformed feed: https://www.vwheute.de/rss
+2026-02-24 16:39:52,544 [INFO] agents.monitor: Fetching: AssCompact
+2026-02-24 16:39:53,564 [ERROR] core.rss_reader: Request error for https://www.asscompact.de/rss/alle-nachrichten: 404 Client Error: Not Found for url: https://www.asscompact.de/rss/alle-nachrichten
+2026-02-24 16:39:53,580 [INFO] agents.monitor: Fetching: Versicherungsforen Leipzig Blog
+2026-02-24 16:39:54,593 [ERROR] core.rss_reader: Request error for https://www.versicherungsforen.net/blog/feed/: 404 Client Error: Not Found for url: https://www.versicherungsforen.net/blog/feed/
+2026-02-24 16:39:54,614 [INFO] agents.monitor: Fetching: Open Insurance Observatory
+2026-02-24 16:39:55,818 [ERROR] core.rss_reader: Request error for https://openinsurance.substack.com/feed: 404 Client Error: Not Found for url: https://openinsurance.substack.com/feed
+2026-02-24 16:39:55,838 [INFO] agents.monitor: Fetching: Dragan's Newsletter (TOC/Lean)
+2026-02-24 16:39:56,404 [INFO] core.rss_reader: Fetched 1 entries from Dragan's Newsletter (TOC/Lean)
+2026-02-24 16:39:58,070 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:39:58,083 [INFO] agents.monitor: Fetching: Squire to the Giants (Deming/Ohno)
+2026-02-24 16:39:59,887 [WARNING] core.rss_reader: Malformed feed: https://squiretothegiantscom.wordpress.com/feed/
+2026-02-24 16:39:59,908 [INFO] agents.monitor: Fetching: InsTech Podcast
+2026-02-24 16:40:02,356 [WARNING] core.rss_reader: Malformed feed: https://www.instech.london/feed
+2026-02-24 16:40:02,374 [INFO] agents.monitor: Fetching: VJ Medienspiegel
+2026-02-24 16:40:03,216 [ERROR] core.rss_reader: Request error for https://www.versicherungsjournal.de/rss/medienspiegel.rss: 404 Client Error: Not Found for url: https://www.versicherungsjournal.de/rss/medienspiegel.rss
+2026-02-24 16:40:03,240 [INFO] agents.monitor: Fetching: Dragan's Newsletter TOC
+2026-02-24 16:40:04,318 [ERROR] core.rss_reader: Request error for https://dragannastic.substack.com/feed: 404 Client Error: Not Found for url: https://dragannastic.substack.com/feed
+2026-02-24 16:40:04,340 [INFO] agents.monitor: Fetching: r/insurance
+2026-02-24 16:40:05,619 [INFO] core.rss_reader: Fetched 25 entries from r/insurance
+2026-02-24 16:40:07,390 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:09,773 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:13,016 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:19,840 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:22,443 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:25,003 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:26,849 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:28,899 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:31,762 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:33,811 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:36,677 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:38,931 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:41,287 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:43,335 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:45,997 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:48,556 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:50,849 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:53,166 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:55,213 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:40:57,979 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:00,437 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:02,694 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:04,739 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:06,785 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:06,787 [INFO] agents.monitor: Rate limit pause: 13.1s
+2026-02-24 16:41:22,966 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:22,994 [INFO] agents.monitor: Fetching: r/systemsthinking
+2026-02-24 16:41:25,263 [INFO] core.rss_reader: Fetched 25 entries from r/systemsthinking
+2026-02-24 16:41:27,574 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:30,236 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:32,367 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:34,128 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:36,996 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:39,454 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:40,989 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:43,141 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:44,675 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:48,978 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:50,821 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:53,176 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:55,327 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:56,555 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:41:59,220 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:02,085 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:04,236 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:06,694 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:08,332 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:08,333 [INFO] agents.monitor: Rate limit pause: 11.5s
+2026-02-24 16:42:22,260 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:24,205 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:26,876 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:29,532 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:32,603 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:35,161 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:35,184 [INFO] agents.monitor: Fetching: Reddit: UKPersonalFinance
+2026-02-24 16:42:37,098 [INFO] core.rss_reader: Fetched 25 entries from Reddit: UKPersonalFinance
+2026-02-24 16:42:38,951 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:41,718 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:45,198 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:46,836 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:48,988 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:51,035 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:53,288 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:55,749 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:42:58,306 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:00,253 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:03,222 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:05,680 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:07,628 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:10,390 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:10,392 [INFO] agents.monitor: Rate limit pause: 9.5s
+2026-02-24 16:43:21,553 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:23,913 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:26,059 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:27,595 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:29,736 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:31,282 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:33,536 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:36,095 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:38,449 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:40,601 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:40,626 [INFO] agents.monitor: Fetching: Reddit: insurance
+2026-02-24 16:43:42,060 [INFO] core.rss_reader: Fetched 25 entries from Reddit: insurance
+2026-02-24 16:43:44,082 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:46,540 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:48,691 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:50,534 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:52,992 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:56,065 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:57,806 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:43:59,957 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:02,825 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:05,486 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:05,488 [INFO] agents.monitor: Rate limit pause: 14.4s
+2026-02-24 16:44:22,895 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:24,842 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:27,504 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:29,861 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:32,624 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:35,082 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:37,129 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:39,794 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:43,274 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:45,732 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:47,882 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:50,546 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:50,570 [INFO] agents.monitor: Fetching: Reddit: systemsthinking
+2026-02-24 16:44:52,276 [INFO] core.rss_reader: Fetched 25 entries from Reddit: systemsthinking
+2026-02-24 16:44:54,641 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:57,303 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:44:59,352 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:01,607 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:03,551 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:05,394 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:07,379 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:10,004 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:10,006 [INFO] agents.monitor: Rate limit pause: 9.8s
+2026-02-24 16:45:22,189 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:24,544 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:26,710 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:29,051 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:32,020 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:33,761 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:36,833 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:38,881 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:41,247 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:43,183 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:45,949 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:48,406 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:48,428 [INFO] agents.monitor: Fetching: Reddit: ActuaryUK
+2026-02-24 16:45:49,991 [INFO] core.rss_reader: Fetched 25 entries from Reddit: ActuaryUK
+2026-02-24 16:45:52,403 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:54,447 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:56,495 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:45:58,545 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:00,387 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:03,049 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:05,098 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:07,863 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:07,864 [INFO] agents.monitor: Rate limit pause: 12.0s
+2026-02-24 16:46:21,893 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:24,145 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:26,298 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:28,140 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:29,813 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:32,551 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:34,591 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:36,947 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:38,790 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:40,925 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:42,683 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:44,320 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:46,166 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:48,416 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:50,464 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:52,615 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:52,641 [INFO] agents.monitor: Fetching: Reddit: FIREUK
+2026-02-24 16:46:54,564 [INFO] core.rss_reader: Fetched 25 entries from Reddit: FIREUK
+2026-02-24 16:46:56,508 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:46:59,067 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:02,651 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:05,006 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:05,008 [INFO] agents.monitor: Rate limit pause: 14.8s
+2026-02-24 16:47:22,420 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:24,464 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:26,470 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:29,379 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:31,633 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:33,168 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:35,831 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:38,188 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:40,030 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:42,487 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:44,433 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:46,588 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:48,939 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:51,704 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:55,187 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:57,439 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:47:59,591 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:48:01,842 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:48:03,788 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:48:06,349 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:48:06,352 [INFO] agents.monitor: Rate limit pause: 13.5s
+2026-02-24 16:48:22,119 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 16:48:22,425 [ERROR] core.imap_reader: IMAP fetch failed: b'Lookup failed e09e53db590de-887d80c3abcmb445341367d85'
+2026-02-24 16:48:22,426 [INFO] agents.monitor: === Monitor done. Stored 67 new articles ===

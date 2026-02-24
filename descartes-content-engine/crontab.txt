@@ -1,0 +1,22 @@
+# Descartes Content Engine — Crontab
+# Setup: crontab -e → paste these lines
+# Assumes: virtualenv at /opt/venv, code at /opt/descartes-content-engine
+
+SHELL=/bin/bash
+PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+PYTHONPATH=/opt/descartes-content-engine
+
+# Monitor: every 6 hours
+0 */6 * * * cd /opt/descartes-content-engine && python scripts/run_monitor.py >> logs/cron.log 2>&1
+
+# Analyse: daily at 18:00
+0 18 * * * cd /opt/descartes-content-engine && python scripts/run_analyse.py >> logs/cron.log 2>&1
+
+# Ideate: Sunday at 20:00
+0 20 * * 0 cd /opt/descartes-content-engine && python scripts/run_ideate.py >> logs/cron.log 2>&1
+
+# Draft: Monday at 06:00
+0 6 * * 1 cd /opt/descartes-content-engine && python scripts/run_drafts.py >> logs/cron.log 2>&1
+
+# Briefing: Friday at 15:00
+0 15 * * 5 cd /opt/descartes-content-engine && python scripts/run_briefing.py >> logs/cron.log 2>&1

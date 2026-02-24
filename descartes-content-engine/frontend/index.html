@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descartes Content Engine</title>
+<style>
+/* ─── Design Tokens ─── */
+:root {
+  --cream: #FAF7F2;
+  --cream-dark: #F0EBE3;
+  --copper: #C17F59;
+  --copper-light: #D4A07A;
+  --copper-dark: #A0694A;
+  --navy: #1B2A4A;
+  --navy-light: #2D3F63;
+  --navy-muted: #4A5A7A;
+  --white: #FFFFFF;
+  --green: #3D8B5E;
+  --green-light: #E8F5E9;
+  --red: #C0392B;
+  --red-light: #FDECEA;
+  --amber: #D4A017;
+  --amber-light: #FFF8E1;
+  --text: #2C2C2C;
+  --text-muted: #6B7280;
+  --border: #E5E0D8;
+  --shadow: 0 1px 3px rgba(27,42,74,0.08), 0 1px 2px rgba(27,42,74,0.06);
+  --shadow-md: 0 4px 6px rgba(27,42,74,0.07), 0 2px 4px rgba(27,42,74,0.06);
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ─── Header ─── */
+.header {
+  background: var(--navy);
+  color: var(--white);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(27,42,74,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-left { display: flex; align-items: center; gap: 16px; }
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--copper-light);
+}
+.logo span { color: var(--white); font-weight: 400; }
+.header-status {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+.header-status .stat-val { color: var(--copper-light); font-weight: 600; }
+
+/* ─── Navigation ─── */
+.nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  padding: 0 32px;
+  gap: 0;
+  box-shadow: var(--shadow);
+}
+.nav-tab {
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  user-select: none;
+}
+.nav-tab:hover { color: var(--navy); background: var(--cream); }
+.nav-tab.active {
+  color: var(--navy);
+  border-bottom-color: var(--copper);
+  font-weight: 600;
+}
+
+/* ─── Main Layout ─── */
+.main { max-width: 1280px; margin: 0 auto; padding: 24px 32px; }
+.page { display: none; }
+.page.active { display: block; }
+
+/* ─── Cards ─── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-md); }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.card-title a:hover { text-decoration: underline; }
+
+/* ─── Badges ─── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.badge-vps {
+  background: var(--navy);
+  color: var(--copper-light);
+  font-size: 13px;
+  padding: 4px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.badge-vps.high { background: var(--green); color: var(--white); }
+.badge-vps.mid { background: var(--amber); color: var(--white); }
+.badge-vps.low { background: var(--text-muted); color: var(--white); }
+.badge-cat {
+  background: var(--cream-dark);
+  color: var(--navy-muted);
+  margin: 2px 4px 2px 0;
+}
+.badge-urgency-breaking { background: var(--red-light); color: var(--red); }
+.badge-urgency-timely { background: var(--amber-light); color: var(--amber); }
+.badge-urgency-evergreen { background: var(--green-light); color: var(--green); }
+.badge-status-pending_review { background: var(--amber-light); color: var(--amber); }
+.badge-status-approved { background: var(--green-light); color: var(--green); }
+.badge-status-rejected { background: var(--red-light); color: var(--red); }
+.badge-status-published { background: var(--navy); color: var(--copper-light); }
+.badge-status-drafted { background: #E8EAF6; color: #3949AB; }
+.badge-status-pending { background: var(--cream-dark); color: var(--text-muted); }
+
+/* ─── Section Headers ─── */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.section-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Stat Tiles ─── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.stat-tile .val {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-tile .val.copper { color: var(--copper); }
+.stat-tile .label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Filters ─── */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.filter-bar select, .filter-bar input {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--white);
+  color: var(--text);
+}
+.filter-bar select:focus, .filter-bar input:focus {
+  outline: none;
+  border-color: var(--copper);
+  box-shadow: 0 0 0 3px rgba(193,127,89,0.15);
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--copper); color: var(--white); }
+.btn-primary:hover { background: var(--copper-dark); }
+.btn-secondary { background: var(--cream-dark); color: var(--navy); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--border); }
+.btn-success { background: var(--green); color: var(--white); }
+.btn-success:hover { background: #2E7D4E; }
+.btn-danger { background: var(--red); color: var(--white); }
+.btn-danger:hover { background: #A93226; }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn .spinner { display: none; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+.btn.loading .spinner { display: inline-block; }
+.btn.loading { pointer-events: none; opacity: 0.7; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Article snippet ─── */
+.snippet { font-size: 13px; color: var(--text-muted); margin: 8px 0; line-height: 1.5; }
+.angle { font-size: 13px; color: var(--navy-muted); font-style: italic; margin: 6px 0; }
+.data-points { font-size: 12px; color: var(--copper-dark); margin-top: 6px; }
+.meta-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--cream-dark);
+}
+
+/* ─── Draft Content ─── */
+.draft-content {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin: 16px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ─── Quality Bar ─── */
+.quality-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin: 8px 0;
+}
+.quality-bar .bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--cream-dark);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.quality-bar .bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ─── Modal / Generate Panel ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27,42,74,0.4);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  width: 90%;
+  max-width: 640px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(27,42,74,0.2);
+}
+.modal h2 { color: var(--navy); margin-bottom: 20px; }
+.modal label { display: block; font-size: 13px; font-weight: 600; color: var(--navy-muted); margin-bottom: 4px; margin-top: 14px; }
+.modal textarea, .modal select, .modal input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+}
+.modal textarea { min-height: 80px; resize: vertical; }
+.modal-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
+
+/* ─── Sources Grid ─── */
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.source-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.source-card .source-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+.source-card .source-meta { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.source-status {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.source-status.active { background: var(--green); }
+.source-status.broken { background: var(--red); }
+.source-status.unknown { background: var(--text-muted); }
+
+/* ─── Agent Controls ─── */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.agent-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.agent-card .agent-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.agent-card .agent-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* ─── Pain Points ─── */
+.pp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 12px;
+}
+.pp-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.pp-card .pp-point { font-weight: 600; font-size: 14px; color: var(--navy); }
+.pp-card .pp-value { font-size: 15px; color: var(--copper); font-weight: 600; margin: 4px 0; }
+.pp-card .pp-meta { font-size: 12px; color: var(--text-muted); }
+
+/* ─── Toast ─── */
+.toast-container { position: fixed; top: 80px; right: 24px; z-index: 300; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  background: var(--navy);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: slideIn 0.3s ease;
+  max-width: 360px;
+}
+.toast.error { background: var(--red); }
+.toast.success { background: var(--green); }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ─── Empty State ─── */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+.empty-state .icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+.empty-state p { font-size: 14px; }
+
+/* ─── Loading ─── */
+.loading-bar {
+  height: 3px;
+  background: var(--cream-dark);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  overflow: hidden;
+  display: none;
+}
+.loading-bar.active { display: block; }
+.loading-bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 30%;
+  background: var(--copper);
+  animation: loadSlide 1.2s ease infinite;
+}
+@keyframes loadSlide { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .header { padding: 12px 16px; }
+  .nav { padding: 0 16px; overflow-x: auto; }
+  .nav-tab { padding: 12px 16px; font-size: 13px; white-space: nowrap; }
+  .main { padding: 16px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="loading-bar" id="loadingBar"></div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo">Descartes <span>Content Engine</span></div>
+  </div>
+  <div class="header-status" id="headerStatus">
+    <span>Articles: <span class="stat-val" id="hdrArticles">--</span></span>
+    <span>Ideas: <span class="stat-val" id="hdrIdeas">--</span></span>
+    <span>Drafts: <span class="stat-val" id="hdrDrafts">--</span></span>
+    <span>Sources: <span class="stat-val" id="hdrSources">--</span></span>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-tab active" data-page="feed">Intelligence Feed</div>
+  <div class="nav-tab" data-page="pipeline">Content Pipeline</div>
+  <div class="nav-tab" data-page="generate">Generate Post</div>
+  <div class="nav-tab" data-page="sources">Sources &amp; Pain Points</div>
+  <div class="nav-tab" data-page="system">System Status</div>
+</nav>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════════════════════ PAGE: Intelligence Feed ═══════════════════════ -->
+<div class="main">
+<div class="page active" id="page-feed">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Intelligence Feed</div>
+      <div class="section-subtitle">Articles scored by Viral Potential Score (VPS)</div>
+    </div>
+  </div>
+
+  <div class="stat-grid" id="feedStats"></div>
+
+  <div class="filter-bar">
+    <select id="feedCategory">
+      <option value="">All Categories</option>
+    </select>
+    <select id="feedMinVps">
+      <option value="0">All VPS Scores</option>
+      <option value="60">VPS 60+ (Draft-worthy)</option>
+      <option value="70">VPS 70+ (High signal)</option>
+      <option value="80">VPS 80+ (Top tier)</option>
+    </select>
+    <select id="feedLimit">
+      <option value="30">Show 30</option>
+      <option value="50">Show 50</option>
+      <option value="100">Show All</option>
+    </select>
+    <button class="btn btn-secondary btn-sm" onclick="loadFeed()">Refresh</button>
+  </div>
+
+  <div id="feedList"></div>
+</div>
+
+<!-- ═══════════════════════ PAGE: Content Pipeline ═══════════════════════ -->
+<div class="page" id="page-pipeline">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Content Pipeline</div>
+      <div class="section-subtitle">Ideas, Drafts, and Review Queue</div>
+    </div>
+  </div>
+
+  <!-- Ideas -->
+  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Content Ideas (12 per week)</h3>
+  <div id="ideasList" style="margin-bottom:32px;"></div>
+
+  <!-- Drafts -->
+  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Drafts — Review Queue</h3>
+  <div class="filter-bar">
+    <select id="draftFilter" onchange="loadDrafts()">
+      <option value="">All Statuses</option>
+      <option value="PENDING_REVIEW">Pending Review</option>
+      <option value="APPROVED">Approved</option>
+      <option value="REJECTED">Rejected</option>
+    </select>
+  </div>
+  <div id="draftsList"></div>
+</div>
+
+<!-- ═══════════════════════ PAGE: Generate Post ═══════════════════════ -->
+<div class="page" id="page-generate">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Generate Post</div>
+      <div class="section-subtitle">On-demand LinkedIn post via Claude (API key stays server-side)</div>
+    </div>
+  </div>
+
+  <div class="card" style="max-width:640px;">
+    <label>Topic / Brief</label>
+    <textarea id="genTopic" placeholder="e.g. Claims automation is failing because insurers automate bad processes"></textarea>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+      <div>
+        <label>Template</label>
+        <select id="genTemplate">
+          <option>Data Hook</option>
+          <option>Old vs New Rules</option>
+          <option>Contrarian Take</option>
+          <option>Case Study</option>
+          <option>Provocative Question</option>
+          <option>Story Format</option>
+        </select>
+      </div>
+      <div>
+        <label>Language</label>
+        <select id="genLang">
+          <option value="EN">English (British)</option>
+          <option value="DE">Deutsch (Sie-Form)</option>
+        </select>
+      </div>
+      <div>
+        <label>Audience</label>
+        <select id="genAudience">
+          <option>Claims Directors, COOs</option>
+          <option>Pension Operations Directors</option>
+          <option>CFOs, Board</option>
+          <option>Insurance Professionals (general)</option>
+        </select>
+      </div>
+      <div>
+        <label>Tone</label>
+        <select id="genTone">
+          <option value="provocative">Provocative</option>
+          <option value="analytical">Analytical</option>
+          <option value="storytelling">Storytelling</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <button class="btn btn-primary" id="genBtn" onclick="generatePost()">
+        <span class="spinner"></span> Generate Post
+      </button>
+    </div>
+  </div>
+
+  <div id="genResult" style="margin-top:24px;display:none;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Generated Post</div>
+        <button class="btn btn-secondary btn-sm" onclick="copyGenerated()">Copy</button>
+      </div>
+      <div class="draft-content" id="genContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PAGE: Sources & Pain Points ═══════════════════════ -->
+<div class="page" id="page-sources">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Sources &amp; Pain Points</div>
+      <div class="section-subtitle">RSS feeds, data sources, and industry pain point database</div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">RSS Sources</h3>
+  <div class="sources-grid" id="sourcesList" style="margin-bottom:32px;"></div>
+
+  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Pain Point Database</h3>
+  <div class="filter-bar">
+    <select id="ppCategoryFilter" onchange="loadPainPoints()">
+      <option value="">All Categories</option>
+    </select>
+  </div>
+  <div class="pp-grid" id="painPointsList"></div>
+</div>
+
+<!-- ═══════════════════════ PAGE: System Status ═══════════════════════ -->
+<div class="page" id="page-system">
+  <div class="section-header">
+    <div>
+      <div class="section-title">System Status</div>
+      <div class="section-subtitle">Agent controls, run history, and health</div>
+    </div>
+  </div>
+
+  <div class="stat-grid" id="systemStats"></div>
+
+  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Agent Controls</h3>
+  <div class="agent-grid" id="agentControls">
+    <div class="agent-card">
+      <div class="agent-name">Monitor</div>
+      <div class="agent-desc">Fetch RSS, classify articles</div>
+      <button class="btn btn-primary btn-sm" onclick="runAgent('monitor', this)"><span class="spinner"></span> Run Now</button>
+    </div>
+    <div class="agent-card">
+      <div class="agent-name">Analyse</div>
+      <div class="agent-desc">VPS scoring, pain point extraction</div>
+      <button class="btn btn-primary btn-sm" onclick="runAgent('analyse', this)"><span class="spinner"></span> Run Now</button>
+    </div>
+    <div class="agent-card">
+      <div class="agent-name">Ideate</div>
+      <div class="agent-desc">Generate content ideas</div>
+      <button class="btn btn-primary btn-sm" onclick="runAgent('ideate', this)"><span class="spinner"></span> Run Now</button>
+    </div>
+    <div class="agent-card">
+      <div class="agent-name">Draft</div>
+      <div class="agent-desc">Draft LinkedIn posts</div>
+      <button class="btn btn-primary btn-sm" onclick="runAgent('draft', this)"><span class="spinner"></span> Run Now</button>
+    </div>
+    <div class="agent-card">
+      <div class="agent-name">Briefing</div>
+      <div class="agent-desc">Weekly intelligence briefing</div>
+      <button class="btn btn-primary btn-sm" onclick="runAgent('briefing', this)"><span class="spinner"></span> Run Now</button>
+    </div>
+  </div>
+
+  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Latest Briefing</h3>
+  <div id="briefingContent"></div>
+</div>
+</div>
+
+<!-- ═══════════════════════ Draft Review Modal ═══════════════════════ -->
+<div class="modal-overlay" id="reviewModal">
+  <div class="modal">
+    <h2 id="reviewTitle">Review Draft</h2>
+    <div class="draft-content" id="reviewContent"></div>
+    <div id="reviewMeta" style="margin:12px 0;"></div>
+    <label>Feedback (optional)</label>
+    <textarea id="reviewFeedback" placeholder="Notes for the next draft iteration..."></textarea>
+    <label>Schedule Date (if approving)</label>
+    <input type="text" id="reviewDate" placeholder="YYYY-MM-DD">
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="submitReview('REJECTED')">Reject</button>
+      <button class="btn btn-success" onclick="submitReview('APPROVED')">Approve</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   Descartes Content Engine — Frontend JS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+const API = 'http://127.0.0.1:8000';
+let currentDraftId = null;
+
+// ─── Navigation ──────────────────────────────────────────────────────
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('page-' + tab.dataset.page).classList.add('active');
+    // Load data for the page
+    const page = tab.dataset.page;
+    if (page === 'feed') loadFeed();
+    if (page === 'pipeline') { loadIdeas(); loadDrafts(); }
+    if (page === 'sources') { loadSources(); loadPainPoints(); }
+    if (page === 'system') { loadSystemStatus(); loadBriefing(); }
+  });
+});
+
+// ─── API Helpers ─────────────────────────────────────────────────────
+function showLoading(on) {
+  document.getElementById('loadingBar').classList.toggle('active', on);
+}
+
+async function api(path, opts = {}) {
+  showLoading(true);
+  try {
+    const res = await fetch(API + path, {
+      headers: { 'Content-Type': 'application/json' },
+      ...opts,
+    });
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    return await res.json();
+  } catch (e) {
+    toast(e.message, 'error');
+    throw e;
+  } finally {
+    showLoading(false);
+  }
+}
+
+function toast(msg, type = '') {
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+// ─── VPS helpers ─────────────────────────────────────────────────────
+function vpsClass(v) { return v >= 80 ? 'high' : v >= 60 ? 'mid' : 'low'; }
+function formatDate(d) {
+  if (!d) return '--';
+  try { return new Date(d).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
+  catch { return d; }
+}
+function escHtml(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ─── Header Status ───────────────────────────────────────────────────
+async function loadHeaderStatus() {
+  try {
+    const data = await api('/api/status');
+    document.getElementById('hdrArticles').textContent = data.articles || 0;
+    document.getElementById('hdrIdeas').textContent = data.ideas || 0;
+    document.getElementById('hdrDrafts').textContent = data.drafts || 0;
+    document.getElementById('hdrSources').textContent = data.active_sources || 0;
+  } catch {}
+}
+
+// ─── FEED ────────────────────────────────────────────────────────────
+async function loadFeed() {
+  const cat = document.getElementById('feedCategory').value;
+  const minVps = document.getElementById('feedMinVps').value;
+  const limit = document.getElementById('feedLimit').value;
+  let path = `/api/feed?limit=${limit}&min_vps=${minVps}`;
+  if (cat) path += `&category=${encodeURIComponent(cat)}`;
+
+  const data = await api(path);
+  const articles = data.articles || [];
+
+  // Stats
+  const above60 = articles.filter(a => (a.vps_score || 0) >= 60).length;
+  const above80 = articles.filter(a => (a.vps_score || 0) >= 80).length;
+  const avgVps = articles.length ? (articles.reduce((s, a) => s + (a.vps_score || 0), 0) / articles.length).toFixed(1) : '0';
+  document.getElementById('feedStats').innerHTML = `
+    <div class="stat-tile"><div class="val">${articles.length}</div><div class="label">Articles</div></div>
+    <div class="stat-tile"><div class="val copper">${above60}</div><div class="label">VPS 60+ (Draft-worthy)</div></div>
+    <div class="stat-tile"><div class="val">${above80}</div><div class="label">VPS 80+ (Top tier)</div></div>
+    <div class="stat-tile"><div class="val">${avgVps}</div><div class="label">Avg VPS</div></div>
+  `;
+
+  // Collect categories for filter
+  const cats = new Set();
+  articles.forEach(a => (a.categories || []).forEach(c => cats.add(c)));
+  const sel = document.getElementById('feedCategory');
+  const curVal = sel.value;
+  sel.innerHTML = '<option value="">All Categories</option>' +
+    [...cats].sort().map(c => `<option value="${c}" ${c===curVal?'selected':''}>${c.replace(/_/g,' ')}</option>`).join('');
+
+  // Render articles
+  if (!articles.length) {
+    document.getElementById('feedList').innerHTML = '<div class="empty-state"><div class="icon">📡</div><p>No articles found. Run the Monitor agent to fetch RSS feeds.</p></div>';
+    return;
+  }
+
+  document.getElementById('feedList').innerHTML = articles.map(a => {
+    const vps = a.vps_score || 0;
+    const cats = (a.categories || []).map(c => `<span class="badge badge-cat">${escHtml(c.replace(/_/g,' '))}</span>`).join('');
+    const urgBadge = a.urgency ? `<span class="badge badge-urgency-${a.urgency}">${a.urgency}</span>` : '';
+    const dp = (a.data_points || []);
+    const dpHtml = dp.length ? `<div class="data-points">Data: ${dp.map(d => escHtml(String(d))).join(' · ')}</div>` : '';
+    const angleHtml = a.content_angle ? `<div class="angle">"${escHtml(a.content_angle)}"</div>` : '';
+    const link = a.link ? `<a href="${escHtml(a.link)}" target="_blank" rel="noopener">${escHtml(a.title)}</a>` : escHtml(a.title);
+
+    return `<div class="card">
+      <div class="card-header">
+        <div class="card-title">${link}</div>
+        <span class="badge badge-vps ${vpsClass(vps)}">${vps.toFixed(1)}</span>
+      </div>
+      ${a.snippet ? `<div class="snippet">${escHtml(a.snippet).substring(0, 250)}${a.snippet.length > 250 ? '...' : ''}</div>` : ''}
+      ${angleHtml}
+      ${dpHtml}
+      <div style="margin-top:8px;">${cats} ${urgBadge}</div>
+      <div class="meta-row">
+        <span>Source: ${escHtml(a.source_name || '--')}</span>
+        <span>Relevance: ${a.relevance_score || '--'}/10</span>
+        <span>Collected: ${formatDate(a.collected_date)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── IDEAS ───────────────────────────────────────────────────────────
+async function loadIdeas() {
+  const data = await api('/api/ideas');
+  const ideas = data.ideas || [];
+
+  if (!ideas.length) {
+    document.getElementById('ideasList').innerHTML = '<div class="empty-state"><div class="icon">💡</div><p>No ideas yet. Run the Ideate agent.</p></div>';
+    return;
+  }
+
+  document.getElementById('ideasList').innerHTML = ideas.map(idea => {
+    const prio = idea.priority_score || 0;
+    const statusBadge = `<span class="badge badge-status-${(idea.status||'pending').toLowerCase()}">${idea.status || 'pending'}</span>`;
+    return `<div class="card">
+      <div class="card-header">
+        <div class="card-title">${escHtml(idea.title)}</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          ${statusBadge}
+          <span class="badge badge-vps ${vpsClass(prio)}">${prio}</span>
+        </div>
+      </div>
+      <div class="snippet">${escHtml(idea.hook || '')}</div>
+      <div class="angle">${escHtml(idea.angle || '')}</div>
+      ${idea.key_data ? `<div class="data-points">${escHtml(idea.key_data)}</div>` : ''}
+      <div class="meta-row">
+        <span>Template: ${escHtml(idea.format || '--')}</span>
+        <span>Pillar: ${escHtml(idea.pillar || '--')}</span>
+        <span>Urgency: ${escHtml(idea.urgency || '--')}</span>
+        <span>Effort: ${escHtml(idea.effort || '--')}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── DRAFTS ──────────────────────────────────────────────────────────
+async function loadDrafts() {
+  const status = document.getElementById('draftFilter').value;
+  const path = status ? `/api/drafts?status=${status}` : '/api/drafts';
+  const data = await api(path);
+  const drafts = data.drafts || [];
+
+  if (!drafts.length) {
+    document.getElementById('draftsList').innerHTML = '<div class="empty-state"><div class="icon">📝</div><p>No drafts yet. Run the Draft agent.</p></div>';
+    return;
+  }
+
+  document.getElementById('draftsList').innerHTML = drafts.map(d => {
+    const qs = d.quality_score || 0;
+    const pct = Math.min(100, qs * 10);
+    const barColor = qs >= 8 ? 'var(--green)' : qs >= 6 ? 'var(--amber)' : 'var(--red)';
+    const statusCls = (d.status || '').toLowerCase().replace(/ /g, '_');
+    const preview = (d.content || '').substring(0, 200).replace(/\n/g, ' ') + '...';
+    const issues = (d.quality_issues || []);
+
+    return `<div class="card">
+      <div class="card-header">
+        <div class="card-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="badge badge-status-${statusCls}">${d.status}</span>
+        </div>
+      </div>
+      <div class="snippet">${escHtml(preview)}</div>
+      <div class="quality-bar">
+        <span>Quality: ${qs.toFixed(1)}/10</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+      </div>
+      ${issues.length ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Issues: ${issues.join(', ')}</div>` : ''}
+      <div class="meta-row">
+        <span>${escHtml(d.consultant_notes || '')}</span>
+        <span>Created: ${formatDate(d.created_at)}</span>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;">
+        <button class="btn btn-secondary btn-sm" onclick="viewDraft(${d.id})">View Full</button>
+        ${d.status === 'PENDING_REVIEW' ? `<button class="btn btn-primary btn-sm" onclick="openReview(${d.id})">Review</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function viewDraft(id) {
+  const d = await api(`/api/drafts/${id}`);
+  document.getElementById('reviewTitle').textContent = d.idea_title || 'Draft #' + d.id;
+  document.getElementById('reviewContent').textContent = d.content || '';
+  document.getElementById('reviewMeta').innerHTML = `
+    <span class="badge badge-status-${(d.status||'').toLowerCase()}">${d.status}</span>
+    Quality: ${(d.quality_score||0).toFixed(1)}/10 · ${d.consultant_notes || ''}
+  `;
+  document.getElementById('reviewFeedback').value = '';
+  document.getElementById('reviewDate').value = '';
+  currentDraftId = id;
+  // Hide approve/reject if not pending
+  const btns = document.querySelectorAll('#reviewModal .btn-success, #reviewModal .btn-danger');
+  btns.forEach(b => b.style.display = d.status === 'PENDING_REVIEW' ? '' : 'none');
+  document.getElementById('reviewModal').classList.add('open');
+}
+
+function openReview(id) { viewDraft(id); }
+
+function closeModal() {
+  document.getElementById('reviewModal').classList.remove('open');
+  currentDraftId = null;
+}
+
+async function submitReview(status) {
+  if (!currentDraftId) return;
+  const feedback = document.getElementById('reviewFeedback').value;
+  const date = document.getElementById('reviewDate').value;
+  await api(`/api/drafts/${currentDraftId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status,
+      feedback: feedback || null,
+      scheduled_date: date || null,
+    }),
+  });
+  toast(`Draft ${status.toLowerCase()}`, 'success');
+  closeModal();
+  loadDrafts();
+  loadHeaderStatus();
+}
+
+// ─── GENERATE ────────────────────────────────────────────────────────
+async function generatePost() {
+  const topic = document.getElementById('genTopic').value.trim();
+  if (!topic) { toast('Enter a topic first', 'error'); return; }
+
+  const btn = document.getElementById('genBtn');
+  btn.classList.add('loading');
+  document.getElementById('genResult').style.display = 'none';
+
+  try {
+    const data = await api('/api/generate', {
+      method: 'POST',
+      body: JSON.stringify({
+        topic,
+        template: document.getElementById('genTemplate').value,
+        language: document.getElementById('genLang').value,
+        audience: document.getElementById('genAudience').value,
+        tone: document.getElementById('genTone').value,
+      }),
+    });
+    document.getElementById('genContent').textContent = data.content || 'No content returned';
+    document.getElementById('genResult').style.display = 'block';
+    toast('Post generated', 'success');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+function copyGenerated() {
+  const text = document.getElementById('genContent').textContent;
+  navigator.clipboard.writeText(text).then(() => toast('Copied to clipboard', 'success'));
+}
+
+// ─── SOURCES ─────────────────────────────────────────────────────────
+async function loadSources() {
+  const data = await api('/api/sources');
+  const sources = data.sources || [];
+
+  document.getElementById('sourcesList').innerHTML = sources.map(s => {
+    const status = s.status || 'active';
+    const cats = (s.default_categories || []).map(c => `<span class="badge badge-cat">${escHtml(c.replace(/_/g,' '))}</span>`).join(' ');
+    return `<div class="source-card">
+      <div class="source-name"><span class="source-status ${status}"></span>${escHtml(s.name)}</div>
+      <div class="source-meta">Tier ${s.tier || '--'} · ${escHtml(s.source_type || 'rss')}</div>
+      <div style="margin-top:6px;">${cats}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── PAIN POINTS ─────────────────────────────────────────────────────
+async function loadPainPoints() {
+  const cat = document.getElementById('ppCategoryFilter').value;
+  const path = cat ? `/api/painpoints?category=${encodeURIComponent(cat)}` : '/api/painpoints';
+  const data = await api(path);
+  const pps = data.pain_points || [];
+
+  // Populate category filter
+  const allCats = [...new Set(pps.map(p => p.category))].sort();
+  const sel = document.getElementById('ppCategoryFilter');
+  const curVal = sel.value;
+  if (sel.options.length <= 1) {
+    sel.innerHTML = '<option value="">All Categories</option>' +
+      allCats.map(c => `<option value="${c}" ${c===curVal?'selected':''}>${c.replace(/_/g,' ')}</option>`).join('');
+  }
+
+  document.getElementById('painPointsList').innerHTML = pps.map(p => `
+    <div class="pp-card">
+      <div class="pp-point">${escHtml(p.data_point)}</div>
+      <div class="pp-value">${escHtml(p.value)}</div>
+      <div class="pp-meta">
+        <span class="badge badge-cat">${escHtml((p.category||'').replace(/_/g,' '))}</span>
+        <span class="badge badge-cat">${escHtml(p.country || 'UK')}</span>
+        ${p.source ? `· ${escHtml(p.source)}` : ''} ${p.date ? `(${escHtml(p.date)})` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── SYSTEM STATUS ───────────────────────────────────────────────────
+async function loadSystemStatus() {
+  const data = await api('/api/status');
+  const broken = data.broken_sources || [];
+
+  document.getElementById('systemStats').innerHTML = `
+    <div class="stat-tile"><div class="val">${data.articles || 0}</div><div class="label">Total Articles</div></div>
+    <div class="stat-tile"><div class="val copper">${data.ideas || 0}</div><div class="label">Content Ideas</div></div>
+    <div class="stat-tile"><div class="val">${data.drafts || 0}</div><div class="label">Drafts</div></div>
+    <div class="stat-tile"><div class="val">${data.active_sources || 0}</div><div class="label">Active Sources</div></div>
+    <div class="stat-tile"><div class="val">${broken.length}</div><div class="label">Broken Sources</div></div>
+    <div class="stat-tile">
+      <div class="val" style="font-size:16px;">${formatDate(data.last_monitor_run)}</div>
+      <div class="label">Last Monitor Run</div>
+    </div>
+  `;
+}
+
+async function loadBriefing() {
+  try {
+    const data = await api('/api/briefing');
+    if (!data.briefing) {
+      document.getElementById('briefingContent').innerHTML = '<div class="empty-state"><div class="icon">📋</div><p>No briefing generated yet. Run on Friday at 15:00, or trigger manually.</p></div>';
+      return;
+    }
+    const b = data.briefing;
+    const stories = (b.top_stories || []).map(s => `<li>${escHtml(typeof s === 'string' ? s : s.title || JSON.stringify(s))}</li>`).join('');
+    const trends = (b.trend_watch || []).map(t => `<li>${escHtml(typeof t === 'string' ? t : t.trend || JSON.stringify(t))}</li>`).join('');
+    const priorities = (b.next_week_priorities || []).map(p => `<li>${escHtml(typeof p === 'string' ? p : p.priority || JSON.stringify(p))}</li>`).join('');
+
+    document.getElementById('briefingContent').innerHTML = `
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px;">Week of ${formatDate(b.created_at)}</div>
+        ${b.executive_summary ? `<p style="margin-bottom:16px;">${escHtml(b.executive_summary)}</p>` : ''}
+        ${stories ? `<h4 style="color:var(--navy);margin:12px 0 6px;">Top Stories</h4><ul style="padding-left:20px;">${stories}</ul>` : ''}
+        ${trends ? `<h4 style="color:var(--navy);margin:12px 0 6px;">Trend Watch</h4><ul style="padding-left:20px;">${trends}</ul>` : ''}
+        ${priorities ? `<h4 style="color:var(--navy);margin:12px 0 6px;">Next Week Priorities</h4><ul style="padding-left:20px;">${priorities}</ul>` : ''}
+      </div>
+    `;
+  } catch {}
+}
+
+// ─── AGENT TRIGGERS ──────────────────────────────────────────────────
+async function runAgent(name, btn) {
+  btn.classList.add('loading');
+  try {
+    await api(`/api/run/${name}`, { method: 'POST' });
+    toast(`${name} agent completed`, 'success');
+    loadHeaderStatus();
+  } catch (e) {
+    toast(`${name} agent failed: ${e.message}`, 'error');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+// ─── Close modal on overlay click ────────────────────────────────────
+document.getElementById('reviewModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+// ─── Boot ────────────────────────────────────────────────────────────
+loadHeaderStatus();
+loadFeed();
+</script>
+</body>
+</html>

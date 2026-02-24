@@ -1,0 +1,19 @@
+2026-02-24 17:08:25,498 [INFO] core.database: Database initialised.
+2026-02-24 17:08:26,141 [INFO] agents.draft: === Draft Agent starting ===
+2026-02-24 17:08:26,144 [INFO] agents.draft: Drafting 3 ideas
+2026-02-24 17:08:26,147 [INFO] agents.draft: Drafting: Agentic AI Exposes Why Your Claims Automation Failed
+2026-02-24 17:08:37,482 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:39,587 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:39,588 [INFO] agents.draft: Quality score: 8.3/10 for 'Agentic AI Exposes Why Your Claims Autom'
+2026-02-24 17:08:39,608 [INFO] agents.draft: Stored draft #1 for idea 'Agentic AI Exposes Why Your Claims Autom'
+2026-02-24 17:08:39,618 [INFO] agents.draft: Drafting: Autonomous Vehicle Claims: Design Problem, Not Technology Problem
+2026-02-24 17:08:48,642 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:50,590 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:08:50,592 [INFO] agents.draft: Quality score: 7.8/10 for 'Autonomous Vehicle Claims: Design Proble'
+2026-02-24 17:08:50,615 [INFO] agents.draft: Stored draft #2 for idea 'Autonomous Vehicle Claims: Design Proble'
+2026-02-24 17:08:50,626 [INFO] agents.draft: Drafting: FCA/SRA Motor Finance Crackdown: The Symptom You're Missing
+2026-02-24 17:09:01,750 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:09:03,593 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-24 17:09:03,594 [INFO] agents.draft: Quality score: 8.8/10 for 'FCA/SRA Motor Finance Crackdown: The Sym'
+2026-02-24 17:09:03,616 [INFO] agents.draft: Stored draft #3 for idea 'FCA/SRA Motor Finance Crackdown: The Sym'
+2026-02-24 17:09:03,625 [INFO] agents.draft: === Draft done. 3 drafts created ===
