@@ -399,6 +399,20 @@ def get_draft_image(draft_id: int):
     return FileResponse(str(p), media_type="image/png")
 
 
+# ─── Static Assets (logos, generated images) ─────────────────────────────────
+
+_assets_dir = Path(__file__).resolve().parent.parent / "data" / "assets"
+
+@app.get("/assets/{filename}")
+def get_asset(filename: str):
+    """Serve logo and other static assets from data/assets/."""
+    _assets_dir.mkdir(parents=True, exist_ok=True)
+    asset_path = _assets_dir / filename
+    if not asset_path.exists():
+        raise HTTPException(status_code=404, detail="Asset not found")
+    return FileResponse(str(asset_path))
+
+
 # ─── Static Frontend ─────────────────────────────────────────────────────────
 
 _frontend_dir = Path(__file__).resolve().parent.parent / "frontend"

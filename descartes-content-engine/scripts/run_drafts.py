@@ -15,6 +15,7 @@ load_dotenv(override=True)
 
 Path("data").mkdir(exist_ok=True)
 Path("data/images").mkdir(exist_ok=True)
+Path("data/assets").mkdir(exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
@@ -44,8 +45,29 @@ def generate_imagen3(prompt: str, api_key: str) -> bytes:
     return base64.b64decode(b64)
 
 
+def composite_logo(base_path: Path, logo_path: Path, output_path: Path) -> None:
+    """Composite logo_drcs onto base image: bottom-right, 12% of image width, 16px padding."""
+    from PIL import Image
+
+    base = Image.open(base_path).convert("RGBA")
+    logo = Image.open(logo_path).convert("RGBA")
+
+    logo_w = int(base.width * 0.12)
+    ratio = logo_w / logo.width
+    logo_h = int(logo.height * ratio)
+    logo = logo.resize((logo_w, logo_h), Image.LANCZOS)
+
+    padding = 16
+    x = base.width - logo_w - padding
+    y = base.height - logo_h - padding
+
+    composite = base.copy()
+    composite.paste(logo, (x, y), mask=logo)
+    composite.convert("RGB").save(output_path, format="PNG")
+
+
 def maybe_generate_image(draft: dict) -> None:
-    """Generate and save an image for drafts that have an image_prompt."""
+    """Generate Imagen 3 base image, composite logo, save thumbnail."""
     draft_id = draft.get("id")
     if not draft_id:
         return
@@ -65,11 +87,25 @@ def maybe_generate_image(draft: dict) -> None:
         png_bytes = generate_imagen3(image_prompt, api_key)
 
         date_str = datetime.now().strftime("%Y%m%d")
-        img_path = Path("data/images") / f"{draft_id}_{date_str}.png"
-        img_path.write_bytes(png_bytes)
+        base_path = Path("data/images") / f"{draft_id}_{date_str}_base.png"
+        base_path.write_bytes(png_bytes)
 
-        update_draft_image_path(draft_id, str(img_path))
-        logger.info(f"Image saved: {img_path}")
+        thumbnail_path = Path("data/images") / f"{draft_id}_thumbnail.png"
+        logo_path = Path("data/assets/logo_drcs.png")
+
+        if logo_path.exists():
+            composite_logo(base_path, logo_path, thumbnail_path)
+            base_path.unlink()  # remove base, keep only composite
+            final_path = thumbnail_path
+            logger.info(f"Thumbnail with logo saved: {thumbnail_path}")
+        else:
+            # No logo available — use base image as-is
+            base_path.rename(thumbnail_path)
+            final_path = thumbnail_path
+            logger.warning(f"logo_drcs.png not found at {logo_path} — using base image")
+
+        update_draft_image_path(draft_id, str(final_path))
+        logger.info(f"Image path updated: {final_path}")
     except Exception as e:
         logger.warning(f"Image generation failed for draft #{draft_id}: {e} — continuing")
 
