@@ -1,13 +1,13 @@
 """
-Agent 4: Draft
-Runs Monday 06:00. Takes top 3 content ideas, drafts 2-3 LinkedIn post variants each.
-Quality check: Score 1-10 on 6 criteria — if < 6 average, regenerate once.
+Agent 4: Draft — 360Brew Optimised
+Runs Monday 06:00. Takes top 3 content ideas, drafts LinkedIn posts with
+funnel-stage awareness based on LinkedIn's 360Brew algorithm (2025).
 Status: PENDING_REVIEW — waits for Stuart in the frontend.
 """
 import json
 import logging
 from core import database as db
-from core.llm import complete, MODEL_MAIN
+from core.llm import complete
 
 logger = logging.getLogger(__name__)
 
@@ -20,131 +20,306 @@ QUALITY_CRITERIA = [
     "hook_strength",
 ]
 
-TEMPLATE_GUIDES = {
-    "Old vs New Rules": """Structure:
-🔴 OLD RULE: [conventional wisdom — 1 line]
-🟢 NEW RULE: [what actually works — 1 line]
-[3-4 more contrasting pairs]
-[Closing insight that names the system design problem]
-[Question that validates reader frustration]
-[CTA or signature insight]""",
+# ─── 360Brew System Prompt ────────────────────────────────────────────────────
 
-    "Contrarian Take": """Structure:
-[Bold opening statement that contradicts mainstream view]
-[Name the specific conventional wisdom being challenged]
-[What Stuart has actually observed — with specifics]
-[System design explanation]
-[Implication for the reader]
-[Single focused CTA]""",
+BREW_SYSTEM = """You are writing LinkedIn posts AS Stuart Corrigan, Descartes Consulting Ltd.
 
-    "Data Hook": """Structure:
-[Shocking statistic — standalone first line. E.g. "£11.7 billion. Let that sink in."]
-[What that number means in human terms]
-[Why the conventional response is wrong]
-[The system design insight]
-[What good looks like]
-[Question to reader]""",
-
-    "Case Study": """Structure:
-[Dramatic outcome number first. E.g. "700 staff became 300."]
-[Brief anonymous client context]
-[What we found — the system condition]
-[What we changed — not people, the design]
-[The result]
-[Transferable insight for reader]""",
-
-    "Provocative Question": """Structure:
-[The challenging question — specific, not generic]
-[Most people's answer — and why it's wrong]
-[The better question underneath]
-[What the evidence shows]
-[System design insight]
-[Invitation to reflect]""",
-
-    "Story Format": """Structure:
-[Scene-setting anecdote — specific, brief]
-[The tension or unexpected turn]
-[What it revealed about the system]
-[The insight]
-[How this applies to reader's context]
-[Closing that makes the system design point]""",
-}
-
-STUART_VOICE_SYSTEM = """You are writing LinkedIn posts AS Stuart Corrigan, Descartes Consulting Ltd.
-
-Voice rules (non-negotiable):
+VOICE (non-negotiable):
 - British English (organisation, analyse, colour, programme)
 - Short declarative sentences. Lead with the conclusion.
 - Contrarian, dry humour. Specific numbers beat vague claims.
-- NEVER blame individuals — always system design
-- NEVER: "transformation journey", "stakeholder buy-in", "leverage", "synergies", 
-  "digital transformation", "roadmap", "change management", "in today's fast-paced"
-- Every post must be SELF-CONTAINED — never reference previous posts
-- End with a single focused CTA or reflective question
+- NEVER blame individuals — always system design causes outcomes
+- BANNED WORDS: "transformation journey", "stakeholder buy-in", "leverage",
+  "synergies", "digital transformation", "roadmap", "change management",
+  "in today's fast-paced", "game-changer", "holistic"
+- Every post is SELF-CONTAINED — never reference previous posts
+- NO engagement bait ("comment YES if you agree" — actively suppressed by algorithm)
 
-LinkedIn formatting:
-- Max 1,300 characters for short posts, up to 3,000 for long-form
-- Use line breaks generously
-- Emoji: 🔴🟢 for Old/New format. Otherwise use sparingly.
-- No hashtag spam — max 3 hashtags if any
+360BREW ALGORITHM (LinkedIn 150B-param model, 2025):
+- Saves = 5x the reach impact of a like. Design every post to earn a Save.
+- Dwell time is the primary ranking signal — structure drives slow reading.
+- Optimal character counts: TOFU 700-1000, MOFU 1200-1500, BOFU 400-600.
+- Hashtags: 2-3 broad + 1-2 niche. Placed at END only. Never in first lines.
+- No links in body unless 4+ links (outperform single links — skip otherwise).
+- Meaningful comments (15+ words) beat shallow ones — end with a real question.
+- First line must stop the scroll. No "I", no "We", no "Today I want to share".
 
-Remember: Stuart's posts get 936% average engagement rate. The hook is everything.
+FUNNEL STAGE RULES:
+TOFU (Awareness): Provoke, challenge assumptions, broad reach.
+  Hook: Contrarian statement or surprising statistic.
+  No CTA, no self-promotion. End with open question for meaningful comments.
+
+MOFU (Consideration): Demonstrate methodology, share data, build credibility.
+  Hook: Problem statement with specific numbers.
+  Include concrete evidence, TOC/Vanguard Method reference where relevant.
+  End with insight that makes them want to save for later.
+
+BOFU (Decision): Convert warm audience with specific result.
+  Hook: Named outcome (anonymised client) or specific transformation.
+  Include clear next step (not aggressive CTA).
+  End with low-friction invitation."""
+
+TEMPLATE_GUIDES = {
+    "Old vs New Rules": (
+        "Structure: 3-4 contrasting pairs using 🔴 OLD RULE / 🟢 NEW RULE, "
+        "closing system design insight, reflective question."
+    ),
+    "Contrarian Take": (
+        "Structure: Bold opening statement contradicting mainstream → name the "
+        "specific conventional wisdom → Stuart's actual observation with specifics "
+        "→ system design explanation → implication for reader → single focused CTA."
+    ),
+    "Data Hook": (
+        "Structure: Shocking statistic — standalone first line → what it means "
+        "in human terms → why conventional response is wrong → system design "
+        "insight → what good looks like → question to reader."
+    ),
+    "Case Study": (
+        "Structure: Dramatic outcome number first → brief anonymous client context "
+        "→ what we found → what we changed (not people, the design) → the result "
+        "→ transferable insight."
+    ),
+    "Provocative Question": (
+        "Structure: Challenging question — specific, not generic → most people's "
+        "wrong answer → the better underlying question → what the evidence shows "
+        "→ system design insight → invitation to reflect."
+    ),
+    "Story Format": (
+        "Structure: Scene-setting anecdote — specific, brief → tension or "
+        "unexpected turn → what it revealed about the system → the insight → "
+        "how this applies to reader's context → system design closing."
+    ),
+}
+
+
+# ─── Funnel Stage ─────────────────────────────────────────────────────────────
+
+def _determine_funnel_stage(idea: dict) -> str:
+    """Infer TOFU/MOFU/BOFU from idea urgency and source article signals."""
+    if idea.get("urgency") == "breaking":
+        return "TOFU"
+
+    source_ids = []
+    try:
+        source_ids = json.loads(idea.get("source_article_ids") or "[]")
+    except Exception:
+        pass
+
+    if source_ids:
+        conn = db.get_connection()
+        try:
+            placeholders = ",".join("?" * len(source_ids))
+            rows = conn.execute(
+                f"SELECT relevance_score, categories FROM articles WHERE id IN ({placeholders})",
+                source_ids,
+            ).fetchall()
+        finally:
+            conn.close()
+
+        for row in rows:
+            score = row["relevance_score"] or 0
+            try:
+                cats = json.loads(row["categories"] or "[]")
+            except Exception:
+                cats = []
+            if score > 75 and "systems_thinking" in cats:
+                return "MOFU"
+
+    return "TOFU"
+
+
+# ─── Draft Generation ─────────────────────────────────────────────────────────
+
+def _draft_post(idea: dict, funnel_stage: str, pain_context: str, issues: list = None) -> dict:
+    """Call Claude and return parsed 360Brew JSON dict."""
+    template = idea.get("format", "Contrarian Take")
+    template_guide = TEMPLATE_GUIDES.get(template, "")
+    issue_note = (
+        f"\n\nPrevious draft had issues with: {', '.join(issues)}. Fix these specifically."
+        if issues else ""
+    )
+
+    format_hint = {
+        "TOFU": "text post (700-1000 chars) OR carousel outline (5-7 slides)",
+        "MOFU": "long-form text (1200-1500 chars) OR carousel outline (10-15 slides)",
+        "BOFU": "short text (400-600 chars) + detailed Imagen 3 image prompt",
+    }[funnel_stage]
+
+    prompt = f"""Write a LinkedIn post for Stuart Corrigan.
+
+FUNNEL STAGE: {funnel_stage} — {format_hint}
+
+IDEA:
+Title: {idea['title']}
+Template: {template}
+Pillar: {idea.get('pillar', '')}
+Hook (starting point): {idea.get('hook', '')}
+Angle: {idea.get('angle', '')}
+Key data: {idea.get('key_data', '')}
+
+TEMPLATE STRUCTURE:
+{template_guide}
+
+PAIN POINT DATA (use what's relevant):
+{pain_context}
+{issue_note}
+
+OUTPUT: Return a single valid JSON object. No preamble, no markdown fences.
+{{
+  "funnel_stage": "{funnel_stage}",
+  "format": "text|carousel|text+image",
+  "hook": "<first line — the scroll-stopper, max 120 chars>",
+  "post_body": "<complete post text, British English, line breaks, NO hashtags here>",
+  "hashtags": ["#Broad1", "#Broad2", "#Niche1"],
+  "carousel_outline": ["Slide 1: Title", "Slide 2: ..."] or null,
+  "image_prompt": "<detailed Imagen 3 prompt, professional style, no text in image>" or null,
+  "save_trigger": "<one sentence: why a Claims Director saves this>",
+  "dwell_time_elements": "<one sentence: what structural choice makes them read slowly>"
+}}
+
+Rules:
+- TOFU/MOFU text posts: carousel_outline=null, image_prompt=null
+- Carousel: provide carousel_outline list, image_prompt=null
+- BOFU text+image: carousel_outline=null, provide image_prompt string
+- post_body must NOT contain hashtags (they are appended separately)
 """
 
+    raw = complete(prompt, system=BREW_SYSTEM, max_tokens=1800, temperature=0.75)
+    raw = raw.strip()
+    if raw.startswith("```"):
+        raw = raw.split("```", 1)[1]
+        if raw.startswith("json"):
+            raw = raw[4:]
+        raw = raw.rsplit("```", 1)[0]
+
+    try:
+        return json.loads(raw.strip())
+    except json.JSONDecodeError:
+        logger.warning("Draft JSON parse failed — using raw text as post_body")
+        return {
+            "funnel_stage": funnel_stage,
+            "format": "text",
+            "hook": raw.split("\n")[0][:120],
+            "post_body": raw,
+            "hashtags": [],
+            "carousel_outline": None,
+            "image_prompt": None,
+            "save_trigger": "",
+            "dwell_time_elements": "",
+        }
+
+
+def _quality_check(post_body: str, idea: dict) -> dict:
+    prompt = f"""Rate this LinkedIn post on 6 criteria, score each 1-10.
+
+POST:
+{post_body}
+
+IDEA INTENT: {idea.get('angle', '')}
+
+Return JSON only:
+{{
+  "factual_accuracy": <1-10>,
+  "positioning_alignment": <1-10>,
+  "audience_fit": <1-10>,
+  "tone": <1-10>,
+  "uniqueness": <1-10>,
+  "hook_strength": <1-10>
+}}"""
+    try:
+        raw = complete(prompt, max_tokens=300, temperature=0.2).strip()
+        if raw.startswith("```"):
+            raw = raw.split("```", 1)[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+            raw = raw.rsplit("```", 1)[0]
+        return json.loads(raw.strip())
+    except Exception as e:
+        logger.error(f"Quality check failed: {e}")
+        return {c: 7 for c in QUALITY_CRITERIA}
+
+
+def _format_pain_context(pain_points: list) -> str:
+    if not pain_points:
+        return ""
+    return "\n".join(
+        f"• {pp['data_point']}: {pp['value']} ({pp['source']}, {pp['date']})"
+        for pp in pain_points[:15]
+    )
+
+
+# ─── Main ─────────────────────────────────────────────────────────────────────
 
 def run(dry_run: bool = False):
     run_id = db.log_agent_run("draft")
-    logger.info("=== Draft Agent starting ===")
+    logger.info("=== Draft Agent (360Brew) starting ===")
 
     ideas = db.get_top_ideas(limit=3)
-    logger.info(f"Drafting {len(ideas)} ideas")
-
     if not ideas:
         logger.warning("No ideas in queue — skipping draft run")
         db.finish_agent_run(run_id, "success", 0)
         return []
 
-    pain_points = db.get_pain_points()
-    pain_context = _format_pain_context(pain_points)
-
+    pain_context = _format_pain_context(db.get_pain_points())
     all_drafts = []
 
     for idea in ideas:
         logger.info(f"Drafting: {idea['title']}")
-        template = idea.get("format", "Contrarian Take")
-        template_guide = TEMPLATE_GUIDES.get(template, "")
+        funnel_stage = _determine_funnel_stage(idea)
+        logger.info(f"Funnel stage: {funnel_stage}")
 
-        draft_content = _draft_post(idea, template_guide, pain_context)
-        quality = _quality_check(draft_content, idea)
+        brew = _draft_post(idea, funnel_stage, pain_context)
+        post_body = brew.get("post_body", "")
 
+        quality = _quality_check(post_body, idea)
         avg_score = sum(quality.values()) / len(quality)
-        logger.info(f"Quality score: {avg_score:.1f}/10 for '{idea['title'][:40]}'")
+        logger.info(f"Quality score: {avg_score:.1f}/10")
 
-        # Regenerate once if quality < 6
         if avg_score < 6:
             logger.info("Quality below threshold — regenerating...")
             issues = [k for k, v in quality.items() if v < 6]
-            draft_content = _draft_post(idea, template_guide, pain_context, issues=issues)
-            quality = _quality_check(draft_content, idea)
+            brew = _draft_post(idea, funnel_stage, pain_context, issues=issues)
+            post_body = brew.get("post_body", "")
+            quality = _quality_check(post_body, idea)
             avg_score = sum(quality.values()) / len(quality)
+
+        hashtags = brew.get("hashtags") or []
+        if hashtags:
+            post_body = post_body.rstrip() + "\n\n" + " ".join(hashtags)
 
         draft_data = {
             "idea_id": idea["id"],
             "version": 1,
-            "content": draft_content,
+            "content": post_body,
+            "funnel_stage": funnel_stage,
+            "carousel_data": {
+                "format": brew.get("format", "text"),
+                "hook": brew.get("hook", ""),
+                "hashtags": hashtags,
+                "carousel_outline": brew.get("carousel_outline"),
+                "image_prompt": brew.get("image_prompt"),
+                "save_trigger": brew.get("save_trigger", ""),
+                "dwell_time_elements": brew.get("dwell_time_elements", ""),
+            },
             "quality_score": avg_score,
             "quality_issues": [k for k, v in quality.items() if v < 7],
             "status": "PENDING_REVIEW",
-            "consultant_notes": f"Template: {template} | VPS-based idea | Quality: {avg_score:.1f}/10",
+            "consultant_notes": (
+                f"360Brew: {funnel_stage} | {brew.get('format', 'text')} | "
+                f"Quality: {avg_score:.1f}/10"
+            ),
         }
 
         if not dry_run:
             draft_id = db.insert_draft(draft_data)
-            logger.info(f"Stored draft #{draft_id} for idea '{idea['title'][:40]}'")
-            # Mark idea as drafted
+            draft_data["id"] = draft_id
+            logger.info(f"Stored draft #{draft_id} for '{idea['title'][:40]}'")
             conn = db.get_connection()
             try:
-                conn.execute("UPDATE content_ideas SET status = 'drafted' WHERE id = ?", (idea["id"],))
+                conn.execute(
+                    "UPDATE content_ideas SET status='drafted' WHERE id=?",
+                    (idea["id"],),
+                )
                 conn.commit()
             finally:
                 conn.close()
@@ -154,72 +329,3 @@ def run(dry_run: bool = False):
     logger.info(f"=== Draft done. {len(all_drafts)} drafts created ===")
     db.finish_agent_run(run_id, "success", len(all_drafts))
     return all_drafts
-
-
-def _draft_post(idea: dict, template_guide: str, pain_context: str, issues: list = None) -> str:
-    issue_note = ""
-    if issues:
-        issue_note = f"\n\nPrevious draft had issues with: {', '.join(issues)}. Fix these specifically."
-
-    prompt = f"""Write a LinkedIn post for Stuart Corrigan using this content idea.
-
-IDEA:
-Title: {idea['title']}
-Format: {idea.get('format', 'Contrarian Take')}
-Pillar: {idea.get('pillar', '')}
-Hook (starting point): {idea.get('hook', '')}
-Angle: {idea.get('angle', '')}
-Key data: {idea.get('key_data', '')}
-
-TEMPLATE STRUCTURE:
-{template_guide}
-
-SUPPORTING PAIN POINT DATA (use what's relevant):
-{pain_context}
-{issue_note}
-
-Write the complete LinkedIn post now. British English. No preamble.
-"""
-    return complete(prompt, system=STUART_VOICE_SYSTEM, max_tokens=1200, temperature=0.75)
-
-
-def _quality_check(content: str, idea: dict) -> dict:
-    prompt = f"""Rate this LinkedIn post draft for Stuart Corrigan on 6 criteria.
-Score each 1-10 (10 = perfect).
-
-POST:
-{content}
-
-IDEA INTENT: {idea.get('angle', '')}
-
-Score these criteria as JSON:
-{{
-  "factual_accuracy": <1-10, are all claims plausible and specific>,
-  "positioning_alignment": <1-10, does it match systems thinking consultant positioning>,
-  "audience_fit": <1-10, relevant to Claims Directors/COOs/Pension Ops Directors>,
-  "tone": <1-10, British, direct, dry, no jargon>,
-  "uniqueness": <1-10, genuinely contrarian vs generic>,
-  "hook_strength": <1-10, would a busy exec stop scrolling>
-}}
-
-Return JSON only. No explanation.
-"""
-    try:
-        response = complete(prompt, max_tokens=300, temperature=0.2)
-        response = response.strip()
-        if response.startswith("```"):
-            response = response.split("```")[1]
-            if response.startswith("json"):
-                response = response[4:]
-        return json.loads(response.strip())
-    except Exception as e:
-        logger.error(f"Quality check failed: {e}")
-        return {c: 7 for c in QUALITY_CRITERIA}  # default to 7 if check fails
-
-
-def _format_pain_context(pain_points: list) -> str:
-    if not pain_points:
-        return ""
-    lines = [f"• {pp['data_point']}: {pp['value']} ({pp['source']}, {pp['date']})"
-             for pp in pain_points[:15]]
-    return "\n".join(lines)

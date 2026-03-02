@@ -120,21 +120,25 @@ def get_ideas():
 
 
 @app.get("/api/drafts")
-def get_drafts(status: Optional[str] = None):
-    """Drafts with status filter. Default: all."""
+def get_drafts(status: Optional[str] = None, funnel_stage: Optional[str] = None):
+    """Drafts with optional status and funnel_stage filters."""
+    conn = db.get_connection()
+    query = (
+        "SELECT d.*, ci.title as idea_title FROM drafts d "
+        "LEFT JOIN content_ideas ci ON d.idea_id=ci.id WHERE 1=1"
+    )
+    params = []
     if status:
-        conn = db.get_connection()
-        rows = conn.execute(
-            "SELECT d.*, ci.title as idea_title FROM drafts d "
-            "LEFT JOIN content_ideas ci ON d.idea_id=ci.id "
-            "WHERE d.status=? ORDER BY d.created_at DESC",
-            (status,)
-        ).fetchall()
-        conn.close()
-        drafts = [dict(r) for r in rows]
-    else:
-        drafts = db.get_all_drafts()
+        query += " AND d.status=?"
+        params.append(status)
+    if funnel_stage:
+        query += " AND d.funnel_stage=?"
+        params.append(funnel_stage)
+    query += " ORDER BY d.created_at DESC"
+    rows = conn.execute(query, params).fetchall()
+    conn.close()
 
+    drafts = [dict(r) for r in rows]
     for d in drafts:
         d["quality_issues"] = _parse_json(d.get("quality_issues", "[]"))
         d["carousel_data"] = _parse_json(d.get("carousel_data", "{}"))
@@ -376,6 +380,23 @@ def _parse_json(value):
         return json.loads(value)
     except Exception:
         return value
+
+
+# ─── Draft Image ─────────────────────────────────────────────────────────────
+
+@app.get("/api/drafts/{draft_id}/image")
+def get_draft_image(draft_id: int):
+    """Serve the generated image for a draft, if it exists."""
+    draft = db.get_draft(draft_id)
+    if not draft:
+        raise HTTPException(status_code=404, detail="Draft not found")
+    image_path = draft.get("image_path")
+    if not image_path:
+        raise HTTPException(status_code=404, detail="No image for this draft")
+    p = Path(image_path)
+    if not p.exists():
+        raise HTTPException(status_code=404, detail="Image file not found on disk")
+    return FileResponse(str(p), media_type="image/png")
 
 
 # ─── Static Frontend ─────────────────────────────────────────────────────────

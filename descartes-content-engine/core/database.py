@@ -148,13 +148,18 @@ def init_db():
             );
         """)
         conn.commit()
-        # Migrate: add vps_score column if missing (for existing DBs)
-        try:
-            conn.execute("ALTER TABLE articles ADD COLUMN vps_score REAL DEFAULT 0")
-            conn.commit()
-            logger.info("Migrated: added vps_score column to articles.")
-        except sqlite3.OperationalError:
-            pass  # column already exists
+        # Migrations: add columns if missing (safe to run on existing DBs)
+        for migration in [
+            "ALTER TABLE articles ADD COLUMN vps_score REAL DEFAULT 0",
+            "ALTER TABLE drafts ADD COLUMN funnel_stage TEXT DEFAULT 'TOFU'",
+            "ALTER TABLE drafts ADD COLUMN image_path TEXT",
+        ]:
+            try:
+                conn.execute(migration)
+                conn.commit()
+                logger.info(f"Migrated: {migration}")
+            except sqlite3.OperationalError:
+                pass  # column already exists
         logger.info("Database initialised.")
     finally:
         conn.close()
@@ -378,8 +383,9 @@ def insert_draft(data: dict) -> int:
     try:
         cur = conn.execute("""
             INSERT INTO drafts
-            (idea_id, version, content, carousel_data, consultant_notes, quality_score, quality_issues, status)
-            VALUES (?,?,?,?,?,?,?,?)
+            (idea_id, version, content, carousel_data, consultant_notes,
+             quality_score, quality_issues, status, funnel_stage)
+            VALUES (?,?,?,?,?,?,?,?,?)
         """, (
             data.get("idea_id"),
             data.get("version", 1),
@@ -389,9 +395,19 @@ def insert_draft(data: dict) -> int:
             data.get("quality_score", 0),
             json.dumps(data.get("quality_issues", [])),
             data.get("status", "PENDING_REVIEW"),
+            data.get("funnel_stage", "TOFU"),
         ))
         conn.commit()
         return cur.lastrowid
+    finally:
+        conn.close()
+
+
+def update_draft_image_path(draft_id: int, image_path: str):
+    conn = get_connection()
+    try:
+        conn.execute("UPDATE drafts SET image_path=? WHERE id=?", (image_path, draft_id))
+        conn.commit()
     finally:
         conn.close()
 

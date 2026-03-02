@@ -163,6 +163,9 @@ body {
 .badge-status-published { background: var(--navy); color: var(--copper-light); }
 .badge-status-drafted { background: #E8EAF6; color: #3949AB; }
 .badge-status-pending { background: var(--cream-dark); color: var(--text-muted); }
+.badge-tofu { background: #DBEAFE; color: #1D4ED8; }
+.badge-mofu { background: var(--amber-light); color: var(--amber); }
+.badge-bofu { background: var(--green-light); color: var(--green); }
 
 /* ─── Section Headers ─── */
 .section-header {
@@ -551,13 +554,20 @@ body {
 
   <!-- Drafts -->
   <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Drafts — Review Queue</h3>
-  <div class="filter-bar">
+  <div class="filter-bar" style="flex-wrap:wrap;gap:8px;">
     <select id="draftFilter" onchange="loadDrafts()">
       <option value="">All Statuses</option>
       <option value="PENDING_REVIEW">Pending Review</option>
       <option value="APPROVED">Approved</option>
       <option value="REJECTED">Rejected</option>
     </select>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <span style="font-size:12px;color:var(--text-muted);font-weight:600;">FUNNEL:</span>
+      <button class="btn btn-secondary btn-sm funnel-btn active" data-stage="" onclick="setFunnelFilter(this,'')">All</button>
+      <button class="btn btn-sm funnel-btn" data-stage="TOFU" onclick="setFunnelFilter(this,'TOFU')" style="background:#DBEAFE;color:#1D4ED8;border:none;">TOFU</button>
+      <button class="btn btn-sm funnel-btn" data-stage="MOFU" onclick="setFunnelFilter(this,'MOFU')" style="background:var(--amber-light);color:var(--amber);border:none;">MOFU</button>
+      <button class="btn btn-sm funnel-btn" data-stage="BOFU" onclick="setFunnelFilter(this,'BOFU')" style="background:var(--green-light);color:var(--green);border:none;">BOFU</button>
+    </div>
   </div>
   <div id="draftsList"></div>
 </div>
@@ -720,8 +730,9 @@ body {
    Descartes Content Engine — Frontend JS
    ═══════════════════════════════════════════════════════════════════════ */
 
-const API = 'http://127.0.0.1:8000';
+const API = 'http://46.225.223.132:8000';
 let currentDraftId = null;
+let currentFunnelFilter = '';
 
 // ─── Navigation ──────────────────────────────────────────────────────
 document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -892,9 +903,27 @@ async function loadIdeas() {
 }
 
 // ─── DRAFTS ──────────────────────────────────────────────────────────
+function setFunnelFilter(btn, stage) {
+  currentFunnelFilter = stage;
+  document.querySelectorAll('.funnel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadDrafts();
+}
+
+function funnelBadge(stage) {
+  const map = { TOFU: 'badge-tofu', MOFU: 'badge-mofu', BOFU: 'badge-bofu' };
+  const cls = map[stage] || 'badge-tofu';
+  return stage ? `<span class="badge ${cls}">${stage}</span>` : '';
+}
+
 async function loadDrafts() {
   const status = document.getElementById('draftFilter').value;
-  const path = status ? `/api/drafts?status=${status}` : '/api/drafts';
+  let path = '/api/drafts';
+  const qs = [];
+  if (status) qs.push(`status=${status}`);
+  if (currentFunnelFilter) qs.push(`funnel_stage=${currentFunnelFilter}`);
+  if (qs.length) path += '?' + qs.join('&');
+
   const data = await api(path);
   const drafts = data.drafts || [];
 
@@ -904,29 +933,62 @@ async function loadDrafts() {
   }
 
   document.getElementById('draftsList').innerHTML = drafts.map(d => {
-    const qs = d.quality_score || 0;
-    const pct = Math.min(100, qs * 10);
-    const barColor = qs >= 8 ? 'var(--green)' : qs >= 6 ? 'var(--amber)' : 'var(--red)';
+    const score = d.quality_score || 0;
+    const pct = Math.min(100, score * 10);
+    const barColor = score >= 8 ? 'var(--green)' : score >= 6 ? 'var(--amber)' : 'var(--red)';
     const statusCls = (d.status || '').toLowerCase().replace(/ /g, '_');
     const preview = (d.content || '').substring(0, 200).replace(/\n/g, ' ') + '...';
     const issues = (d.quality_issues || []);
+    const brew = d.carousel_data || {};
+    const stage = d.funnel_stage || 'TOFU';
+    const fmt = brew.format || 'text';
+
+    // Carousel outline
+    const outline = brew.carousel_outline;
+    const outlineHtml = Array.isArray(outline) && outline.length
+      ? `<ol style="margin:10px 0 0 18px;font-size:13px;color:var(--navy-muted);">
+           ${outline.map(s => `<li>${escHtml(s)}</li>`).join('')}
+         </ol>`
+      : '';
+
+    // Save trigger
+    const saveTrigger = brew.save_trigger
+      ? `<div style="margin-top:8px;font-size:12px;color:var(--copper-dark);font-style:italic;">
+           💾 ${escHtml(brew.save_trigger)}
+         </div>`
+      : '';
+
+    // Image thumbnail
+    const imgHtml = d.image_path
+      ? `<img src="${API}/api/drafts/${d.id}/image" alt="Generated image"
+              style="max-width:180px;border-radius:var(--radius);margin-top:8px;border:1px solid var(--border);">`
+      : '';
 
     return `<div class="card">
       <div class="card-header">
         <div class="card-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
-        <div style="display:flex;gap:8px;align-items:center;">
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          ${funnelBadge(stage)}
+          <span class="badge badge-cat">${escHtml(fmt)}</span>
           <span class="badge badge-status-${statusCls}">${d.status}</span>
         </div>
       </div>
-      <div class="snippet">${escHtml(preview)}</div>
-      <div class="quality-bar">
-        <span>Quality: ${qs.toFixed(1)}/10</span>
-        <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
-      </div>
-      ${issues.length ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Issues: ${issues.join(', ')}</div>` : ''}
-      <div class="meta-row">
-        <span>${escHtml(d.consultant_notes || '')}</span>
-        <span>Created: ${formatDate(d.created_at)}</span>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="flex:1;">
+          <div class="snippet">${escHtml(preview)}</div>
+          ${outlineHtml}
+          ${saveTrigger}
+          <div class="quality-bar" style="margin-top:10px;">
+            <span>Quality: ${score.toFixed(1)}/10</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+          </div>
+          ${issues.length ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Issues: ${issues.join(', ')}</div>` : ''}
+          <div class="meta-row">
+            <span>${escHtml(d.consultant_notes || '')}</span>
+            <span>Created: ${formatDate(d.created_at)}</span>
+          </div>
+        </div>
+        ${imgHtml ? `<div style="flex-shrink:0;">${imgHtml}</div>` : ''}
       </div>
       <div style="margin-top:12px;display:flex;gap:8px;">
         <button class="btn btn-secondary btn-sm" onclick="viewDraft(${d.id})">View Full</button>
