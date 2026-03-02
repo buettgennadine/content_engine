@@ -56,11 +56,11 @@ class DraftStatusUpdate(BaseModel):
 
 class GenerateRequest(BaseModel):
     topic: str
-    template: str = "Data Hook"
-    pillar: str = "claims"
     language: str = "EN"
     funnel_stage: str = "TOFU"
-    # kept for backwards compatibility but not used in prompt:
+    post_type: str = "text"  # text | carousel | poll | thumbnail
+    # kept for backwards compatibility:
+    template: Optional[str] = None
     audience: Optional[str] = None
     tone: Optional[str] = None
 
@@ -205,29 +205,56 @@ def generate_post(request: GenerateRequest):
         if request.language == "DE" else "Write in British English"
 
     funnel_notes = {
-        "TOFU": "TOFU post — Awareness: provoke, challenge assumptions. No CTA.",
-        "MOFU": "MOFU post — Consideration: numbered list, community voice, pilot experiment closer.",
-        "BOFU": "BOFU post — Decision: specific outcome, low-friction CTA.",
+        "TOFU": "TOFU (Awareness) — provoke, challenge assumptions, broad reach. No CTA. End with open question.",
+        "MOFU": "MOFU (Consideration) — demonstrate methodology, numbered list, community voice block, pilot experiment closer.",
+        "BOFU": "BOFU (Decision) — specific named outcome, low-friction CTA, short (300-400 words).",
     }
     funnel_note = funnel_notes.get(request.funnel_stage, "")
 
-    system = f"""You are Stuart Corrigan writing LinkedIn posts for Descartes Consulting.
+    post_type_notes = {
+        "text": "FORMAT: Standard LinkedIn text post (300-700 words). Use line breaks generously.",
+        "carousel": (
+            "FORMAT: LinkedIn carousel outline. Output slide-by-slide:\n"
+            "Slide 1 (Cover/Hook — scroll-stopping title, max 8 words)\n"
+            "Slides 2-6 (one insight per slide, max 25 words each)\n"
+            "Slide 7 (Takeaway/CTA)\n"
+            "Label each slide clearly. Keep it scannable."
+        ),
+        "poll": (
+            "FORMAT: LinkedIn poll. Output exactly:\n"
+            "QUESTION: [max 120 chars]\n"
+            "A) [option, max 30 chars]\n"
+            "B) [option, max 30 chars]\n"
+            "C) [option, max 30 chars]\n"
+            "D) [option, max 30 chars]\n"
+            "POST: [150-200 word post to accompany the poll — don't give away the answer, "
+            "create curiosity so people vote before reading your take]"
+        ),
+        "thumbnail": (
+            "FORMAT: LinkedIn text post (300-500 words) with a thumbnail image.\n"
+            "Write the post, then on a new line write:\n"
+            "THUMBNAIL: [10-20 words describing exactly what the thumbnail image shows visually — "
+            "no text content, only the visual scene or composition]"
+        ),
+    }
+    post_type_note = post_type_notes.get(request.post_type, post_type_notes["text"])
+
+    system = f"""You are Stuart Corrigan writing LinkedIn content for Descartes Consulting.
 Voice: Direct, British, Systems Thinking practitioner. No jargon, no transformation theatre.
-Attribution rule: Never blame individuals. Always frame as system design issues.
+Attribution rule: Never blame individuals. Always system design causes outcomes.
 Banned words: transformation programme, digital transformation, journey, synergy, leverage, stakeholder engagement.
 {lang_instruction}"""
 
-    user = f"""{funnel_note}
+    user = f"""Funnel stage: {funnel_note}
 
-Write a LinkedIn post.
+{post_type_note}
 
 Topic: {request.topic}
-Template: {request.template}
 
 Known pain points for context:
 {pain_context}
 
-Output ONLY the post. No explanations."""
+Output ONLY the requested content. No preamble or explanations."""
 
     try:
         content = llm_chat(system, user, max_tokens=600, temperature=0.85)

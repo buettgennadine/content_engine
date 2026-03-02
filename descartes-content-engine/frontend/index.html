@@ -370,7 +370,25 @@ body {
 .funnel-btn.active.tofu { border-color: var(--green); background: var(--green); color: var(--white); }
 .funnel-btn.active.mofu { border-color: var(--copper); background: var(--copper); color: var(--white); }
 .funnel-btn.active.bofu { border-color: var(--navy); background: var(--navy); color: var(--white); }
-.template-hint { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+
+/* ─── Post Type Buttons (Generate) ─── */
+.post-type-btn-group { display: flex; gap: 8px; margin-bottom: 4px; }
+.post-type-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  line-height: 1.4;
+}
+.post-type-btn:hover { border-color: var(--copper-light); color: var(--navy); }
+.post-type-btn.active { border-color: var(--copper); background: var(--copper); color: var(--white); }
 
 /* ─── Modal ─── */
 .modal-overlay {
@@ -613,20 +631,27 @@ body {
       </button>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
-      <div>
-        <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin-bottom:4px;">Template</label>
-        <div class="template-hint" id="genTemplateHint"></div>
-        <select id="genTemplate" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;"></select>
-      </div>
-      <div>
-        <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin-bottom:4px;">Language</label>
-        <select id="genLang" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;">
-          <option value="EN">English (British)</option>
-          <option value="DE">Deutsch (Sie-Form)</option>
-        </select>
-      </div>
+    <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin:14px 0 4px;">Post Type</label>
+    <div class="post-type-btn-group">
+      <button class="post-type-btn active" data-type="text" onclick="setPostType(this,'text')">
+        📝<br>Text
+      </button>
+      <button class="post-type-btn" data-type="carousel" onclick="setPostType(this,'carousel')">
+        🎠<br>Carousel
+      </button>
+      <button class="post-type-btn" data-type="poll" onclick="setPostType(this,'poll')">
+        📊<br>Poll
+      </button>
+      <button class="post-type-btn" data-type="thumbnail" onclick="setPostType(this,'thumbnail')">
+        🖼<br>Thumbnail
+      </button>
     </div>
+
+    <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin:14px 0 4px;">Language</label>
+    <select id="genLang" style="width:200px;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;">
+      <option value="EN">English (British)</option>
+      <option value="DE">Deutsch (Sie-Form)</option>
+    </select>
 
     <div style="margin-top:20px;">
       <button class="btn btn-primary" id="genBtn" onclick="generatePost()">
@@ -770,11 +795,7 @@ let allScheduledDates = {};  // ISO date string → true
 
 // Generate
 let genFunnelStage = 'TOFU';
-const FUNNEL_TEMPLATES = {
-  TOFU: ['Contrarian Take', 'Data Hook', 'Provocative Question', 'Old vs New Rules'],
-  MOFU: ['Case Study', 'Story Format'],
-  BOFU: ['Case Study', 'Story Format'],
-};
+let genPostType = 'text';
 
 const MONTH_NAMES = [
   'January','February','March','April','May','June',
@@ -1304,19 +1325,12 @@ function setFunnelStage(btn, stage) {
   genFunnelStage = stage;
   document.querySelectorAll('.funnel-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  updateTemplateList();
 }
 
-function updateTemplateList() {
-  const templates = FUNNEL_TEMPLATES[genFunnelStage] || [];
-  const sel = document.getElementById('genTemplate');
-  sel.innerHTML = templates.map(t => `<option value="${t}">${t}</option>`).join('');
-  const hints = {
-    TOFU: 'Provoke, challenge assumptions. No CTA.',
-    MOFU: 'Consideration: numbered list, community voice.',
-    BOFU: 'Specific outcome, low-friction CTA.',
-  };
-  document.getElementById('genTemplateHint').textContent = hints[genFunnelStage] || '';
+function setPostType(btn, type) {
+  genPostType = type;
+  document.querySelectorAll('.post-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
 }
 
 async function generatePost() {
@@ -1332,9 +1346,9 @@ async function generatePost() {
       method: 'POST',
       body: JSON.stringify({
         topic,
-        template: document.getElementById('genTemplate').value,
         language: document.getElementById('genLang').value,
         funnel_stage: genFunnelStage,
+        post_type: genPostType,
       }),
     });
     document.getElementById('genContent').textContent = data.content || 'No content returned';
@@ -1512,7 +1526,6 @@ document.getElementById('scheduleModal').addEventListener('click', e => {
 // ─── Boot ─────────────────────────────────────────────────────────────
 loadHeaderStatus();
 loadFeed();
-updateTemplateList();
 </script>
 </body>
 </html>
