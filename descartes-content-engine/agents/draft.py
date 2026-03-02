@@ -175,7 +175,7 @@ def _thumbnail_style(template: str) -> str:
 
 
 def _build_image_prompt(style: str, concept: str) -> str:
-    """Build Imagen 3 prompt from style template + concept, injecting brand colours."""
+    """Build Imagen 4 prompt from style template + concept, injecting brand colours."""
     return THUMBNAIL_STYLE_PROMPTS[style].format(
         concept=concept,
         navy=BRAND["navy"],

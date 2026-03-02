@@ -29,10 +29,10 @@ init_db()
 
 
 def generate_imagen3(prompt: str, api_key: str) -> bytes:
-    """Call Google Imagen 3 API. Returns PNG bytes."""
+    """Call Google Imagen 4 API. Returns PNG bytes."""
     url = (
         "https://generativelanguage.googleapis.com/v1beta/"
-        f"models/imagen-3.0-generate-001:predict?key={api_key}"
+        f"models/imagen-4.0-generate-001:predict?key={api_key}"
     )
     payload = {
         "instances": [{"prompt": prompt}],
