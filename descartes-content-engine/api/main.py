@@ -58,9 +58,11 @@ class GenerateRequest(BaseModel):
     topic: str
     template: str = "Data Hook"
     pillar: str = "claims"
-    audience: str = "Claims Directors, COOs"
     language: str = "EN"
-    tone: str = "provocative"
+    funnel_stage: str = "TOFU"
+    # kept for backwards compatibility but not used in prompt:
+    audience: Optional[str] = None
+    tone: Optional[str] = None
 
 
 class PerformanceEntry(BaseModel):
@@ -76,9 +78,9 @@ class PerformanceEntry(BaseModel):
 # ─── Intelligence Feed ────────────────────────────────────────────────────────
 
 @app.get("/api/feed")
-def get_feed(category: Optional[str] = None, min_vps: float = 0, limit: int = 30):
-    """All articles, scored, recent. Filter by category and min VPS."""
-    articles = db.get_recent_articles(limit=limit, min_vps=min_vps)
+def get_feed(category: Optional[str] = None, min_vps: float = 0, limit: int = 30, language: Optional[str] = None):
+    """All articles, scored, recent. Filter by category, min VPS, and language (EN/DE)."""
+    articles = db.get_recent_articles(limit=limit, min_vps=min_vps, language=language)
     if category:
         articles = [
             a for a in articles
@@ -202,18 +204,25 @@ def generate_post(request: GenerateRequest):
     lang_instruction = "Write in German (formal Sie form, Fach-Deutsch for insurance professionals)" \
         if request.language == "DE" else "Write in British English"
 
+    funnel_notes = {
+        "TOFU": "TOFU post — Awareness: provoke, challenge assumptions. No CTA.",
+        "MOFU": "MOFU post — Consideration: numbered list, community voice, pilot experiment closer.",
+        "BOFU": "BOFU post — Decision: specific outcome, low-friction CTA.",
+    }
+    funnel_note = funnel_notes.get(request.funnel_stage, "")
+
     system = f"""You are Stuart Corrigan writing LinkedIn posts for Descartes Consulting.
 Voice: Direct, British, Systems Thinking practitioner. No jargon, no transformation theatre.
 Attribution rule: Never blame individuals. Always frame as system design issues.
 Banned words: transformation programme, digital transformation, journey, synergy, leverage, stakeholder engagement.
 {lang_instruction}"""
 
-    user = f"""Write a LinkedIn post.
+    user = f"""{funnel_note}
+
+Write a LinkedIn post.
 
 Topic: {request.topic}
 Template: {request.template}
-Audience: {request.audience}
-Tone: {request.tone}
 
 Known pain points for context:
 {pain_context}

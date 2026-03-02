@@ -4,10 +4,17 @@ Runs Monday 06:00. Takes top 3 content ideas, drafts LinkedIn posts with
 funnel-stage awareness and thumbnail selection for all post types.
 Status: PENDING_REVIEW — waits for Stuart in the frontend.
 """
+import base64
 import json
 import logging
+import os
+import time
+from pathlib import Path
+import requests as http_requests
 from core import database as db
 from core.llm import complete
+
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 logger = logging.getLogger(__name__)
 
@@ -168,6 +175,27 @@ THUMBNAIL_STYLE_PROMPTS = {
         "Visual concept: {concept}"
     ),
 }
+
+
+def generate_gemini_image(image_prompt: str, api_key: str) -> bytes | None:
+    """Generate a thumbnail via Gemini 2.0 Flash (free tier). Returns PNG bytes or None."""
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        f"gemini-2.0-flash-preview-image-generation:generateContent?key={api_key}"
+    )
+    payload = {
+        "contents": [{"parts": [{"text": image_prompt}]}],
+        "generationConfig": {"responseModalities": ["IMAGE"]},
+    }
+    try:
+        r = http_requests.post(url, json=payload, timeout=30)
+        r.raise_for_status()
+        data = r.json()
+        b64 = data["candidates"][0]["content"]["parts"][0]["inline_data"]["data"]
+        return base64.b64decode(b64)
+    except Exception as e:
+        logger.warning(f"Gemini image generation failed (non-fatal): {e}")
+        return None
 
 
 def _thumbnail_style(template: str) -> str:
@@ -422,6 +450,20 @@ def run(dry_run: bool = False):
             draft_id = db.insert_draft(draft_data)
             draft_data["id"] = draft_id
             logger.info(f"Stored draft #{draft_id} for '{idea['title'][:40]}'")
+
+            # Gemini image generation (optional — graceful fallback)
+            image_prompt = brew.get("image_prompt")
+            google_key = os.getenv("GOOGLE_API_KEY")
+            if image_prompt and google_key:
+                img_bytes = generate_gemini_image(image_prompt, google_key)
+                if img_bytes:
+                    img_dir = _PROJECT_ROOT / "frontend" / "images"
+                    img_dir.mkdir(parents=True, exist_ok=True)
+                    img_file = f"draft_{draft_id}_{int(time.time())}.png"
+                    (img_dir / img_file).write_bytes(img_bytes)
+                    db.update_draft_image_path(draft_id, f"images/{img_file}")
+                    logger.info(f"Saved Gemini thumbnail: {img_file}")
+
             conn = db.get_connection()
             try:
                 conn.execute(

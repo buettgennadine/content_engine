@@ -153,6 +153,8 @@ def init_db():
             "ALTER TABLE articles ADD COLUMN vps_score REAL DEFAULT 0",
             "ALTER TABLE drafts ADD COLUMN funnel_stage TEXT DEFAULT 'TOFU'",
             "ALTER TABLE drafts ADD COLUMN image_path TEXT",
+            "ALTER TABLE drafts ADD COLUMN thumbnail_concept TEXT",
+            "ALTER TABLE sources ADD COLUMN language TEXT DEFAULT 'EN'",
         ]:
             try:
                 conn.execute(migration)
@@ -160,6 +162,15 @@ def init_db():
                 logger.info(f"Migrated: {migration}")
             except sqlite3.OperationalError:
                 pass  # column already exists
+        # Auto-tag German sources by URL pattern
+        try:
+            conn.execute(
+                "UPDATE sources SET language='DE' WHERE language IS NULL "
+                "OR (language='EN' AND (url LIKE '%.de%' OR url LIKE '%.at/%' OR url LIKE '%.ch/%'))"
+            )
+            conn.commit()
+        except Exception:
+            pass
         logger.info("Database initialised.")
     finally:
         conn.close()
@@ -253,17 +264,28 @@ def insert_article(data: dict) -> Optional[int]:
         conn.close()
 
 
-def get_recent_articles(hours: int = 24, min_score: float = 6.0, limit: int = 100, min_vps: float = 0) -> list[dict]:
+def get_recent_articles(hours: int = 24, min_score: float = 6.0, limit: int = 100, min_vps: float = 0, language: str = None) -> list[dict]:
     conn = get_connection()
     try:
-        rows = conn.execute("""
-            SELECT a.*, s.name as source_name, s.tier
-            FROM articles a
-            LEFT JOIN sources s ON a.source_id = s.id
-            WHERE a.relevance_score >= ?
-            ORDER BY a.relevance_score DESC
-            LIMIT ?
-        """, (min_score, limit)).fetchall()
+        if language:
+            rows = conn.execute("""
+                SELECT a.*, s.name as source_name, s.tier, s.language
+                FROM articles a
+                LEFT JOIN sources s ON a.source_id = s.id
+                WHERE a.relevance_score >= ?
+                AND s.language = ?
+                ORDER BY a.relevance_score DESC
+                LIMIT ?
+            """, (min_score, language, limit)).fetchall()
+        else:
+            rows = conn.execute("""
+                SELECT a.*, s.name as source_name, s.tier, s.language
+                FROM articles a
+                LEFT JOIN sources s ON a.source_id = s.id
+                WHERE a.relevance_score >= ?
+                ORDER BY a.relevance_score DESC
+                LIMIT ?
+            """, (min_score, limit)).fetchall()
         return [dict(r) for r in rows]
     finally:
         conn.close()
@@ -381,21 +403,28 @@ def get_top_ideas(limit: int = 3) -> list[dict]:
 def insert_draft(data: dict) -> int:
     conn = get_connection()
     try:
+        carousel = data.get("carousel_data", {})
+        thumbnail_concept = (
+            data.get("thumbnail_concept")
+            or (carousel.get("thumbnail_concept") if isinstance(carousel, dict) else None)
+        )
         cur = conn.execute("""
             INSERT INTO drafts
             (idea_id, version, content, carousel_data, consultant_notes,
-             quality_score, quality_issues, status, funnel_stage)
-            VALUES (?,?,?,?,?,?,?,?,?)
+             quality_score, quality_issues, status, funnel_stage, thumbnail_concept, image_path)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)
         """, (
             data.get("idea_id"),
             data.get("version", 1),
             data.get("content", ""),
-            json.dumps(data.get("carousel_data", {})),
+            json.dumps(carousel),
             data.get("consultant_notes", ""),
             data.get("quality_score", 0),
             json.dumps(data.get("quality_issues", [])),
             data.get("status", "PENDING_REVIEW"),
             data.get("funnel_stage", "TOFU"),
+            thumbnail_concept,
+            data.get("image_path"),
         ))
         conn.commit()
         return cur.lastrowid

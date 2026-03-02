@@ -53,19 +53,9 @@ body {
   z-index: 100;
 }
 .header-left { display: flex; align-items: center; gap: 16px; }
-.logo {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--copper-light);
-}
+.logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--copper-light); }
 .logo span { color: var(--white); font-weight: 400; }
-.header-status {
-  display: flex;
-  gap: 20px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.7);
-}
+.header-status { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,0.7); }
 .header-status .stat-val { color: var(--copper-light); font-weight: 600; }
 
 /* ─── Navigation ─── */
@@ -78,7 +68,7 @@ body {
   box-shadow: var(--shadow);
 }
 .nav-tab {
-  padding: 14px 24px;
+  padding: 14px 20px;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-muted);
@@ -86,13 +76,10 @@ body {
   border-bottom: 3px solid transparent;
   transition: all 0.2s;
   user-select: none;
+  white-space: nowrap;
 }
 .nav-tab:hover { color: var(--navy); background: var(--cream); }
-.nav-tab.active {
-  color: var(--navy);
-  border-bottom-color: var(--copper);
-  font-weight: 600;
-}
+.nav-tab.active { color: var(--navy); border-bottom-color: var(--copper); font-weight: 600; }
 
 /* ─── Main Layout ─── */
 .main { max-width: 1280px; margin: 0 auto; padding: 24px 32px; }
@@ -110,22 +97,9 @@ body {
   transition: box-shadow 0.2s;
 }
 .card:hover { box-shadow: var(--shadow-md); }
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-.card-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.3;
-}
-.card-title a {
-  color: inherit;
-  text-decoration: none;
-}
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.card-title { font-size: 16px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.card-title a { color: inherit; text-decoration: none; }
 .card-title a:hover { text-decoration: underline; }
 
 /* ─── Badges ─── */
@@ -139,21 +113,11 @@ body {
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
-.badge-vps {
-  background: var(--navy);
-  color: var(--copper-light);
-  font-size: 13px;
-  padding: 4px 12px;
-  font-variant-numeric: tabular-nums;
-}
+.badge-vps { background: var(--navy); color: var(--copper-light); font-size: 13px; padding: 4px 12px; font-variant-numeric: tabular-nums; }
 .badge-vps.high { background: var(--green); color: var(--white); }
 .badge-vps.mid { background: var(--amber); color: var(--white); }
 .badge-vps.low { background: var(--text-muted); color: var(--white); }
-.badge-cat {
-  background: var(--cream-dark);
-  color: var(--navy-muted);
-  margin: 2px 4px 2px 0;
-}
+.badge-cat { background: var(--cream-dark); color: var(--navy-muted); margin: 2px 4px 2px 0; }
 .badge-urgency-breaking { background: var(--red-light); color: var(--red); }
 .badge-urgency-timely { background: var(--amber-light); color: var(--amber); }
 .badge-urgency-evergreen { background: var(--green-light); color: var(--green); }
@@ -163,66 +127,21 @@ body {
 .badge-status-published { background: var(--navy); color: var(--copper-light); }
 .badge-status-drafted { background: #E8EAF6; color: #3949AB; }
 .badge-status-pending { background: var(--cream-dark); color: var(--text-muted); }
-.badge-tofu { background: #DBEAFE; color: #1D4ED8; }
-.badge-mofu { background: var(--amber-light); color: var(--amber); }
-.badge-bofu { background: var(--green-light); color: var(--green); }
 
 /* ─── Section Headers ─── */
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--navy);
-}
-.section-subtitle {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.section-title { font-size: 22px; font-weight: 700; color: var(--navy); }
+.section-subtitle { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
 
 /* ─── Stat Tiles ─── */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
-}
-.stat-tile {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-.stat-tile .val {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1;
-  margin-bottom: 4px;
-}
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-tile { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow); text-align: center; }
+.stat-tile .val { font-size: 32px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 4px; }
 .stat-tile .val.copper { color: var(--copper); }
-.stat-tile .label {
-  font-size: 12px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.stat-tile .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* ─── Filters ─── */
-.filter-bar {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
+.filter-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
 .filter-bar select, .filter-bar input {
   padding: 8px 14px;
   border: 1px solid var(--border);
@@ -231,11 +150,23 @@ body {
   background: var(--white);
   color: var(--text);
 }
-.filter-bar select:focus, .filter-bar input:focus {
-  outline: none;
-  border-color: var(--copper);
-  box-shadow: 0 0 0 3px rgba(193,127,89,0.15);
+.filter-bar select:focus, .filter-bar input:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 3px rgba(193,127,89,0.15); }
+
+/* ─── Language Filter ─── */
+.lang-filter { display: flex; gap: 4px; }
+.lang-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
+.lang-btn:hover { border-color: var(--navy); color: var(--navy); }
+.lang-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
 /* ─── Buttons ─── */
 .btn {
@@ -265,20 +196,11 @@ body {
 .btn.loading { pointer-events: none; opacity: 0.7; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ─── Article snippet ─── */
+/* ─── Article / Snippet ─── */
 .snippet { font-size: 13px; color: var(--text-muted); margin: 8px 0; line-height: 1.5; }
 .angle { font-size: 13px; color: var(--navy-muted); font-style: italic; margin: 6px 0; }
 .data-points { font-size: 12px; color: var(--copper-dark); margin-top: 6px; }
-.meta-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--cream-dark);
-}
+.meta-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--cream-dark); }
 
 /* ─── Draft Content ─── */
 .draft-content {
@@ -293,29 +215,164 @@ body {
   max-height: 400px;
   overflow-y: auto;
 }
+.draft-content-full { max-height: none; overflow-y: visible; }
+
+/* ─── Thumbnail Concept ─── */
+.thumb-concept {
+  font-size: 12px;
+  color: var(--copper-dark);
+  margin-top: 8px;
+  background: var(--cream-dark);
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border-left: 3px solid var(--copper);
+}
 
 /* ─── Quality Bar ─── */
-.quality-bar {
+.quality-bar { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 8px 0; }
+.quality-bar .bar-bg { flex: 1; height: 6px; background: var(--cream-dark); border-radius: 3px; overflow: hidden; }
+.quality-bar .bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+
+/* ─── Inline Review (Review Queue cards) ─── */
+.inline-review {
+  border-top: 1px solid var(--cream-dark);
+  margin-top: 16px;
+  padding-top: 16px;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  margin: 8px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
-.quality-bar .bar-bg {
-  flex: 1;
-  height: 6px;
-  background: var(--cream-dark);
-  border-radius: 3px;
+.inline-review label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy-muted);
+  margin-bottom: 4px;
+}
+.inline-review input[type="date"],
+.inline-review textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-family: inherit;
+}
+.inline-review textarea { min-height: 56px; resize: vertical; }
+
+/* ─── Algo Hints ─── */
+.algo-hints { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.algo-hint {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.algo-hint.warn { background: var(--amber-light); color: #92620A; }
+.algo-hint.info { background: #E8F0FE; color: #1967D2; }
+
+/* ─── Content Calendar ─── */
+.cal-layout { display: grid; grid-template-columns: 1fr 280px; gap: 24px; }
+@media (max-width: 900px) { .cal-layout { grid-template-columns: 1fr; } }
+.cal-nav { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.cal-month-label { font-size: 18px; font-weight: 700; color: var(--navy); min-width: 170px; text-align: center; }
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: var(--radius);
   overflow: hidden;
 }
-.quality-bar .bar-fill {
-  height: 100%;
-  border-radius: 3px;
-  transition: width 0.4s ease;
+.cal-header-cell {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 8px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
+.cal-cell {
+  background: var(--white);
+  min-height: 82px;
+  padding: 5px;
+  vertical-align: top;
+}
+.cal-cell:not(.other-month):not(.weekend) { cursor: default; }
+.cal-cell.weekend { background: #F5F3F0; }
+.cal-cell.other-month { background: var(--cream); opacity: 0.45; pointer-events: none; }
+.cal-cell.today { background: #EEF2FF; }
+.cal-date { font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 2px; }
+.cal-today-num { color: var(--copper); font-weight: 800; }
+.cal-post {
+  display: block;
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 10px;
+  margin-top: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.4;
+  color: var(--white);
+}
+.cal-post.tofu { background: var(--green); }
+.cal-post.mofu { background: var(--copper); }
+.cal-post.bofu { background: var(--navy); }
+.cal-add {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+  background: none;
+  border: 1px dashed var(--border);
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: 10px;
+  cursor: pointer;
+  padding: 1px 4px;
+  text-align: center;
+}
+.cal-add:hover { border-color: var(--copper); color: var(--copper); }
 
-/* ─── Modal / Generate Panel ─── */
+/* ─── Calendar Sidebar Cards ─── */
+.sidebar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+}
+.sidebar-card .sc-title { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.sidebar-card .sc-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* ─── Funnel Stage Buttons (Generate) ─── */
+.funnel-btn-group { display: flex; gap: 8px; margin: 12px 0 8px; }
+.funnel-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.funnel-btn:hover { border-color: var(--copper-light); color: var(--navy); }
+.funnel-btn.active.tofu { border-color: var(--green); background: var(--green); color: var(--white); }
+.funnel-btn.active.mofu { border-color: var(--copper); background: var(--copper); color: var(--white); }
+.funnel-btn.active.bofu { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.template-hint { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+
+/* ─── Modal ─── */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -331,14 +388,14 @@ body {
   border-radius: var(--radius-lg);
   padding: 32px;
   width: 90%;
-  max-width: 640px;
+  max-width: 560px;
   max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(27,42,74,0.2);
 }
-.modal h2 { color: var(--navy); margin-bottom: 20px; }
+.modal h2 { color: var(--navy); margin-bottom: 20px; font-size: 18px; }
 .modal label { display: block; font-size: 13px; font-weight: 600; color: var(--navy-muted); margin-bottom: 4px; margin-top: 14px; }
-.modal textarea, .modal select, .modal input[type="text"] {
+.modal textarea, .modal select, .modal input[type="text"], .modal input[type="date"] {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid var(--border);
@@ -347,133 +404,71 @@ body {
   font-family: inherit;
 }
 .modal textarea { min-height: 80px; resize: vertical; }
-.modal-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
+.modal-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; flex-wrap: wrap; }
 
-/* ─── Sources Grid ─── */
-.sources-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
-}
-.source-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  box-shadow: var(--shadow);
-}
+/* ─── Sources ─── */
+.sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.source-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
 .source-card .source-name { font-weight: 600; font-size: 14px; color: var(--navy); }
 .source-card .source-meta { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-.source-status {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 6px;
-}
+.source-status { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
 .source-status.active { background: var(--green); }
 .source-status.broken { background: var(--red); }
 .source-status.unknown { background: var(--text-muted); }
 
 /* ─── Agent Controls ─── */
-.agent-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
-}
-.agent-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-.agent-card .agent-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-.agent-card .agent-desc {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
+.agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.agent-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; text-align: center; box-shadow: var(--shadow); }
+.agent-card .agent-name { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.agent-card .agent-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
 
 /* ─── Pain Points ─── */
-.pp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 12px;
-}
-.pp-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  box-shadow: var(--shadow);
-}
+.pp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 12px; }
+.pp-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
 .pp-card .pp-point { font-weight: 600; font-size: 14px; color: var(--navy); }
 .pp-card .pp-value { font-size: 15px; color: var(--copper); font-weight: 600; margin: 4px 0; }
 .pp-card .pp-meta { font-size: 12px; color: var(--text-muted); }
 
 /* ─── Toast ─── */
 .toast-container { position: fixed; top: 80px; right: 24px; z-index: 300; display: flex; flex-direction: column; gap: 8px; }
-.toast {
-  background: var(--navy);
-  color: var(--white);
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  font-size: 13px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  animation: slideIn 0.3s ease;
-  max-width: 360px;
-}
+.toast { background: var(--navy); color: var(--white); padding: 12px 20px; border-radius: var(--radius); font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: slideIn 0.3s ease; max-width: 360px; }
 .toast.error { background: var(--red); }
 .toast.success { background: var(--green); }
 @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
 /* ─── Empty State ─── */
-.empty-state {
-  text-align: center;
-  padding: 48px 24px;
-  color: var(--text-muted);
-}
+.empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted); }
 .empty-state .icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
 .empty-state p { font-size: 14px; }
 
-/* ─── Loading ─── */
-.loading-bar {
-  height: 3px;
-  background: var(--cream-dark);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 101;
-  overflow: hidden;
-  display: none;
-}
+/* ─── Loading Bar ─── */
+.loading-bar { height: 3px; background: var(--cream-dark); position: fixed; top: 0; left: 0; right: 0; z-index: 101; overflow: hidden; display: none; }
 .loading-bar.active { display: block; }
-.loading-bar::after {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 30%;
-  background: var(--copper);
-  animation: loadSlide 1.2s ease infinite;
-}
+.loading-bar::after { content: ''; display: block; height: 100%; width: 30%; background: var(--copper); animation: loadSlide 1.2s ease infinite; }
 @keyframes loadSlide { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
+
+/* ─── Ideas Summary (Review Queue) ─── */
+.ideas-summary {
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--navy-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
   .header { padding: 12px 16px; }
   .nav { padding: 0 16px; overflow-x: auto; }
-  .nav-tab { padding: 12px 16px; font-size: 13px; white-space: nowrap; }
+  .nav-tab { padding: 12px 14px; font-size: 13px; }
   .main { padding: 16px; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .funnel-btn-group { flex-direction: column; }
 }
 </style>
 </head>
@@ -494,10 +489,11 @@ body {
   </div>
 </header>
 
-<!-- Navigation -->
+<!-- Navigation (6 tabs) -->
 <nav class="nav">
   <div class="nav-tab active" data-page="feed">Intelligence Feed</div>
-  <div class="nav-tab" data-page="pipeline">Content Pipeline</div>
+  <div class="nav-tab" data-page="review">Review Queue</div>
+  <div class="nav-tab" data-page="calendar">Content Calendar</div>
   <div class="nav-tab" data-page="generate">Generate Post</div>
   <div class="nav-tab" data-page="sources">Sources &amp; Pain Points</div>
   <div class="nav-tab" data-page="system">System Status</div>
@@ -506,8 +502,9 @@ body {
 <!-- Toast container -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- ═══════════════════════ PAGE: Intelligence Feed ═══════════════════════ -->
 <div class="main">
+
+<!-- ══════════════════════════ PAGE: Intelligence Feed ══════════════════════════ -->
 <div class="page active" id="page-feed">
   <div class="section-header">
     <div>
@@ -533,46 +530,64 @@ body {
       <option value="50">Show 50</option>
       <option value="100">Show All</option>
     </select>
+    <div class="lang-filter">
+      <button class="lang-btn active" onclick="setLangFilter(this, '')">All</button>
+      <button class="lang-btn" onclick="setLangFilter(this, 'EN')">EN</button>
+      <button class="lang-btn" onclick="setLangFilter(this, 'DE')">DE</button>
+    </div>
     <button class="btn btn-secondary btn-sm" onclick="loadFeed()">Refresh</button>
   </div>
 
   <div id="feedList"></div>
 </div>
 
-<!-- ═══════════════════════ PAGE: Content Pipeline ═══════════════════════ -->
-<div class="page" id="page-pipeline">
+<!-- ══════════════════════════ PAGE: Review Queue ══════════════════════════ -->
+<div class="page" id="page-review">
   <div class="section-header">
     <div>
-      <div class="section-title">Content Pipeline</div>
-      <div class="section-subtitle">Ideas, Drafts, and Review Queue</div>
+      <div class="section-title">Review Queue</div>
+      <div class="section-subtitle">Approve or reject drafts — inline, no modal needed</div>
     </div>
+    <button class="btn btn-secondary btn-sm" onclick="loadReviewQueue()">Refresh</button>
   </div>
 
-  <!-- Ideas -->
-  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Content Ideas (12 per week)</h3>
-  <div id="ideasList" style="margin-bottom:32px;"></div>
-
-  <!-- Drafts -->
-  <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Drafts — Review Queue</h3>
-  <div class="filter-bar" style="flex-wrap:wrap;gap:8px;">
-    <select id="draftFilter" onchange="loadDrafts()">
-      <option value="">All Statuses</option>
-      <option value="PENDING_REVIEW">Pending Review</option>
-      <option value="APPROVED">Approved</option>
-      <option value="REJECTED">Rejected</option>
-    </select>
-    <div style="display:flex;gap:6px;align-items:center;">
-      <span style="font-size:12px;color:var(--text-muted);font-weight:600;">FUNNEL:</span>
-      <button class="btn btn-secondary btn-sm funnel-btn active" data-stage="" onclick="setFunnelFilter(this,'')">All</button>
-      <button class="btn btn-sm funnel-btn" data-stage="TOFU" onclick="setFunnelFilter(this,'TOFU')" style="background:#DBEAFE;color:#1D4ED8;border:none;">TOFU</button>
-      <button class="btn btn-sm funnel-btn" data-stage="MOFU" onclick="setFunnelFilter(this,'MOFU')" style="background:var(--amber-light);color:var(--amber);border:none;">MOFU</button>
-      <button class="btn btn-sm funnel-btn" data-stage="BOFU" onclick="setFunnelFilter(this,'BOFU')" style="background:var(--green-light);color:var(--green);border:none;">BOFU</button>
-    </div>
+  <div class="ideas-summary" id="reviewIdeasBanner">
+    💡 <span id="reviewIdeasSummary">Loading ideas queue...</span>
   </div>
-  <div id="draftsList"></div>
+
+  <div id="reviewDraftsList"></div>
 </div>
 
-<!-- ═══════════════════════ PAGE: Generate Post ═══════════════════════ -->
+<!-- ══════════════════════════ PAGE: Content Calendar ══════════════════════════ -->
+<div class="page" id="page-calendar">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Content Calendar</div>
+      <div class="section-subtitle">Approved drafts — schedule and track LinkedIn publishing</div>
+    </div>
+    <button class="btn btn-secondary btn-sm" onclick="loadCalendar()">Refresh</button>
+  </div>
+
+  <div class="cal-nav">
+    <button class="btn btn-secondary btn-sm" onclick="prevMonth()">← Prev</button>
+    <span class="cal-month-label" id="calMonthLabel">March 2026</span>
+    <button class="btn btn-secondary btn-sm" onclick="nextMonth()">Next →</button>
+  </div>
+
+  <div class="cal-layout">
+    <div>
+      <div class="calendar-grid" id="calGrid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+    <div>
+      <h4 style="color:var(--navy);font-size:15px;margin-bottom:12px;">Unscheduled Drafts</h4>
+      <div id="calSidebar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ PAGE: Generate Post ══════════════════════════ -->
 <div class="page" id="page-generate">
   <div class="section-header">
     <div>
@@ -582,43 +597,33 @@ body {
   </div>
 
   <div class="card" style="max-width:640px;">
-    <label>Topic / Brief</label>
-    <textarea id="genTopic" placeholder="e.g. Claims automation is failing because insurers automate bad processes"></textarea>
+    <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin-bottom:4px;">Topic / Brief</label>
+    <textarea id="genTopic" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:inherit;min-height:80px;resize:vertical;" placeholder="e.g. Claims automation is failing because insurers automate bad processes"></textarea>
+
+    <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin:14px 0 4px;">Funnel Stage</label>
+    <div class="funnel-btn-group">
+      <button class="funnel-btn tofu active" onclick="setFunnelStage(this, 'TOFU')">
+        TOFU<br><small style="font-weight:400;opacity:0.85;">Awareness</small>
+      </button>
+      <button class="funnel-btn mofu" onclick="setFunnelStage(this, 'MOFU')">
+        MOFU<br><small style="font-weight:400;opacity:0.85;">Consideration</small>
+      </button>
+      <button class="funnel-btn bofu" onclick="setFunnelStage(this, 'BOFU')">
+        BOFU<br><small style="font-weight:400;opacity:0.85;">Decision</small>
+      </button>
+    </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
       <div>
-        <label>Template</label>
-        <select id="genTemplate">
-          <option>Data Hook</option>
-          <option>Old vs New Rules</option>
-          <option>Contrarian Take</option>
-          <option>Case Study</option>
-          <option>Provocative Question</option>
-          <option>Story Format</option>
-        </select>
+        <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin-bottom:4px;">Template</label>
+        <div class="template-hint" id="genTemplateHint"></div>
+        <select id="genTemplate" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;"></select>
       </div>
       <div>
-        <label>Language</label>
-        <select id="genLang">
+        <label style="font-size:13px;font-weight:600;color:var(--navy-muted);display:block;margin-bottom:4px;">Language</label>
+        <select id="genLang" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;">
           <option value="EN">English (British)</option>
           <option value="DE">Deutsch (Sie-Form)</option>
-        </select>
-      </div>
-      <div>
-        <label>Audience</label>
-        <select id="genAudience">
-          <option>Claims Directors, COOs</option>
-          <option>Pension Operations Directors</option>
-          <option>CFOs, Board</option>
-          <option>Insurance Professionals (general)</option>
-        </select>
-      </div>
-      <div>
-        <label>Tone</label>
-        <select id="genTone">
-          <option value="provocative">Provocative</option>
-          <option value="analytical">Analytical</option>
-          <option value="storytelling">Storytelling</option>
         </select>
       </div>
     </div>
@@ -631,7 +636,7 @@ body {
   </div>
 
   <div id="genResult" style="margin-top:24px;display:none;">
-    <div class="card">
+    <div class="card" style="max-width:640px;">
       <div class="card-header">
         <div class="card-title">Generated Post</div>
         <button class="btn btn-secondary btn-sm" onclick="copyGenerated()">Copy</button>
@@ -641,7 +646,7 @@ body {
   </div>
 </div>
 
-<!-- ═══════════════════════ PAGE: Sources & Pain Points ═══════════════════════ -->
+<!-- ══════════════════════════ PAGE: Sources & Pain Points ══════════════════════════ -->
 <div class="page" id="page-sources">
   <div class="section-header">
     <div>
@@ -662,7 +667,7 @@ body {
   <div class="pp-grid" id="painPointsList"></div>
 </div>
 
-<!-- ═══════════════════════ PAGE: System Status ═══════════════════════ -->
+<!-- ══════════════════════════ PAGE: System Status ══════════════════════════ -->
 <div class="page" id="page-system">
   <div class="section-header">
     <div>
@@ -674,7 +679,7 @@ body {
   <div class="stat-grid" id="systemStats"></div>
 
   <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Agent Controls</h3>
-  <div class="agent-grid" id="agentControls">
+  <div class="agent-grid">
     <div class="agent-card">
       <div class="agent-name">Monitor</div>
       <div class="agent-desc">Fetch RSS, classify articles</div>
@@ -705,22 +710,40 @@ body {
   <h3 style="color:var(--navy);margin-bottom:12px;font-size:17px;">Latest Briefing</h3>
   <div id="briefingContent"></div>
 </div>
-</div>
 
-<!-- ═══════════════════════ Draft Review Modal ═══════════════════════ -->
+</div><!-- /.main -->
+
+<!-- ══════════════════════════ Modal: View Draft (view-only) ══════════════════════════ -->
 <div class="modal-overlay" id="reviewModal">
   <div class="modal">
-    <h2 id="reviewTitle">Review Draft</h2>
+    <h2 id="reviewTitle">Draft</h2>
     <div class="draft-content" id="reviewContent"></div>
-    <div id="reviewMeta" style="margin:12px 0;"></div>
+    <div id="reviewMeta" style="margin:12px 0;font-size:13px;color:var(--text-muted);"></div>
     <label>Feedback (optional)</label>
-    <textarea id="reviewFeedback" placeholder="Notes for the next draft iteration..."></textarea>
+    <textarea id="reviewFeedback" placeholder="Notes..."></textarea>
     <label>Schedule Date (if approving)</label>
-    <input type="text" id="reviewDate" placeholder="YYYY-MM-DD">
+    <input type="date" id="reviewDate">
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-danger" onclick="submitReview('REJECTED')">Reject</button>
-      <button class="btn btn-success" onclick="submitReview('APPROVED')">Approve</button>
+      <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+      <button class="btn btn-danger" id="modalRejectBtn" onclick="submitReview('REJECTED')" style="display:none;">Reject</button>
+      <button class="btn btn-success" id="modalApproveBtn" onclick="submitReview('APPROVED')" style="display:none;">Approve</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ Modal: Schedule Post (calendar) ══════════════════════════ -->
+<div class="modal-overlay" id="scheduleModal">
+  <div class="modal">
+    <h2>Schedule Post</h2>
+    <label>Draft</label>
+    <select id="schedDraftSelect" onchange="onSchedDraftChange()" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;"></select>
+    <label>Date</label>
+    <input type="date" id="schedDate" onchange="onSchedDateChange()">
+    <div id="schedHints" style="margin-top:8px;"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeScheduleModal()">Cancel</button>
+      <button class="btn btn-danger btn-sm" id="schedUnscheduleBtn" onclick="schedUnschedule()" style="display:none;">Unschedule</button>
+      <button class="btn btn-primary" onclick="confirmSchedule()">Confirm Schedule</button>
     </div>
   </div>
 </div>
@@ -731,8 +754,32 @@ body {
    ═══════════════════════════════════════════════════════════════════════ */
 
 const API = 'http://46.225.223.132:8000';
+
+// ─── State ───────────────────────────────────────────────────────────
+let currentLangFilter = '';
 let currentDraftId = null;
-let currentFunnelFilter = '';
+
+// Calendar
+let calYear = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let calApprovedDrafts = [];
+
+// Review queue
+let reviewDraftsCache = [];
+let allScheduledDates = {};  // ISO date string → true
+
+// Generate
+let genFunnelStage = 'TOFU';
+const FUNNEL_TEMPLATES = {
+  TOFU: ['Contrarian Take', 'Data Hook', 'Provocative Question', 'Old vs New Rules'],
+  MOFU: ['Case Study', 'Story Format'],
+  BOFU: ['Case Study', 'Story Format'],
+};
+
+const MONTH_NAMES = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December'
+];
 
 // ─── Navigation ──────────────────────────────────────────────────────
 document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -741,10 +788,10 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('page-' + tab.dataset.page).classList.add('active');
-    // Load data for the page
     const page = tab.dataset.page;
     if (page === 'feed') loadFeed();
-    if (page === 'pipeline') { loadIdeas(); loadDrafts(); }
+    if (page === 'review') loadReviewQueue();
+    if (page === 'calendar') loadCalendar();
     if (page === 'sources') { loadSources(); loadPainPoints(); }
     if (page === 'system') { loadSystemStatus(); loadBriefing(); }
   });
@@ -780,13 +827,18 @@ function toast(msg, type = '') {
   setTimeout(() => t.remove(), 4000);
 }
 
-// ─── VPS helpers ─────────────────────────────────────────────────────
 function vpsClass(v) { return v >= 80 ? 'high' : v >= 60 ? 'mid' : 'low'; }
+
 function formatDate(d) {
   if (!d) return '--';
-  try { return new Date(d).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
-  catch { return d; }
+  try {
+    return new Date(d).toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  } catch { return d; }
 }
+
 function escHtml(s) {
   if (!s) return '';
   const d = document.createElement('div');
@@ -805,6 +857,14 @@ async function loadHeaderStatus() {
   } catch {}
 }
 
+// ─── Language Filter ─────────────────────────────────────────────────
+function setLangFilter(btn, lang) {
+  currentLangFilter = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadFeed();
+}
+
 // ─── FEED ────────────────────────────────────────────────────────────
 async function loadFeed() {
   const cat = document.getElementById('feedCategory').value;
@@ -812,6 +872,7 @@ async function loadFeed() {
   const limit = document.getElementById('feedLimit').value;
   let path = `/api/feed?limit=${limit}&min_vps=${minVps}`;
   if (cat) path += `&category=${encodeURIComponent(cat)}`;
+  if (currentLangFilter) path += `&language=${currentLangFilter}`;
 
   const data = await api(path);
   const articles = data.articles || [];
@@ -819,7 +880,9 @@ async function loadFeed() {
   // Stats
   const above60 = articles.filter(a => (a.vps_score || 0) >= 60).length;
   const above80 = articles.filter(a => (a.vps_score || 0) >= 80).length;
-  const avgVps = articles.length ? (articles.reduce((s, a) => s + (a.vps_score || 0), 0) / articles.length).toFixed(1) : '0';
+  const avgVps = articles.length
+    ? (articles.reduce((s, a) => s + (a.vps_score || 0), 0) / articles.length).toFixed(1)
+    : '0';
   document.getElementById('feedStats').innerHTML = `
     <div class="stat-tile"><div class="val">${articles.length}</div><div class="label">Articles</div></div>
     <div class="stat-tile"><div class="val copper">${above60}</div><div class="label">VPS 60+ (Draft-worthy)</div></div>
@@ -827,28 +890,38 @@ async function loadFeed() {
     <div class="stat-tile"><div class="val">${avgVps}</div><div class="label">Avg VPS</div></div>
   `;
 
-  // Collect categories for filter
+  // Refresh category filter
   const cats = new Set();
   articles.forEach(a => (a.categories || []).forEach(c => cats.add(c)));
   const sel = document.getElementById('feedCategory');
   const curVal = sel.value;
   sel.innerHTML = '<option value="">All Categories</option>' +
-    [...cats].sort().map(c => `<option value="${c}" ${c===curVal?'selected':''}>${c.replace(/_/g,' ')}</option>`).join('');
+    [...cats].sort().map(c =>
+      `<option value="${c}" ${c === curVal ? 'selected' : ''}>${c.replace(/_/g, ' ')}</option>`
+    ).join('');
 
-  // Render articles
   if (!articles.length) {
-    document.getElementById('feedList').innerHTML = '<div class="empty-state"><div class="icon">📡</div><p>No articles found. Run the Monitor agent to fetch RSS feeds.</p></div>';
+    document.getElementById('feedList').innerHTML =
+      '<div class="empty-state"><div class="icon">📡</div><p>No articles found. Run the Monitor agent or adjust filters.</p></div>';
     return;
   }
 
   document.getElementById('feedList').innerHTML = articles.map(a => {
     const vps = a.vps_score || 0;
-    const cats = (a.categories || []).map(c => `<span class="badge badge-cat">${escHtml(c.replace(/_/g,' '))}</span>`).join('');
-    const urgBadge = a.urgency ? `<span class="badge badge-urgency-${a.urgency}">${a.urgency}</span>` : '';
-    const dp = (a.data_points || []);
-    const dpHtml = dp.length ? `<div class="data-points">Data: ${dp.map(d => escHtml(String(d))).join(' · ')}</div>` : '';
-    const angleHtml = a.content_angle ? `<div class="angle">"${escHtml(a.content_angle)}"</div>` : '';
-    const link = a.link ? `<a href="${escHtml(a.link)}" target="_blank" rel="noopener">${escHtml(a.title)}</a>` : escHtml(a.title);
+    const cats = (a.categories || [])
+      .map(c => `<span class="badge badge-cat">${escHtml(c.replace(/_/g, ' '))}</span>`).join('');
+    const urgBadge = a.urgency
+      ? `<span class="badge badge-urgency-${a.urgency}">${a.urgency}</span>` : '';
+    const langBadge = a.language
+      ? `<span class="badge badge-cat" style="background:var(--navy);color:var(--copper-light);">${escHtml(a.language)}</span>` : '';
+    const dp = a.data_points || [];
+    const dpHtml = dp.length
+      ? `<div class="data-points">Data: ${dp.map(d => escHtml(String(d))).join(' · ')}</div>` : '';
+    const angleHtml = a.content_angle
+      ? `<div class="angle">"${escHtml(a.content_angle)}"</div>` : '';
+    const link = a.link
+      ? `<a href="${escHtml(a.link)}" target="_blank" rel="noopener">${escHtml(a.title)}</a>`
+      : escHtml(a.title);
 
     return `<div class="card">
       <div class="card-header">
@@ -858,7 +931,7 @@ async function loadFeed() {
       ${a.snippet ? `<div class="snippet">${escHtml(a.snippet).substring(0, 250)}${a.snippet.length > 250 ? '...' : ''}</div>` : ''}
       ${angleHtml}
       ${dpHtml}
-      <div style="margin-top:8px;">${cats} ${urgBadge}</div>
+      <div style="margin-top:8px;">${cats} ${urgBadge} ${langBadge}</div>
       <div class="meta-row">
         <span>Source: ${escHtml(a.source_name || '--')}</span>
         <span>Relevance: ${a.relevance_score || '--'}/10</span>
@@ -868,179 +941,384 @@ async function loadFeed() {
   }).join('');
 }
 
-// ─── IDEAS ───────────────────────────────────────────────────────────
-async function loadIdeas() {
-  const data = await api('/api/ideas');
-  const ideas = data.ideas || [];
+// ─── ALGO HINTS ──────────────────────────────────────────────────────
+function getAlgoHints(isoDate, draft, scheduledDates) {
+  const hints = [];
+  if (!isoDate) return hints;
+  const d = new Date(isoDate + 'T12:00:00');  // noon to avoid TZ issues
+  const day = d.getDay();  // 0=Sun, 6=Sat
+  const stage = (draft && draft.funnel_stage) || 'TOFU';
 
-  if (!ideas.length) {
-    document.getElementById('ideasList').innerHTML = '<div class="empty-state"><div class="icon">💡</div><p>No ideas yet. Run the Ideate agent.</p></div>';
-    return;
+  if (day === 0 || day === 6)
+    hints.push({ type: 'warn', msg: 'Weekend posts get ~40% less reach on LinkedIn.' });
+
+  const bestDays = { TOFU: [1, 2], MOFU: [3, 4], BOFU: [2, 3, 4] };
+  const names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const best = bestDays[stage] || [];
+  if (best.length && !best.includes(day) && day !== 0 && day !== 6)
+    hints.push({
+      type: 'info',
+      msg: `${stage} posts perform best on ${best.map(n => names[n]).join('/')}. Current: ${names[day]}.`
+    });
+
+  if (scheduledDates && scheduledDates[isoDate])
+    hints.push({ type: 'warn', msg: 'Another post is already scheduled for this day.' });
+
+  return hints;
+}
+
+function renderHintsHtml(hints) {
+  if (!hints.length) return '';
+  return `<div class="algo-hints">${
+    hints.map(h => `<span class="algo-hint ${h.type}">⚡ ${escHtml(h.msg)}</span>`).join('')
+  }</div>`;
+}
+
+// ─── THUMBNAIL CONCEPT ───────────────────────────────────────────────
+function renderThumbConcept(draft) {
+  if (draft.image_path) {
+    return `<img src="${escHtml(API + '/static/' + draft.image_path)}"
+      style="max-width:100%;border-radius:var(--radius);margin-top:8px;"
+      alt="Generated thumbnail">`;
   }
-
-  document.getElementById('ideasList').innerHTML = ideas.map(idea => {
-    const prio = idea.priority_score || 0;
-    const statusBadge = `<span class="badge badge-status-${(idea.status||'pending').toLowerCase()}">${idea.status || 'pending'}</span>`;
-    return `<div class="card">
-      <div class="card-header">
-        <div class="card-title">${escHtml(idea.title)}</div>
-        <div style="display:flex;gap:8px;align-items:center;">
-          ${statusBadge}
-          <span class="badge badge-vps ${vpsClass(prio)}">${prio}</span>
-        </div>
-      </div>
-      <div class="snippet">${escHtml(idea.hook || '')}</div>
-      <div class="angle">${escHtml(idea.angle || '')}</div>
-      ${idea.key_data ? `<div class="data-points">${escHtml(idea.key_data)}</div>` : ''}
-      <div class="meta-row">
-        <span>Template: ${escHtml(idea.format || '--')}</span>
-        <span>Pillar: ${escHtml(idea.pillar || '--')}</span>
-        <span>Urgency: ${escHtml(idea.urgency || '--')}</span>
-        <span>Effort: ${escHtml(idea.effort || '--')}</span>
-      </div>
-    </div>`;
-  }).join('');
+  const concept = draft.thumbnail_concept || '📸 Image concept pending generation.';
+  return `<div class="thumb-concept">🖼 ${escHtml(concept)}</div>`;
 }
 
-// ─── DRAFTS ──────────────────────────────────────────────────────────
-function setFunnelFilter(btn, stage) {
-  currentFunnelFilter = stage;
-  document.querySelectorAll('.funnel-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  loadDrafts();
-}
+// ─── REVIEW QUEUE ────────────────────────────────────────────────────
+async function loadReviewQueue() {
+  try {
+    const [pendingData, approvedData, ideasData] = await Promise.all([
+      api('/api/drafts?status=PENDING_REVIEW'),
+      api('/api/drafts?status=APPROVED'),
+      api('/api/ideas'),
+    ]);
 
-function funnelBadge(stage) {
-  const map = { TOFU: 'badge-tofu', MOFU: 'badge-mofu', BOFU: 'badge-bofu' };
-  const cls = map[stage] || 'badge-tofu';
-  return stage ? `<span class="badge ${cls}">${stage}</span>` : '';
-}
+    reviewDraftsCache = pendingData.drafts || [];
 
-async function loadDrafts() {
-  const status = document.getElementById('draftFilter').value;
-  let path = '/api/drafts';
-  const qs = [];
-  if (status) qs.push(`status=${status}`);
-  if (currentFunnelFilter) qs.push(`funnel_stage=${currentFunnelFilter}`);
-  if (qs.length) path += '?' + qs.join('&');
+    // Build scheduled dates map from approved drafts (for hint conflicts)
+    allScheduledDates = {};
+    (approvedData.drafts || []).forEach(d => {
+      if (d.scheduled_date) allScheduledDates[d.scheduled_date] = true;
+    });
 
-  const data = await api(path);
-  const drafts = data.drafts || [];
+    // Ideas banner
+    const pendingIdeas = (ideasData.ideas || []).filter(i => i.status === 'pending');
+    document.getElementById('reviewIdeasSummary').textContent =
+      `${pendingIdeas.length} content idea${pendingIdeas.length !== 1 ? 's' : ''} pending in queue · ${reviewDraftsCache.length} draft${reviewDraftsCache.length !== 1 ? 's' : ''} awaiting review`;
 
-  if (!drafts.length) {
-    document.getElementById('draftsList').innerHTML = '<div class="empty-state"><div class="icon">📝</div><p>No drafts yet. Run the Draft agent.</p></div>';
-    return;
-  }
+    const el = document.getElementById('reviewDraftsList');
+    if (!reviewDraftsCache.length) {
+      el.innerHTML = '<div class="empty-state"><div class="icon">✅</div><p>Queue is clear — no drafts awaiting review.</p></div>';
+      return;
+    }
 
-  document.getElementById('draftsList').innerHTML = drafts.map(d => {
-    const score = d.quality_score || 0;
-    const pct = Math.min(100, score * 10);
-    const barColor = score >= 8 ? 'var(--green)' : score >= 6 ? 'var(--amber)' : 'var(--red)';
-    const statusCls = (d.status || '').toLowerCase().replace(/ /g, '_');
-    const preview = (d.content || '').substring(0, 200).replace(/\n/g, ' ') + '...';
-    const issues = (d.quality_issues || []);
-    const brew = d.carousel_data || {};
-    const stage = d.funnel_stage || 'TOFU';
-    const fmt = brew.format || 'text';
+    el.innerHTML = reviewDraftsCache.map(d => {
+      const qs = d.quality_score || 0;
+      const pct = Math.min(100, qs * 10);
+      const barColor = qs >= 8 ? 'var(--green)' : qs >= 6 ? 'var(--amber)' : 'var(--red)';
+      const issues = d.quality_issues || [];
+      const stage = d.funnel_stage || 'TOFU';
 
-    // Carousel outline
-    const outline = brew.carousel_outline;
-    const outlineHtml = Array.isArray(outline) && outline.length
-      ? `<ol style="margin:10px 0 0 18px;font-size:13px;color:var(--navy-muted);">
-           ${outline.map(s => `<li>${escHtml(s)}</li>`).join('')}
-         </ol>`
-      : '';
-
-    // Save trigger
-    const saveTrigger = brew.save_trigger
-      ? `<div style="margin-top:8px;font-size:12px;color:var(--copper-dark);font-style:italic;">
-           💾 ${escHtml(brew.save_trigger)}
-         </div>`
-      : '';
-
-    // Image thumbnail
-    const imgHtml = d.image_path
-      ? `<img src="${API}/api/drafts/${d.id}/image" alt="Generated image"
-              style="max-width:180px;border-radius:var(--radius);margin-top:8px;border:1px solid var(--border);">`
-      : '';
-
-    return `<div class="card">
-      <div class="card-header">
-        <div class="card-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
-        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-          ${funnelBadge(stage)}
-          <span class="badge badge-cat">${escHtml(fmt)}</span>
-          <span class="badge badge-status-${statusCls}">${d.status}</span>
-        </div>
-      </div>
-      <div style="display:flex;gap:16px;align-items:flex-start;">
-        <div style="flex:1;">
-          <div class="snippet">${escHtml(preview)}</div>
-          ${outlineHtml}
-          ${saveTrigger}
-          <div class="quality-bar" style="margin-top:10px;">
-            <span>Quality: ${score.toFixed(1)}/10</span>
-            <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
-          </div>
-          ${issues.length ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Issues: ${issues.join(', ')}</div>` : ''}
-          <div class="meta-row">
-            <span>${escHtml(d.consultant_notes || '')}</span>
-            <span>Created: ${formatDate(d.created_at)}</span>
+      return `<div class="card" id="rv-card-${d.id}">
+        <div class="card-header">
+          <div class="card-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="badge" style="background:var(--green-light);color:var(--green);text-transform:none;">${escHtml(stage)}</span>
+            <span class="badge badge-status-pending_review">Pending Review</span>
           </div>
         </div>
-        ${imgHtml ? `<div style="flex-shrink:0;">${imgHtml}</div>` : ''}
-      </div>
-      <div style="margin-top:12px;display:flex;gap:8px;">
-        <button class="btn btn-secondary btn-sm" onclick="viewDraft(${d.id})">View Full</button>
-        ${d.status === 'PENDING_REVIEW' ? `<button class="btn btn-primary btn-sm" onclick="openReview(${d.id})">Review</button>` : ''}
-      </div>
-    </div>`;
-  }).join('');
+        <div class="draft-content draft-content-full">${escHtml(d.content || '')}</div>
+        ${renderThumbConcept(d)}
+        <div class="quality-bar" style="margin-top:12px;">
+          <span style="white-space:nowrap;">Quality: ${qs.toFixed(1)}/10</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+        </div>
+        ${issues.length ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Issues: ${escHtml(issues.join(', '))}</div>` : ''}
+        <div class="meta-row">
+          <span>${escHtml(d.consultant_notes || '')}</span>
+          <span>Created: ${formatDate(d.created_at)}</span>
+        </div>
+        <div class="inline-review">
+          <div style="flex:1;min-width:180px;">
+            <label>Schedule Date (optional)</label>
+            <input type="date" id="rv-date-${d.id}" onchange="onReviewDateChange(${d.id}, this.value)">
+            <div id="rv-hints-${d.id}"></div>
+          </div>
+          <div style="flex:1;min-width:180px;">
+            <label>Feedback (optional)</label>
+            <textarea id="rv-feedback-${d.id}" rows="2" placeholder="Notes for revision..."></textarea>
+          </div>
+          <div style="display:flex;gap:8px;align-self:flex-end;padding-bottom:2px;">
+            <button class="btn btn-danger btn-sm" onclick="inlineReject(${d.id})">Reject</button>
+            <button class="btn btn-success btn-sm" onclick="inlineApprove(${d.id})">Approve</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch (e) {
+    console.error('loadReviewQueue error:', e);
+  }
 }
 
-async function viewDraft(id) {
-  const d = await api(`/api/drafts/${id}`);
-  document.getElementById('reviewTitle').textContent = d.idea_title || 'Draft #' + d.id;
-  document.getElementById('reviewContent').textContent = d.content || '';
-  document.getElementById('reviewMeta').innerHTML = `
-    <span class="badge badge-status-${(d.status||'').toLowerCase()}">${d.status}</span>
-    Quality: ${(d.quality_score||0).toFixed(1)}/10 · ${d.consultant_notes || ''}
-  `;
-  document.getElementById('reviewFeedback').value = '';
-  document.getElementById('reviewDate').value = '';
-  currentDraftId = id;
-  // Hide approve/reject if not pending
-  const btns = document.querySelectorAll('#reviewModal .btn-success, #reviewModal .btn-danger');
-  btns.forEach(b => b.style.display = d.status === 'PENDING_REVIEW' ? '' : 'none');
-  document.getElementById('reviewModal').classList.add('open');
+function onReviewDateChange(draftId, isoDate) {
+  const draft = reviewDraftsCache.find(d => d.id === draftId) || {};
+  const hints = getAlgoHints(isoDate, draft, allScheduledDates);
+  document.getElementById(`rv-hints-${draftId}`).innerHTML = renderHintsHtml(hints);
 }
 
-function openReview(id) { viewDraft(id); }
-
-function closeModal() {
-  document.getElementById('reviewModal').classList.remove('open');
-  currentDraftId = null;
-}
-
-async function submitReview(status) {
-  if (!currentDraftId) return;
-  const feedback = document.getElementById('reviewFeedback').value;
-  const date = document.getElementById('reviewDate').value;
-  await api(`/api/drafts/${currentDraftId}`, {
+async function inlineApprove(draftId) {
+  const date = document.getElementById(`rv-date-${draftId}`).value;
+  const feedback = document.getElementById(`rv-feedback-${draftId}`).value;
+  await api(`/api/drafts/${draftId}`, {
     method: 'PATCH',
     body: JSON.stringify({
-      status,
+      status: 'APPROVED',
       feedback: feedback || null,
       scheduled_date: date || null,
     }),
   });
-  toast(`Draft ${status.toLowerCase()}`, 'success');
-  closeModal();
-  loadDrafts();
+  toast('Draft approved ✓', 'success');
+  loadReviewQueue();
   loadHeaderStatus();
 }
 
+async function inlineReject(draftId) {
+  const feedback = document.getElementById(`rv-feedback-${draftId}`).value;
+  await api(`/api/drafts/${draftId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status: 'REJECTED', feedback: feedback || null }),
+  });
+  toast('Draft rejected', '');
+  loadReviewQueue();
+  loadHeaderStatus();
+}
+
+// ─── CONTENT CALENDAR ────────────────────────────────────────────────
+async function loadCalendar() {
+  const data = await api('/api/drafts?status=APPROVED');
+  calApprovedDrafts = data.drafts || [];
+  renderCalendarUI();
+}
+
+function renderCalendarUI() {
+  document.getElementById('calMonthLabel').textContent =
+    `${MONTH_NAMES[calMonth]} ${calYear}`;
+
+  // Split drafts
+  const scheduledByDate = {};
+  const unscheduled = [];
+  calApprovedDrafts.forEach(d => {
+    if (d.scheduled_date) {
+      if (!scheduledByDate[d.scheduled_date]) scheduledByDate[d.scheduled_date] = [];
+      scheduledByDate[d.scheduled_date].push(d);
+    } else {
+      unscheduled.push(d);
+    }
+  });
+
+  // Calendar grid
+  const DOW_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  let html = DOW_LABELS.map(d => `<div class="cal-header-cell">${d}</div>`).join('');
+
+  const firstDay = new Date(calYear, calMonth, 1);
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  // JS getDay(): 0=Sun → convert to Mon=0
+  const startDow = (firstDay.getDay() + 6) % 7;
+  const totalCells = Math.ceil((startDow + daysInMonth) / 7) * 7;
+
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+  for (let i = 0; i < totalCells; i++) {
+    const dayNum = i - startDow + 1;
+    if (dayNum < 1 || dayNum > daysInMonth) {
+      html += '<div class="cal-cell other-month"></div>';
+      continue;
+    }
+
+    const dateStr = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+    const dow = (startDow + dayNum - 1) % 7;  // 0=Mon … 6=Sun
+    const isWeekend = dow >= 5;
+    const isToday = dateStr === todayStr;
+
+    const classes = ['cal-cell', isWeekend ? 'weekend' : '', isToday ? 'today' : '']
+      .filter(Boolean).join(' ');
+
+    const postsHtml = (scheduledByDate[dateStr] || []).map(d => {
+      const stage = (d.funnel_stage || 'TOFU').toLowerCase();
+      const title = escHtml((d.idea_title || 'Draft #' + d.id).substring(0, 38));
+      return `<span class="cal-post ${stage}"
+        onclick="openScheduledPost(${d.id})"
+        title="${escHtml(d.idea_title || 'Draft #' + d.id)}">${title}</span>`;
+    }).join('');
+
+    const addBtn = !isWeekend
+      ? `<button class="cal-add" onclick="openScheduleModal('${dateStr}', null)">+ Add</button>`
+      : '';
+
+    const dateNum = isToday
+      ? `<span class="cal-today-num">${dayNum}</span>`
+      : dayNum;
+
+    html += `<div class="${classes}">
+      <div class="cal-date">${dateNum}</div>
+      ${postsHtml}
+      ${addBtn}
+    </div>`;
+  }
+
+  document.getElementById('calGrid').innerHTML = html;
+
+  // Sidebar: unscheduled approved drafts
+  const sidebar = document.getElementById('calSidebar');
+  if (!unscheduled.length) {
+    sidebar.innerHTML = '<p style="color:var(--text-muted);font-size:13px;padding:8px 0;">All approved drafts are scheduled.</p>';
+    return;
+  }
+  sidebar.innerHTML = unscheduled.map(d => {
+    const stage = d.funnel_stage || 'TOFU';
+    return `<div class="sidebar-card">
+      <div class="sc-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
+      <div class="sc-meta">${escHtml(stage)} · Quality: ${(d.quality_score || 0).toFixed(1)}/10</div>
+      ${renderThumbConcept(d)}
+      <button class="btn btn-primary btn-sm" style="margin-top:10px;width:100%;"
+        onclick="openScheduleModal(null, ${d.id})">Schedule</button>
+    </div>`;
+  }).join('');
+}
+
+function prevMonth() {
+  calMonth--;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCalendarUI();
+}
+
+function nextMonth() {
+  calMonth++;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCalendarUI();
+}
+
+function openScheduleModal(dateStr, draftId) {
+  document.getElementById('schedUnscheduleBtn').style.display = 'none';
+
+  const unscheduled = calApprovedDrafts.filter(d => !d.scheduled_date);
+  const sel = document.getElementById('schedDraftSelect');
+  sel.innerHTML = '<option value="">-- Select a draft --</option>' +
+    unscheduled.map(d =>
+      `<option value="${d.id}" ${d.id == draftId ? 'selected' : ''}>${escHtml(d.idea_title || 'Draft #' + d.id)}</option>`
+    ).join('');
+
+  document.getElementById('schedDate').value = dateStr || '';
+  document.getElementById('schedHints').innerHTML = '';
+
+  // Show hints if both are provided
+  if (dateStr && draftId) {
+    const draft = calApprovedDrafts.find(d => d.id == draftId) || {};
+    const scheduled = {};
+    calApprovedDrafts.forEach(d => { if (d.scheduled_date) scheduled[d.scheduled_date] = true; });
+    document.getElementById('schedHints').innerHTML =
+      renderHintsHtml(getAlgoHints(dateStr, draft, scheduled));
+  }
+
+  document.getElementById('scheduleModal').classList.add('open');
+}
+
+function openScheduledPost(draftId) {
+  const draft = calApprovedDrafts.find(d => d.id == draftId);
+  if (!draft) return;
+
+  // Show all drafts in selector (for rescheduling)
+  const sel = document.getElementById('schedDraftSelect');
+  sel.innerHTML = calApprovedDrafts.map(d =>
+    `<option value="${d.id}" ${d.id == draftId ? 'selected' : ''}>${escHtml(d.idea_title || 'Draft #' + d.id)}</option>`
+  ).join('');
+
+  document.getElementById('schedDate').value = draft.scheduled_date || '';
+  document.getElementById('schedUnscheduleBtn').style.display = '';
+
+  const scheduled = {};
+  calApprovedDrafts.forEach(d => {
+    if (d.scheduled_date && d.id != draftId) scheduled[d.scheduled_date] = true;
+  });
+  document.getElementById('schedHints').innerHTML =
+    renderHintsHtml(getAlgoHints(draft.scheduled_date, draft, scheduled));
+
+  document.getElementById('scheduleModal').classList.add('open');
+}
+
+function onSchedDraftChange() {
+  const draftId = parseInt(document.getElementById('schedDraftSelect').value);
+  const dateStr = document.getElementById('schedDate').value;
+  if (!draftId || !dateStr) return;
+  const draft = calApprovedDrafts.find(d => d.id === draftId) || {};
+  const scheduled = {};
+  calApprovedDrafts.forEach(d => { if (d.scheduled_date && d.id !== draftId) scheduled[d.scheduled_date] = true; });
+  document.getElementById('schedHints').innerHTML =
+    renderHintsHtml(getAlgoHints(dateStr, draft, scheduled));
+}
+
+function onSchedDateChange() {
+  const draftId = parseInt(document.getElementById('schedDraftSelect').value);
+  const dateStr = document.getElementById('schedDate').value;
+  if (!draftId || !dateStr) return;
+  const draft = calApprovedDrafts.find(d => d.id === draftId) || {};
+  const scheduled = {};
+  calApprovedDrafts.forEach(d => { if (d.scheduled_date && d.id !== draftId) scheduled[d.scheduled_date] = true; });
+  document.getElementById('schedHints').innerHTML =
+    renderHintsHtml(getAlgoHints(dateStr, draft, scheduled));
+}
+
+async function confirmSchedule() {
+  const draftId = parseInt(document.getElementById('schedDraftSelect').value);
+  const dateStr = document.getElementById('schedDate').value;
+  if (!draftId) { toast('Select a draft first', 'error'); return; }
+  await api(`/api/drafts/${draftId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status: 'APPROVED', scheduled_date: dateStr || null }),
+  });
+  toast(dateStr ? `Scheduled for ${dateStr}` : 'Date cleared', 'success');
+  closeScheduleModal();
+  loadCalendar();
+}
+
+async function schedUnschedule() {
+  const draftId = parseInt(document.getElementById('schedDraftSelect').value);
+  if (!draftId) return;
+  await api(`/api/drafts/${draftId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status: 'APPROVED', scheduled_date: null }),
+  });
+  toast('Post unscheduled', 'success');
+  closeScheduleModal();
+  loadCalendar();
+}
+
+function closeScheduleModal() {
+  document.getElementById('scheduleModal').classList.remove('open');
+}
+
 // ─── GENERATE ────────────────────────────────────────────────────────
+function setFunnelStage(btn, stage) {
+  genFunnelStage = stage;
+  document.querySelectorAll('.funnel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateTemplateList();
+}
+
+function updateTemplateList() {
+  const templates = FUNNEL_TEMPLATES[genFunnelStage] || [];
+  const sel = document.getElementById('genTemplate');
+  sel.innerHTML = templates.map(t => `<option value="${t}">${t}</option>`).join('');
+  const hints = {
+    TOFU: 'Provoke, challenge assumptions. No CTA.',
+    MOFU: 'Consideration: numbered list, community voice.',
+    BOFU: 'Specific outcome, low-friction CTA.',
+  };
+  document.getElementById('genTemplateHint').textContent = hints[genFunnelStage] || '';
+}
+
 async function generatePost() {
   const topic = document.getElementById('genTopic').value.trim();
   if (!topic) { toast('Enter a topic first', 'error'); return; }
@@ -1056,8 +1334,7 @@ async function generatePost() {
         topic,
         template: document.getElementById('genTemplate').value,
         language: document.getElementById('genLang').value,
-        audience: document.getElementById('genAudience').value,
-        tone: document.getElementById('genTone').value,
+        funnel_stage: genFunnelStage,
       }),
     });
     document.getElementById('genContent').textContent = data.content || 'No content returned';
@@ -1080,10 +1357,13 @@ async function loadSources() {
 
   document.getElementById('sourcesList').innerHTML = sources.map(s => {
     const status = s.status || 'active';
-    const cats = (s.default_categories || []).map(c => `<span class="badge badge-cat">${escHtml(c.replace(/_/g,' '))}</span>`).join(' ');
+    const cats = (s.default_categories || [])
+      .map(c => `<span class="badge badge-cat">${escHtml(c.replace(/_/g, ' '))}</span>`).join(' ');
+    const langBadge = s.language
+      ? `<span class="badge badge-cat" style="background:var(--navy);color:var(--copper-light);margin-left:4px;">${escHtml(s.language)}</span>` : '';
     return `<div class="source-card">
       <div class="source-name"><span class="source-status ${status}"></span>${escHtml(s.name)}</div>
-      <div class="source-meta">Tier ${s.tier || '--'} · ${escHtml(s.source_type || 'rss')}</div>
+      <div class="source-meta">Tier ${s.tier || '--'} · ${escHtml(s.source_type || 'rss')} ${langBadge}</div>
       <div style="margin-top:6px;">${cats}</div>
     </div>`;
   }).join('');
@@ -1096,13 +1376,14 @@ async function loadPainPoints() {
   const data = await api(path);
   const pps = data.pain_points || [];
 
-  // Populate category filter
   const allCats = [...new Set(pps.map(p => p.category))].sort();
   const sel = document.getElementById('ppCategoryFilter');
   const curVal = sel.value;
   if (sel.options.length <= 1) {
     sel.innerHTML = '<option value="">All Categories</option>' +
-      allCats.map(c => `<option value="${c}" ${c===curVal?'selected':''}>${c.replace(/_/g,' ')}</option>`).join('');
+      allCats.map(c =>
+        `<option value="${c}" ${c === curVal ? 'selected' : ''}>${c.replace(/_/g, ' ')}</option>`
+      ).join('');
   }
 
   document.getElementById('painPointsList').innerHTML = pps.map(p => `
@@ -1110,7 +1391,7 @@ async function loadPainPoints() {
       <div class="pp-point">${escHtml(p.data_point)}</div>
       <div class="pp-value">${escHtml(p.value)}</div>
       <div class="pp-meta">
-        <span class="badge badge-cat">${escHtml((p.category||'').replace(/_/g,' '))}</span>
+        <span class="badge badge-cat">${escHtml((p.category || '').replace(/_/g, ' '))}</span>
         <span class="badge badge-cat">${escHtml(p.country || 'UK')}</span>
         ${p.source ? `· ${escHtml(p.source)}` : ''} ${p.date ? `(${escHtml(p.date)})` : ''}
       </div>
@@ -1140,13 +1421,17 @@ async function loadBriefing() {
   try {
     const data = await api('/api/briefing');
     if (!data.briefing) {
-      document.getElementById('briefingContent').innerHTML = '<div class="empty-state"><div class="icon">📋</div><p>No briefing generated yet. Run on Friday at 15:00, or trigger manually.</p></div>';
+      document.getElementById('briefingContent').innerHTML =
+        '<div class="empty-state"><div class="icon">📋</div><p>No briefing generated yet. Run on Friday at 15:00, or trigger manually.</p></div>';
       return;
     }
     const b = data.briefing;
-    const stories = (b.top_stories || []).map(s => `<li>${escHtml(typeof s === 'string' ? s : s.title || JSON.stringify(s))}</li>`).join('');
-    const trends = (b.trend_watch || []).map(t => `<li>${escHtml(typeof t === 'string' ? t : t.trend || JSON.stringify(t))}</li>`).join('');
-    const priorities = (b.next_week_priorities || []).map(p => `<li>${escHtml(typeof p === 'string' ? p : p.priority || JSON.stringify(p))}</li>`).join('');
+    const stories = (b.top_stories || [])
+      .map(s => `<li>${escHtml(typeof s === 'string' ? s : s.title || JSON.stringify(s))}</li>`).join('');
+    const trends = (b.trend_watch || [])
+      .map(t => `<li>${escHtml(typeof t === 'string' ? t : t.trend || JSON.stringify(t))}</li>`).join('');
+    const priorities = (b.next_week_priorities || [])
+      .map(p => `<li>${escHtml(typeof p === 'string' ? p : p.priority || JSON.stringify(p))}</li>`).join('');
 
     document.getElementById('briefingContent').innerHTML = `
       <div class="card">
@@ -1174,14 +1459,60 @@ async function runAgent(name, btn) {
   }
 }
 
-// ─── Close modal on overlay click ────────────────────────────────────
+// ─── View Modal (legacy / view-only) ─────────────────────────────────
+function viewDraft(id) {
+  const draft = calApprovedDrafts.find(d => d.id == id)
+    || reviewDraftsCache.find(d => d.id == id);
+  if (!draft) return;
+  document.getElementById('reviewTitle').textContent = draft.idea_title || 'Draft #' + id;
+  document.getElementById('reviewContent').textContent = draft.content || '';
+  document.getElementById('reviewMeta').innerHTML = `
+    <span class="badge badge-status-${(draft.status || '').toLowerCase()}">${draft.status}</span>
+    &nbsp;Quality: ${(draft.quality_score || 0).toFixed(1)}/10
+    ${draft.scheduled_date ? ` · Scheduled: ${draft.scheduled_date}` : ''}
+  `;
+  document.getElementById('reviewFeedback').value = '';
+  document.getElementById('reviewDate').value = '';
+  currentDraftId = id;
+  document.getElementById('modalRejectBtn').style.display = 'none';
+  document.getElementById('modalApproveBtn').style.display = 'none';
+  document.getElementById('reviewModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('reviewModal').classList.remove('open');
+  currentDraftId = null;
+}
+
+async function submitReview(status) {
+  if (!currentDraftId) return;
+  const feedback = document.getElementById('reviewFeedback').value;
+  const date = document.getElementById('reviewDate').value;
+  await api(`/api/drafts/${currentDraftId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status,
+      feedback: feedback || null,
+      scheduled_date: date || null,
+    }),
+  });
+  toast(`Draft ${status.toLowerCase()}`, 'success');
+  closeModal();
+  loadHeaderStatus();
+}
+
+// ─── Close modals on overlay click ───────────────────────────────────
 document.getElementById('reviewModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
+document.getElementById('scheduleModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeScheduleModal();
+});
 
-// ─── Boot ────────────────────────────────────────────────────────────
+// ─── Boot ─────────────────────────────────────────────────────────────
 loadHeaderStatus();
 loadFeed();
+updateTemplateList();
 </script>
 </body>
 </html>
