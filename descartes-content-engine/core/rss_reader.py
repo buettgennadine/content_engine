@@ -16,12 +16,27 @@ HEADERS = {
 TIMEOUT = 15
 
 
+def fix_mojibake(text: str) -> str:
+    """Fix UTF-8 text that was incorrectly decoded as Windows-1252 (e.g. â€" → —)."""
+    if not text:
+        return text
+    try:
+        return text.encode("cp1252").decode("utf-8")
+    except (UnicodeDecodeError, UnicodeEncodeError):
+        return text
+
+
 def fetch_feed(url: str) -> Optional[feedparser.FeedParserDict]:
     """Fetch and parse RSS feed. Returns None on failure."""
     try:
         response = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
         response.raise_for_status()
-        feed = feedparser.parse(response.content)
+        # Requests defaults to Latin-1 when no charset is declared, even for
+        # UTF-8 content. Use apparent_encoding (chardet) to decode correctly,
+        # then pass text to feedparser so it sees clean Unicode.
+        if not response.encoding or response.encoding.lower() in ("iso-8859-1", "latin-1", "ascii"):
+            response.encoding = response.apparent_encoding or "utf-8"
+        feed = feedparser.parse(response.text)
         if feed.bozo and not feed.entries:
             logger.warning(f"Malformed feed: {url}")
             return None
@@ -90,10 +105,10 @@ def fetch_articles_from_source(source: dict) -> list[dict]:
 
         articles.append({
             "url": link,
-            "title": title,
+            "title": fix_mojibake(title),
             "source_id": source_id,
             "published_date": parse_date(entry),
-            "snippet": get_snippet(entry),
+            "snippet": fix_mojibake(get_snippet(entry)),
         })
 
     logger.info(f"Fetched {len(articles)} entries from {source['name']}")
