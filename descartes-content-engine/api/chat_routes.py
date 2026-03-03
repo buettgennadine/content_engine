@@ -12,7 +12,7 @@ from typing import Optional
 router = APIRouter(tags=["chat"])
 logger = logging.getLogger(__name__)
 
-SIDEBAR_SYSTEM = """You are Stuart Corrigan's content assistant, embedded in the Descartes Content Engine.
+SIDEBAR_SYSTEM = """You are Stuart Corrigan's content assistant, embedded in Quinn — the content intelligence platform by Descartes Consulting.
 
 Your role:
 1. Help improve LinkedIn posts — make them sharper, more provocative, more data-driven
