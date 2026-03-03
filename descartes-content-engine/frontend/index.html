@@ -434,6 +434,34 @@ body {
 .source-status.broken { background: var(--red); }
 .source-status.unknown { background: var(--text-muted); }
 
+/* ─── Visual Review ─── */
+.visual-img-area {
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 12px 0;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.visual-img-area img { max-width: 100%; max-height: 420px; display: block; }
+.visual-placeholder { padding: 32px 24px; text-align: center; color: var(--text-muted); font-size: 13px; }
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 12px; background: rgba(27,42,74,0.04); border-top: 1px solid var(--border); width: 100%; }
+.visual-type-btns { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 4px; }
+.visual-type-btn { padding: 5px 12px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.visual-type-btn:hover { border-color: var(--navy); color: var(--navy); }
+.visual-type-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.visual-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--cream-dark); margin-top: 4px; }
+.badge-visual-generated { background: var(--green-light); color: var(--green); }
+.badge-visual-pending { background: var(--cream-dark); color: var(--text-muted); }
+.badge-visual-approved { background: var(--navy); color: var(--copper-light); }
+.badge-visual-rejected { background: var(--red-light); color: var(--red); }
+.badge-visual-error { background: var(--red-light); color: var(--red); }
+.badge-visual-no_visual { background: var(--cream-dark); color: var(--text-muted); }
+
 /* ─── Agent Controls ─── */
 .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
 .agent-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; text-align: center; box-shadow: var(--shadow); }
@@ -513,6 +541,7 @@ body {
   <div class="nav-tab" data-page="review">Review Queue</div>
   <div class="nav-tab" data-page="calendar">Content Calendar</div>
   <div class="nav-tab" data-page="generate">Generate Post</div>
+  <div class="nav-tab" data-page="visuals">Visuals</div>
   <div class="nav-tab" data-page="sources">Sources &amp; Pain Points</div>
   <div class="nav-tab" data-page="system">System Status</div>
 </nav>
@@ -671,6 +700,30 @@ body {
   </div>
 </div>
 
+<!-- ══════════════════════════ PAGE: Visuals ══════════════════════════ -->
+<div class="page" id="page-visuals">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Visuals</div>
+      <div class="section-subtitle">Review, regenerate and approve Visual Agent outputs per draft</div>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="runAgent('visual', this)"><span class="spinner"></span> Run Visual Agent</button>
+  </div>
+
+  <div class="stat-grid" id="visualStats" style="margin-bottom:20px;"></div>
+
+  <div class="filter-bar">
+    <div class="lang-filter">
+      <button class="lang-btn active" onclick="setVisualFilter('all', this)">All</button>
+      <button class="lang-btn" onclick="setVisualFilter('generated', this)">Has Visual</button>
+      <button class="lang-btn" onclick="setVisualFilter('pending', this)">Needs Visual</button>
+      <button class="lang-btn" onclick="setVisualFilter('no_visual', this)">No Visual Needed</button>
+    </div>
+  </div>
+
+  <div id="visualsList"></div>
+</div>
+
 <!-- ══════════════════════════ PAGE: Sources & Pain Points ══════════════════════════ -->
 <div class="page" id="page-sources">
   <div class="section-header">
@@ -819,6 +872,7 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
     if (page === 'review') loadReviewQueue();
     if (page === 'calendar') loadCalendar();
     if (page === 'sources') { loadSources(); loadPainPoints(); }
+    if (page === 'visuals') loadVisuals();
     if (page === 'system') { loadSystemStatus(); loadBriefing(); }
   });
 });
@@ -1466,6 +1520,192 @@ async function loadBriefing() {
       </div>
     `;
   } catch {}
+}
+
+// ─── VISUALS PAGE ────────────────────────────────────────────────────
+let visualDraftsCache = [];
+let visualFilter = 'all';
+let visualTypeSelection = {};  // draftId → selected type override
+let carouselSlideCache = {};   // draftId → { slides, current }
+
+async function loadVisuals() {
+  try {
+    const data = await api('/api/drafts?status=PENDING_REVIEW');
+    visualDraftsCache = data.drafts || [];
+    renderVisualStats();
+    renderVisualsList();
+  } catch(e) {
+    document.getElementById('visualsList').innerHTML =
+      '<div class="empty-state"><div class="icon">⚠️</div><p>Failed to load drafts.</p></div>';
+  }
+}
+
+function renderVisualStats() {
+  const total = visualDraftsCache.length;
+  const generated = visualDraftsCache.filter(d => d.visual_status === 'generated').length;
+  const pending = visualDraftsCache.filter(d => !d.visual_status || d.visual_status === 'pending').length;
+  const errors = visualDraftsCache.filter(d => d.visual_status === 'error' || d.visual_status === 'no_visual').length;
+  document.getElementById('visualStats').innerHTML = `
+    <div class="stat-tile"><div class="val">${total}</div><div class="label">Drafts</div></div>
+    <div class="stat-tile"><div class="val copper">${generated}</div><div class="label">Visuals Generated</div></div>
+    <div class="stat-tile"><div class="val">${pending}</div><div class="label">Pending Generation</div></div>
+    <div class="stat-tile"><div class="val">${errors}</div><div class="label">No Visual / Error</div></div>
+  `;
+}
+
+function setVisualFilter(f, btn) {
+  visualFilter = f;
+  document.querySelectorAll('#page-visuals .lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderVisualsList();
+}
+
+function renderVisualsList() {
+  const el = document.getElementById('visualsList');
+  let drafts = visualDraftsCache;
+  if (visualFilter === 'generated')
+    drafts = drafts.filter(d => d.visual_status === 'generated');
+  else if (visualFilter === 'pending')
+    drafts = drafts.filter(d => !d.visual_status || d.visual_status === 'pending' || d.visual_status === 'error');
+  else if (visualFilter === 'no_visual')
+    drafts = drafts.filter(d => d.visual_status === 'no_visual');
+  if (!drafts.length) {
+    el.innerHTML = '<div class="empty-state"><div class="icon">🖼</div><p>No drafts in this filter.</p></div>';
+    return;
+  }
+  el.innerHTML = drafts.map(d => renderVisualCard(d)).join('');
+}
+
+function renderVisualCard(d) {
+  const stage = d.funnel_stage || 'TOFU';
+  const vstatus = d.visual_status || 'pending';
+  const hasVisual = vstatus === 'generated' && d.visual_path;
+  const isCarousel = (d.visual_count || 0) > 1;
+
+  // Badges
+  const stageBadge = `<span class="badge" style="background:var(--green-light);color:var(--green);">${escHtml(stage)}</span>`;
+  const vBadge = `<span class="badge badge-visual-${escHtml(vstatus)}">${vstatus.replace('_', ' ')}</span>`;
+  const vtBadge = d.visual_type ? `<span class="badge badge-cat">${escHtml(humanVisualType(d.visual_type))}</span>` : '';
+
+  // Image area
+  let imgArea;
+  if (hasVisual) {
+    const imgUrl = API + '/data/visuals' + d.visual_path.split('/data/visuals')[1];
+    const carouselNav = isCarousel ? `
+      <div class="carousel-controls">
+        <button class="btn btn-secondary btn-sm" onclick="navigateSlide(${d.id},-1)">←</button>
+        <span id="vc-label-${d.id}" style="font-size:12px;color:var(--text-muted);">1 of ${d.visual_count}</span>
+        <button class="btn btn-secondary btn-sm" onclick="navigateSlide(${d.id},1)">→</button>
+      </div>` : '';
+    imgArea = `<div class="visual-img-area">
+      <img id="vc-img-${d.id}" src="${escHtml(imgUrl)}" alt="Generated visual">
+      ${carouselNav}
+    </div>`;
+  } else {
+    const msg = vstatus === 'error'     ? '⚠️ Generation failed — try regenerating below'
+              : vstatus === 'no_visual' ? '— No visual needed for this post type'
+              : '⏳ Not yet generated — run the Visual Agent or regenerate below';
+    imgArea = `<div class="visual-img-area"><div class="visual-placeholder">${msg}</div></div>`;
+  }
+
+  // Type selector
+  const selectedType = visualTypeSelection[d.id] || '';
+  const types = [
+    { key: '', label: 'Auto' },
+    { key: 'thumbnail',   label: '🖼 Thumbnail' },
+    { key: 'carousel',    label: '🎠 Carousel' },
+    { key: 'data_visual', label: '📊 Data' },
+    { key: 'quote_card',  label: '💬 Quote' },
+  ];
+  const typeBtns = types.map(t =>
+    `<button class="visual-type-btn${selectedType === t.key ? ' active' : ''}"
+      onclick="selectVisualType(${d.id},'${t.key}',this)">${t.label}</button>`
+  ).join('');
+
+  // Action buttons
+  const regenLabel = hasVisual ? 'Regenerate' : 'Generate';
+  const regenBtn = `<button class="btn btn-secondary btn-sm" onclick="regenerateVisual(${d.id},this)"><span class="spinner"></span> ${regenLabel}</button>`;
+  const approveBtn = d.visual_id ? `<button class="btn btn-success btn-sm" onclick="approveVisual(${d.visual_id},${d.id},this)">Approve</button>` : '';
+  const rejectBtn  = d.visual_id ? `<button class="btn btn-danger btn-sm"  onclick="rejectVisual(${d.visual_id},${d.id},this)">Reject</button>` : '';
+
+  return `<div class="card" id="vc-card-${d.id}">
+    <div class="card-header">
+      <div class="card-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">${stageBadge}${vBadge}${vtBadge}</div>
+    </div>
+    ${imgArea}
+    <div style="margin-top:8px;">
+      <div style="font-size:12px;font-weight:600;color:var(--navy-muted);margin-bottom:6px;">Visual Type</div>
+      <div class="visual-type-btns">${typeBtns}</div>
+    </div>
+    <div class="visual-actions">${regenBtn}${approveBtn}${rejectBtn}</div>
+  </div>`;
+}
+
+function humanVisualType(t) {
+  return { carousel_slide: 'Carousel', thumbnail: 'Thumbnail', data_visual: 'Data Visual', quote_card: 'Quote Card' }[t] || t;
+}
+
+function selectVisualType(draftId, type, btn) {
+  visualTypeSelection[draftId] = type;
+  document.querySelectorAll(`#vc-card-${draftId} .visual-type-btn`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+async function regenerateVisual(draftId, btn) {
+  btn.classList.add('loading');
+  try {
+    const overrideType = visualTypeSelection[draftId] || undefined;
+    await api('/api/visual/generate', {
+      method: 'POST',
+      body: JSON.stringify({ draft_id: draftId, override_type: overrideType || null }),
+    });
+    toast('Visual generated', 'success');
+    carouselSlideCache[draftId] = null;
+    await loadVisuals();
+  } catch(e) {
+    toast(`Generation failed: ${e.message}`, 'error');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+async function approveVisual(visualId, draftId, btn) {
+  btn.classList.add('loading');
+  try {
+    await api(`/api/visuals/${visualId}`, { method: 'PATCH', body: JSON.stringify({ status: 'approved' }) });
+    toast('Visual approved', 'success');
+    await loadVisuals();
+  } catch(e) {
+    toast(`Approve failed: ${e.message}`, 'error');
+  } finally { btn.classList.remove('loading'); }
+}
+
+async function rejectVisual(visualId, draftId, btn) {
+  btn.classList.add('loading');
+  try {
+    await api(`/api/visuals/${visualId}`, { method: 'PATCH', body: JSON.stringify({ status: 'rejected' }) });
+    toast('Visual rejected', 'success');
+    await loadVisuals();
+  } catch(e) {
+    toast(`Reject failed: ${e.message}`, 'error');
+  } finally { btn.classList.remove('loading'); }
+}
+
+async function navigateSlide(draftId, dir) {
+  if (!carouselSlideCache[draftId]) {
+    try {
+      const data = await api(`/api/visuals/${draftId}/slides`);
+      carouselSlideCache[draftId] = { slides: data.slides || [], current: 0 };
+    } catch { toast('Could not load slides', 'error'); return; }
+  }
+  const state = carouselSlideCache[draftId];
+  state.current = (state.current + dir + state.slides.length) % state.slides.length;
+  const slide = state.slides[state.current];
+  const img = document.getElementById('vc-img-' + draftId);
+  const label = document.getElementById('vc-label-' + draftId);
+  if (img) img.src = API + slide.url;
+  if (label) label.textContent = `${state.current + 1} of ${state.slides.length}`;
 }
 
 // ─── AGENT TRIGGERS ──────────────────────────────────────────────────

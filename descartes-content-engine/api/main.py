@@ -129,7 +129,10 @@ def get_drafts(status: Optional[str] = None, funnel_stage: Optional[str] = None)
     conn = db.get_connection()
     query = (
         "SELECT d.*, ci.title as idea_title, "
-        "(SELECT file_path FROM visuals WHERE draft_id=d.id AND status!='replaced' ORDER BY id ASC LIMIT 1) as visual_path "
+        "(SELECT id FROM visuals WHERE draft_id=d.id AND status!='replaced' ORDER BY id ASC LIMIT 1) as visual_id, "
+        "(SELECT file_path FROM visuals WHERE draft_id=d.id AND status!='replaced' ORDER BY id ASC LIMIT 1) as visual_path, "
+        "(SELECT type FROM visuals WHERE draft_id=d.id AND status!='replaced' ORDER BY id ASC LIMIT 1) as visual_type, "
+        "(SELECT COUNT(*) FROM visuals WHERE draft_id=d.id AND status!='replaced') as visual_count "
         "FROM drafts d LEFT JOIN content_ideas ci ON d.idea_id=ci.id WHERE 1=1"
     )
     params = []
