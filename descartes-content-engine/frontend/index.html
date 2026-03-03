@@ -1002,6 +1002,10 @@ function renderHintsHtml(hints) {
 
 // ─── THUMBNAIL CONCEPT ───────────────────────────────────────────────
 function renderThumbConcept(draft) {
+  if (draft.visual_path) {
+    const url = API + '/data/visuals' + draft.visual_path.split('/data/visuals')[1];
+    return `<img src="${escHtml(url)}" style="max-width:100%;border-radius:var(--radius);margin-top:8px;" alt="Generated visual">`;
+  }
   if (draft.image_path) {
     return `<img src="${escHtml(API + '/static/' + draft.image_path)}"
       style="max-width:100%;border-radius:var(--radius);margin-top:8px;"

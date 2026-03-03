@@ -128,8 +128,9 @@ def get_drafts(status: Optional[str] = None, funnel_stage: Optional[str] = None)
     """Drafts with optional status and funnel_stage filters."""
     conn = db.get_connection()
     query = (
-        "SELECT d.*, ci.title as idea_title FROM drafts d "
-        "LEFT JOIN content_ideas ci ON d.idea_id=ci.id WHERE 1=1"
+        "SELECT d.*, ci.title as idea_title, "
+        "(SELECT file_path FROM visuals WHERE draft_id=d.id AND status!='replaced' ORDER BY id ASC LIMIT 1) as visual_path "
+        "FROM drafts d LEFT JOIN content_ideas ci ON d.idea_id=ci.id WHERE 1=1"
     )
     params = []
     if status:
@@ -483,6 +484,13 @@ def get_asset(filename: str):
     if not asset_path.exists():
         raise HTTPException(status_code=404, detail="Asset not found")
     return FileResponse(str(asset_path))
+
+
+# ─── Static Visuals ──────────────────────────────────────────────────────────
+
+_visuals_dir = Path(os.getenv("ENGINE_BASE_DIR", str(Path(__file__).resolve().parent.parent))) / "data" / "visuals"
+_visuals_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/data/visuals", StaticFiles(directory=str(_visuals_dir)), name="visuals")
 
 
 # ─── Static Frontend ─────────────────────────────────────────────────────────
