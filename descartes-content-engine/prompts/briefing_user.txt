@@ -1,0 +1,33 @@
+Generate a weekly intelligence briefing for Stuart Corrigan based on this week's signals.
+
+THIS WEEK'S ARTICLES ({article_count} total):
+{articles_context}
+
+PENDING DRAFTS AWAITING REVIEW: {pending_count}
+
+Generate briefing as JSON:
+{
+  "top_stories": [
+    {
+      "headline": "<what happened>",
+      "why_it_matters": "<system design implication for claims/pension ops>",
+      "content_opportunity": "<post angle if not yet drafted>"
+    }
+  ],
+  "trend_watch": [
+    {
+      "trend": "<emerging pattern>",
+      "direction": "<accelerating|stabilising|reversing>",
+      "implication": "<what Stuart should know>"
+    }
+  ],
+  "next_week_priorities": [
+    "<specific action or watch point>"
+  ],
+  "opportunity_spotted": "<single biggest content or business development opportunity this week>"
+}
+
+top_stories: exactly 3 (most important)
+trend_watch: exactly 3
+next_week_priorities: 3-5 items
+Be specific. Use numbers where available. British English.

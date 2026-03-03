@@ -507,6 +507,76 @@ body {
   gap: 8px;
 }
 
+/* ─── Dashboard ─── */
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 1024px) { .dashboard-grid { grid-template-columns: 1fr; } }
+.dash-section-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.dash-section-title a { font-size: 12px; font-weight: 500; color: var(--copper); text-decoration: none; }
+.dash-section-title a:hover { text-decoration: underline; }
+.dash-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 13px 15px; margin-bottom: 8px; box-shadow: var(--shadow); cursor: pointer; transition: all 0.2s; }
+.dash-card:hover { box-shadow: var(--shadow-md); border-color: var(--copper-light); }
+.dash-card .dc-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; line-height: 1.4; }
+.dash-card .dc-meta { font-size: 11px; color: var(--text-muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.dash-card .dc-vps { font-size: 13px; font-weight: 700; color: var(--copper); }
+.dash-card .dc-date { font-size: 12px; color: var(--copper); font-weight: 600; }
+.dash-col-empty { font-size: 13px; color: var(--text-muted); padding: 16px 4px; }
+.dash-stat-row { display: flex; gap: 12px; margin-bottom: 20px; }
+.dash-stat { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px; flex: 1; text-align: center; box-shadow: var(--shadow); }
+.dash-stat .ds-val { font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 3px; }
+.dash-stat .ds-val.copper { color: var(--copper); }
+.dash-stat .ds-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+
+/* ─── Prompt Editor ─── */
+.prompt-editor-layout { display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .prompt-editor-layout { grid-template-columns: 1fr; } }
+.prompt-list { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 8px; box-shadow: var(--shadow); }
+.prompt-agent-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); padding: 10px 10px 4px; display: block; }
+.prompt-item { padding: 9px 12px; border-radius: var(--radius); cursor: pointer; transition: all 0.15s; margin-bottom: 2px; }
+.prompt-item:hover { background: var(--cream); }
+.prompt-item.active { background: var(--navy); }
+.prompt-item .pi-label { font-size: 13px; font-weight: 600; color: var(--navy); }
+.prompt-item.active .pi-label { color: var(--white); }
+.prompt-item .pi-meta { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.prompt-item.active .pi-meta { color: rgba(255,255,255,0.55); }
+.prompt-editor-area { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; box-shadow: var(--shadow); }
+.prompt-editor-toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.prompt-editor-title { font-size: 16px; font-weight: 700; color: var(--navy); flex: 1; }
+#promptTextarea { width: 100%; min-height: 400px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'Consolas', 'Monaco', monospace; line-height: 1.65; resize: vertical; background: var(--cream); color: var(--text); }
+#promptTextarea:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 3px rgba(193,127,89,0.15); }
+.prompt-meta-bar { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+.prompt-history-panel { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-top: 12px; display: none; }
+.prompt-history-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: var(--text-muted); cursor: pointer; }
+.prompt-history-row:hover { background: var(--cream-dark); color: var(--navy); }
+.prompt-history-row .ph-preview { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px; }
+
+/* ─── Chat Sidebar ─── */
+.chat-sidebar { position: fixed; right: 0; top: 0; bottom: 0; width: 360px; background: var(--white); border-left: 1px solid var(--border); box-shadow: -4px 0 20px rgba(27,42,74,0.1); z-index: 200; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.25s ease; }
+.chat-sidebar.open { transform: translateX(0); }
+.chat-toggle-btn { position: fixed; right: 20px; bottom: 28px; width: 50px; height: 50px; border-radius: 50%; background: var(--copper); color: var(--white); border: none; font-size: 22px; cursor: pointer; box-shadow: 0 4px 14px rgba(193,127,89,0.4); z-index: 201; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.chat-toggle-btn:hover { background: var(--copper-dark); transform: scale(1.05); }
+.chat-toggle-btn.active { background: var(--navy); }
+.chat-header { background: var(--navy); color: var(--white); padding: 15px 18px; display: flex; justify-content: space-between; align-items: flex-start; flex-shrink: 0; }
+.chat-header-info .chat-header-title { font-size: 15px; font-weight: 600; }
+.chat-header-info .chat-header-tab { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+.chat-close { background: none; border: none; color: rgba(255,255,255,0.65); font-size: 22px; cursor: pointer; line-height: 1; padding: 0; }
+.chat-close:hover { color: var(--white); }
+.chat-messages { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.chat-msg { max-width: 92%; border-radius: var(--radius); padding: 10px 12px; font-size: 13px; line-height: 1.55; }
+.chat-msg-user { background: var(--navy); color: var(--white); align-self: flex-end; border-radius: var(--radius) var(--radius) 2px var(--radius); }
+.chat-msg-assistant { background: var(--cream); border: 1px solid var(--border); color: var(--text); align-self: flex-start; white-space: pre-wrap; border-radius: var(--radius) var(--radius) var(--radius) 2px; }
+.chat-apply-btn { display: block; width: 100%; margin-top: 8px; padding: 5px 10px; background: var(--green); color: var(--white); border: none; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; text-align: center; }
+.chat-apply-btn:hover { background: #2E7D4E; }
+.chat-typing { align-self: flex-start; background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 16px; font-size: 13px; color: var(--text-muted); }
+.chat-quick-actions { padding: 8px 12px; display: flex; gap: 5px; flex-wrap: wrap; border-top: 1px solid var(--border); background: var(--cream); flex-shrink: 0; }
+.chat-qa-btn { padding: 4px 10px; border: 1px solid var(--border); border-radius: 99px; background: var(--white); color: var(--navy); font-size: 11px; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.chat-qa-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.chat-input-row { padding: 10px 12px; border-top: 1px solid var(--border); flex-shrink: 0; display: flex; gap: 8px; align-items: flex-end; }
+#chatInput { flex: 1; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: inherit; resize: none; height: 64px; max-height: 120px; overflow-y: auto; }
+#chatInput:focus { outline: none; border-color: var(--copper); }
+.chat-send-btn { padding: 8px 14px; background: var(--copper); color: var(--white); border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+.chat-send-btn:hover { background: var(--copper-dark); }
+.chat-empty { text-align: center; color: var(--text-muted); font-size: 13px; padding: 36px 20px; line-height: 1.6; }
+
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
   .header { padding: 12px 16px; }
@@ -515,6 +585,7 @@ body {
   .main { padding: 16px; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
   .funnel-btn-group { flex-direction: column; }
+  .chat-sidebar { width: 100%; }
 }
 </style>
 </head>
@@ -535,13 +606,15 @@ body {
   </div>
 </header>
 
-<!-- Navigation (6 tabs) -->
+<!-- Navigation -->
 <nav class="nav">
-  <div class="nav-tab active" data-page="feed">Intelligence Feed</div>
+  <div class="nav-tab active" data-page="dashboard">Dashboard</div>
+  <div class="nav-tab" data-page="feed">Intelligence Feed</div>
   <div class="nav-tab" data-page="review">Review Queue</div>
   <div class="nav-tab" data-page="calendar">Content Calendar</div>
   <div class="nav-tab" data-page="generate">Generate Post</div>
   <div class="nav-tab" data-page="visuals">Visuals</div>
+  <div class="nav-tab" data-page="prompts">Prompt Editor</div>
   <div class="nav-tab" data-page="sources">Sources &amp; Pain Points</div>
   <div class="nav-tab" data-page="system">System Status</div>
 </nav>
@@ -551,8 +624,49 @@ body {
 
 <div class="main">
 
+<!-- ══════════════════════════ PAGE: Dashboard ══════════════════════════ -->
+<div class="page active" id="page-dashboard">
+  <div class="section-header">
+    <div>
+      <div class="section-title" id="dashGreeting">Dashboard</div>
+      <div class="section-subtitle">Your week at a glance</div>
+    </div>
+    <button class="btn btn-secondary btn-sm" onclick="loadDashboard()">Refresh</button>
+  </div>
+
+  <div class="dash-stat-row" id="dashStats">
+    <div class="dash-stat"><div class="ds-val" id="dsPending">--</div><div class="ds-label">Pending Review</div></div>
+    <div class="dash-stat"><div class="ds-val copper" id="dsApproved">--</div><div class="ds-label">Approved</div></div>
+    <div class="dash-stat"><div class="ds-val" id="dsArticles">--</div><div class="ds-label">New Articles (7d)</div></div>
+  </div>
+
+  <div class="dashboard-grid">
+    <div>
+      <div class="dash-section-title">
+        Awaiting Review
+        <a href="#" onclick="switchTab('review');return false;">View all →</a>
+      </div>
+      <div id="dashPendingList"><div class="dash-col-empty">Loading...</div></div>
+    </div>
+    <div>
+      <div class="dash-section-title">
+        Top Signals This Week
+        <a href="#" onclick="switchTab('feed');return false;">View all →</a>
+      </div>
+      <div id="dashSignalsList"><div class="dash-col-empty">Loading...</div></div>
+    </div>
+    <div>
+      <div class="dash-section-title">
+        Upcoming (Next 7 Days)
+        <a href="#" onclick="switchTab('calendar');return false;">View all →</a>
+      </div>
+      <div id="dashUpcomingList"><div class="dash-col-empty">Loading...</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════════════════ PAGE: Intelligence Feed ══════════════════════════ -->
-<div class="page active" id="page-feed">
+<div class="page" id="page-feed">
   <div class="section-header">
     <div>
       <div class="section-title">Intelligence Feed</div>
@@ -724,6 +838,28 @@ body {
   <div id="visualsList"></div>
 </div>
 
+<!-- ══════════════════════════ PAGE: Prompt Editor ══════════════════════════ -->
+<div class="page" id="page-prompts">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Prompt Editor</div>
+      <div class="section-subtitle">Edit and version agent prompts — saved to disk, versioned in DB</div>
+    </div>
+  </div>
+
+  <div class="prompt-editor-layout">
+    <!-- Left: prompt list -->
+    <div class="prompt-list" id="promptList">
+      <div style="padding:16px;color:var(--text-muted);font-size:13px;">Loading...</div>
+    </div>
+
+    <!-- Right: editor -->
+    <div class="prompt-editor-area" id="promptEditorArea">
+      <div style="color:var(--text-muted);font-size:13px;padding:24px 0;">Select a prompt from the list to edit it.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════════════════ PAGE: Sources & Pain Points ══════════════════════════ -->
 <div class="page" id="page-sources">
   <div class="section-header">
@@ -831,6 +967,27 @@ body {
   </div>
 </div>
 
+<!-- ══════════════════════════ Chat Sidebar ══════════════════════════ -->
+<button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChat()" title="Ask Claude">💬</button>
+
+<div class="chat-sidebar" id="chatSidebar">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <div class="chat-header-title">Claude — Content Assistant</div>
+      <div class="chat-header-tab" id="chatTabLabel">Dashboard</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-empty">Ask me to sharpen a hook, check voice rules, suggest angles, or explain a prompt.<br><br>I have context about what you're viewing.</div>
+  </div>
+  <div class="chat-quick-actions" id="chatQuickActions"></div>
+  <div class="chat-input-row">
+    <textarea id="chatInput" placeholder="Ask anything…" onkeydown="chatKeyDown(event)"></textarea>
+    <button class="chat-send-btn" onclick="sendChat()">Send</button>
+  </div>
+</div>
+
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
    Descartes Content Engine — Frontend JS
@@ -841,6 +998,7 @@ const API = 'http://46.225.223.132:8000';
 // ─── State ───────────────────────────────────────────────────────────
 let currentLangFilter = '';
 let currentDraftId = null;
+let currentPage = 'dashboard';
 
 // Calendar
 let calYear = new Date().getFullYear();
@@ -855,25 +1013,43 @@ let allScheduledDates = {};  // ISO date string → true
 let genFunnelStage = 'TOFU';
 let genPostType = 'text';
 
+// Prompts
+let promptsCache = [];
+let currentPromptName = null;
+let promptDirty = false;
+
+// Chat
+let chatOpen = false;
+let chatHistory = [];
+let chatCurrentDraft = null;
+
 const MONTH_NAMES = [
   'January','February','March','April','May','June',
   'July','August','September','October','November','December'
 ];
 
 // ─── Navigation ──────────────────────────────────────────────────────
+function switchTab(page) {
+  const tab = document.querySelector(`.nav-tab[data-page="${page}"]`);
+  if (tab) tab.click();
+}
+
 document.querySelectorAll('.nav-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('page-' + tab.dataset.page).classList.add('active');
-    const page = tab.dataset.page;
-    if (page === 'feed') loadFeed();
-    if (page === 'review') loadReviewQueue();
-    if (page === 'calendar') loadCalendar();
-    if (page === 'sources') { loadSources(); loadPainPoints(); }
-    if (page === 'visuals') loadVisuals();
-    if (page === 'system') { loadSystemStatus(); loadBriefing(); }
+    currentPage = tab.dataset.page;
+    if (currentPage === 'dashboard') loadDashboard();
+    if (currentPage === 'feed') loadFeed();
+    if (currentPage === 'review') loadReviewQueue();
+    if (currentPage === 'calendar') loadCalendar();
+    if (currentPage === 'sources') { loadSources(); loadPainPoints(); }
+    if (currentPage === 'visuals') loadVisuals();
+    if (currentPage === 'prompts') loadPrompts();
+    if (currentPage === 'system') { loadSystemStatus(); loadBriefing(); }
+    updateChatContext();
   });
 });
 
@@ -1772,9 +1948,323 @@ document.getElementById('scheduleModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeScheduleModal();
 });
 
+// ─── DASHBOARD ───────────────────────────────────────────────────────
+async function loadDashboard() {
+  try {
+    const data = await api('/api/dashboard');
+
+    // Stat tiles
+    document.getElementById('dsPending').textContent = data.counts.pending ?? '--';
+    document.getElementById('dsApproved').textContent = data.counts.approved ?? '--';
+    document.getElementById('dsArticles').textContent = data.counts.new_articles ?? '--';
+
+    // Greeting
+    const hr = new Date().getHours();
+    const greet = hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening';
+    document.getElementById('dashGreeting').textContent = `${greet}, Stuart.`;
+
+    // Pending review
+    const pendingEl = document.getElementById('dashPendingList');
+    if (!data.pending_review.length) {
+      pendingEl.innerHTML = '<div class="dash-col-empty">Queue is clear. 🎉</div>';
+    } else {
+      pendingEl.innerHTML = data.pending_review.map(d => `
+        <div class="dash-card" onclick="switchTab('review')">
+          <div class="dc-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
+          <div class="dc-meta">
+            <span class="badge badge-status-${(d.funnel_stage||'TOFU').toLowerCase()}" style="font-size:10px;">${escHtml(d.funnel_stage||'TOFU')}</span>
+            <span>Q: ${(d.quality_score||0).toFixed(1)}/10</span>
+            <span>${formatDate(d.created_at).split(',')[0]}</span>
+          </div>
+        </div>`).join('');
+    }
+
+    // Top signals
+    const signalsEl = document.getElementById('dashSignalsList');
+    if (!data.top_signals.length) {
+      signalsEl.innerHTML = '<div class="dash-col-empty">No high-VPS signals this week.</div>';
+    } else {
+      signalsEl.innerHTML = data.top_signals.map(a => `
+        <div class="dash-card" onclick="switchTab('feed')">
+          <div class="dc-title">${escHtml(a.title)}</div>
+          <div class="dc-meta">
+            <span class="dc-vps">VPS ${a.vps_score}</span>
+            <span>${escHtml(a.source||'')}</span>
+          </div>
+        </div>`).join('');
+    }
+
+    // Upcoming posts
+    const upcomingEl = document.getElementById('dashUpcomingList');
+    if (!data.upcoming_posts.length) {
+      upcomingEl.innerHTML = '<div class="dash-col-empty">Nothing scheduled for the next 7 days.</div>';
+    } else {
+      upcomingEl.innerHTML = data.upcoming_posts.map(d => {
+        const dt = d.scheduled_date ? new Date(d.scheduled_date).toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short'}) : '--';
+        return `<div class="dash-card" onclick="switchTab('calendar')">
+          <div class="dc-title">${escHtml(d.idea_title || 'Draft #' + d.id)}</div>
+          <div class="dc-meta">
+            <span class="dc-date">${dt}</span>
+            <span class="badge" style="background:var(--cream-dark);color:var(--navy-muted);font-size:10px;">${escHtml(d.funnel_stage||'')}</span>
+          </div>
+        </div>`;
+      }).join('');
+    }
+  } catch(e) {
+    console.error('Dashboard load failed', e);
+  }
+}
+
+// ─── PROMPT EDITOR ───────────────────────────────────────────────────
+async function loadPrompts() {
+  try {
+    const data = await api('/api/prompts');
+    promptsCache = data.prompts || [];
+    renderPromptList();
+    if (promptsCache.length && !currentPromptName) {
+      selectPrompt(promptsCache[0].name);
+    } else if (currentPromptName) {
+      selectPrompt(currentPromptName);
+    }
+  } catch(e) {}
+}
+
+function renderPromptList() {
+  const el = document.getElementById('promptList');
+  // Group by agent
+  const agents = {};
+  for (const p of promptsCache) {
+    if (!agents[p.agent]) agents[p.agent] = [];
+    agents[p.agent].push(p);
+  }
+  el.innerHTML = Object.entries(agents).map(([agent, items]) => `
+    <span class="prompt-agent-label">${escHtml(agent)}</span>
+    ${items.map(p => `
+      <div class="prompt-item${currentPromptName === p.name ? ' active' : ''}" onclick="selectPrompt('${p.name}')">
+        <div class="pi-label">${escHtml(p.label)}</div>
+        <div class="pi-meta">${p.char_count} chars${p.last_edited ? ' · ' + p.last_edited.substring(0,10) : ''}</div>
+      </div>`).join('')}
+  `).join('');
+}
+
+async function selectPrompt(name) {
+  if (promptDirty && currentPromptName && !confirm('Discard unsaved changes?')) return;
+  currentPromptName = name;
+  promptDirty = false;
+  renderPromptList();
+
+  const area = document.getElementById('promptEditorArea');
+  area.innerHTML = '<div style="padding:16px;color:var(--text-muted);">Loading…</div>';
+
+  try {
+    const p = await api(`/api/prompts/${name}`);
+    area.innerHTML = `
+      <div class="prompt-editor-toolbar">
+        <div class="prompt-editor-title">${escHtml(p.agent)} — ${escHtml(p.label)}</div>
+        <button class="btn btn-secondary btn-sm" onclick="togglePromptHistory('${name}')">History</button>
+        <button class="btn btn-secondary btn-sm" id="promptResetBtn" onclick="resetPrompt()" disabled>Reset</button>
+        <button class="btn btn-primary btn-sm" id="promptSaveBtn" onclick="savePrompt('${name}')" disabled>Save</button>
+      </div>
+      <textarea id="promptTextarea" oninput="onPromptEdit()">${escHtml(p.content)}</textarea>
+      <div class="prompt-meta-bar" id="promptMetaBar">
+        ${p.last_edited ? `Last saved ${p.last_edited.substring(0,10)} by ${p.last_edited_by||'?'}` : 'Never saved'}
+        &nbsp;·&nbsp; <span id="promptCharCount">${p.content.length}</span> chars
+      </div>
+      <div class="prompt-history-panel" id="promptHistoryPanel"></div>
+    `;
+  } catch(e) {
+    area.innerHTML = `<div style="color:var(--red);padding:16px;">Failed to load prompt.</div>`;
+  }
+}
+
+function onPromptEdit() {
+  promptDirty = true;
+  const ta = document.getElementById('promptTextarea');
+  document.getElementById('promptCharCount').textContent = ta.value.length;
+  document.getElementById('promptSaveBtn').disabled = false;
+  document.getElementById('promptResetBtn').disabled = false;
+}
+
+function resetPrompt() {
+  if (!confirm('Discard all edits?')) return;
+  promptDirty = false;
+  selectPrompt(currentPromptName);
+}
+
+async function savePrompt(name) {
+  const content = document.getElementById('promptTextarea').value;
+  const btn = document.getElementById('promptSaveBtn');
+  btn.classList.add('loading');
+  try {
+    await api(`/api/prompts/${name}`, {
+      method: 'POST',
+      body: JSON.stringify({ content, edited_by: 'nadine' }),
+    });
+    promptDirty = false;
+    btn.disabled = true;
+    document.getElementById('promptResetBtn').disabled = true;
+    document.getElementById('promptMetaBar').textContent = `Saved just now · ${content.length} chars`;
+    toast('Prompt saved', 'success');
+    loadPrompts();
+  } catch(e) {
+    toast(`Save failed: ${e.message}`, 'error');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+async function togglePromptHistory(name) {
+  const panel = document.getElementById('promptHistoryPanel');
+  if (panel.style.display === 'block') { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+  panel.innerHTML = 'Loading…';
+  try {
+    const data = await api(`/api/prompts/${name}/history`);
+    if (!data.history.length) { panel.innerHTML = 'No saved versions yet.'; return; }
+    panel.innerHTML = '<div style="font-size:12px;font-weight:600;color:var(--navy-muted);margin-bottom:8px;">Version History (last 10)</div>' +
+      data.history.map(h => `
+        <div class="prompt-history-row" onclick="rollbackPrompt('${name}', ${h.id})">
+          <span class="ph-preview">${escHtml(h.preview||'')}</span>
+          <span style="white-space:nowrap;margin-left:12px;">${(h.created_at||'').substring(0,16)} · ${h.edited_by||'?'}</span>
+        </div>`).join('');
+  } catch(e) { panel.innerHTML = 'Failed to load history.'; }
+}
+
+async function rollbackPrompt(name, versionId) {
+  if (!confirm(`Restore this version?`)) return;
+  try {
+    await api(`/api/prompts/${name}/rollback/${versionId}`, { method: 'POST' });
+    toast('Version restored', 'success');
+    promptDirty = false;
+    selectPrompt(name);
+    loadPrompts();
+  } catch(e) { toast(`Rollback failed: ${e.message}`, 'error'); }
+}
+
+// ─── CLAUDE CHAT SIDEBAR ─────────────────────────────────────────────
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatSidebar').classList.toggle('open', chatOpen);
+  document.getElementById('chatToggleBtn').classList.toggle('active', chatOpen);
+  if (chatOpen) updateChatContext();
+}
+
+function updateChatContext() {
+  const labels = {
+    dashboard: 'Dashboard', feed: 'Intelligence Feed', review: 'Review Queue',
+    calendar: 'Content Calendar', generate: 'Generate Post', visuals: 'Visuals',
+    prompts: 'Prompt Editor', sources: 'Sources & Pain Points', system: 'System Status',
+  };
+  document.getElementById('chatTabLabel').textContent = labels[currentPage] || currentPage;
+  loadChatQuickActions();
+}
+
+async function loadChatQuickActions() {
+  try {
+    const data = await api(`/api/chat/quick-actions?tab=${currentPage}`);
+    const el = document.getElementById('chatQuickActions');
+    el.innerHTML = (data.actions || []).map(a =>
+      `<button class="chat-qa-btn" onclick="quickAsk(this)">${escHtml(a)}</button>`
+    ).join('');
+  } catch {}
+}
+
+function quickAsk(btn) {
+  document.getElementById('chatInput').value = btn.textContent;
+  sendChat();
+}
+
+function chatKeyDown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+
+function buildChatContext() {
+  const ctx = { tab: currentPage };
+  if (currentPage === 'review' || currentPage === 'visuals') {
+    const first = reviewDraftsCache[0];
+    if (first) {
+      ctx.draft_content = first.content || '';
+      ctx.funnel_stage = first.funnel_stage || '';
+    }
+  }
+  if (currentPage === 'generate') {
+    const topic = document.getElementById('genTopic');
+    if (topic && topic.value) ctx.draft_content = topic.value;
+    ctx.funnel_stage = genFunnelStage;
+    ctx.post_type = genPostType;
+  }
+  if (currentPage === 'prompts' && currentPromptName) {
+    const ta = document.getElementById('promptTextarea');
+    ctx.prompt_name = currentPromptName;
+    ctx.prompt_content = ta ? ta.value : '';
+  }
+  return ctx;
+}
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = (input.value || '').trim();
+  if (!msg) return;
+  input.value = '';
+
+  appendChatMsg('user', msg);
+  chatHistory.push({ role: 'user', content: msg });
+
+  const typingEl = document.createElement('div');
+  typingEl.className = 'chat-typing';
+  typingEl.textContent = '…';
+  document.getElementById('chatMessages').appendChild(typingEl);
+  scrollChat();
+
+  try {
+    const data = await api('/api/chat', {
+      method: 'POST',
+      body: JSON.stringify({
+        message: msg,
+        context: buildChatContext(),
+        history: chatHistory.slice(-10, -1),
+      }),
+    });
+    typingEl.remove();
+    const reply = data.response || '';
+    chatHistory.push({ role: 'assistant', content: reply });
+    appendChatMsg('assistant', reply, data.has_suggestion);
+  } catch(e) {
+    typingEl.remove();
+    appendChatMsg('assistant', `Error: ${e.message}`);
+  }
+}
+
+function appendChatMsg(role, content, hasSuggestion) {
+  const el = document.createElement('div');
+  el.className = `chat-msg chat-msg-${role}`;
+  el.textContent = content;
+  if (role === 'assistant' && hasSuggestion) {
+    const btn = document.createElement('button');
+    btn.className = 'chat-apply-btn';
+    btn.textContent = 'Apply to draft area';
+    btn.onclick = () => {
+      const ta = document.getElementById('genContent') || document.getElementById('genTopic');
+      if (ta) {
+        if (ta.tagName === 'TEXTAREA') ta.value = content;
+        else ta.textContent = content;
+        toast('Applied to draft area', 'success');
+      }
+    };
+    el.appendChild(btn);
+  }
+  document.getElementById('chatMessages').appendChild(el);
+  scrollChat();
+}
+
+function scrollChat() {
+  const el = document.getElementById('chatMessages');
+  el.scrollTop = el.scrollHeight;
+}
+
 // ─── Boot ─────────────────────────────────────────────────────────────
 loadHeaderStatus();
-loadFeed();
+loadDashboard();
 </script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+Rate this LinkedIn post on 6 criteria, score each 1-10.
+
+POST:
+{post_body}
+
+IDEA INTENT: {angle}
+
+Return JSON only:
+{
+  "factual_accuracy": <1-10>,
+  "positioning_alignment": <1-10>,
+  "audience_fit": <1-10>,
+  "tone": <1-10>,
+  "uniqueness": <1-10>,
+  "hook_strength": <1-10>
+}

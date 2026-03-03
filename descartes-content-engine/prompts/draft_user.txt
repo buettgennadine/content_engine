@@ -1,0 +1,38 @@
+Write a LinkedIn post for Stuart Corrigan.
+
+FUNNEL STAGE: {funnel_stage} — {format_hint}
+THUMBNAIL STYLE: {thumb_style} (auto-selected for this template)
+
+IDEA:
+Title: {title}
+Template: {template}
+Pillar: {pillar}
+Hook (starting point): {hook}
+Angle: {angle}
+Key data: {key_data}
+
+TEMPLATE STRUCTURE:
+{template_guide}
+
+PAIN POINT DATA (use what's relevant):
+{pain_context}
+
+OUTPUT: Return a single valid JSON object. No preamble, no markdown fences.
+{
+  "funnel_stage": "{funnel_stage}",
+  "format": "text|carousel|text+image",
+  "hook": "<first line — the scroll-stopper, max 120 chars>",
+  "post_body": "<complete post text, British English, line breaks, NO hashtags here>",
+  "hashtags": ["#Broad1", "#Broad2", "#Niche1"],
+  "carousel_outline": ["Slide 1: Title", "Slide 2: ..."] or null,
+  "thumbnail_concept": "<10-20 words: what the thumbnail image literally shows>",
+  "save_trigger": "<one sentence: why a Claims Director saves this post>",
+  "dwell_time_elements": "<one sentence: what structural choice makes them read slowly>"
+}
+
+Rules:
+- TOFU/MOFU text: carousel_outline=null, provide thumbnail_concept
+- Carousel format: carousel_outline=list, thumbnail_concept=null
+- BOFU: carousel_outline=null, provide thumbnail_concept
+- post_body must NOT contain hashtags (appended separately)
+- thumbnail_concept describes only what is SHOWN visually, no text content

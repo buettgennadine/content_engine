@@ -1,0 +1,41 @@
+Based on this week's insurance industry signals, generate 12 LinkedIn content ideas for Stuart Corrigan.
+
+THIS WEEK'S TOP SIGNALS:
+{articles_context}
+
+PAIN POINT DATABASE (use as supporting data):
+{pain_context}
+
+POST TEMPLATES AVAILABLE:
+1. Old vs New Rules — Stuart's signature format. Contrasting 🔴/🟢 pairs
+2. Contrarian Take — Challenges conventional wisdom with specific named belief
+3. Data Hook — Opens with shocking statistic. "£11.7B. Let that sink in."
+4. Case Study — Leads with dramatic result number. Anonymous. Strong trust builder.
+5. Provocative Question — Opens with challenge that forces reflection
+6. Story Format — Anecdote → tension → insight. High dwell time.
+
+CONTENT PILLARS:
+- Claims Management (performance, failure demand, leakage, AI/automation)
+- Pension Operations (complexity, dashboards, admin burden)
+- System Design vs Individual Performance
+- Theory of Constraints applied to insurance
+- Consumer Duty as Systems Thinking
+
+Generate exactly 12 ideas as a JSON array:
+[
+  {
+    "title": "<compelling working title>",
+    "format": "<template name from list above>",
+    "pillar": "<content pillar>",
+    "hook": "<opening line — 10-15 words, Tier 1 opening pattern>",
+    "angle": "<the contrarian or systems-thinking insight>",
+    "key_data": "<specific number/statistic to anchor the post>",
+    "source_article_ids": [<list of article ids from the signals>],
+    "priority_score": <0-100, based on VPS and timeliness>,
+    "urgency": "<this_week|next_week|evergreen>",
+    "effort": "<low|medium|high>"
+  }
+]
+
+Rank by priority_score descending. Top 3 will be drafted on Monday.
+Ensure variety: no more than 3 ideas per template type.

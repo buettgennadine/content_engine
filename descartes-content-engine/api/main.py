@@ -26,6 +26,8 @@ import anthropic
 from core import database as db
 from core.llm import chat as llm_chat
 from api.visual_routes import router as visual_router
+from api.prompt_routes import router as prompt_router
+from api.chat_routes import router as chat_router
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +47,8 @@ app.add_middleware(
 
 db.init_db()
 app.include_router(visual_router, prefix="/api")
+app.include_router(prompt_router, prefix="/api")
+app.include_router(chat_router, prefix="/api")
 
 
 # ─── Models ───────────────────────────────────────────────────────────────────
@@ -273,6 +277,54 @@ Output ONLY the requested content. No preamble or explanations."""
     except Exception as e:
         logger.error(f"Generate endpoint error: {e}")
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
+
+
+# ─── Dashboard ────────────────────────────────────────────────────────────────
+
+@app.get("/api/dashboard")
+def get_dashboard():
+    """Aggregated view: pending drafts, top signals, upcoming scheduled posts."""
+    from datetime import date, timedelta
+    today = date.today().isoformat()
+    week_ago = (date.today() - timedelta(days=7)).isoformat()
+    week_ahead = (date.today() + timedelta(days=7)).isoformat()
+
+    conn = db.get_connection()
+
+    pending_rows = conn.execute(
+        "SELECT d.id, d.funnel_stage, d.quality_score, d.created_at, ci.title as idea_title "
+        "FROM drafts d LEFT JOIN content_ideas ci ON d.idea_id=ci.id "
+        "WHERE d.status='PENDING_REVIEW' ORDER BY d.created_at DESC LIMIT 6"
+    ).fetchall()
+
+    signal_rows = conn.execute(
+        "SELECT id, title, vps_score, source, collected_date FROM articles "
+        "WHERE vps_score >= 70 AND collected_date >= ? ORDER BY vps_score DESC LIMIT 5",
+        (week_ago,)
+    ).fetchall()
+
+    upcoming_rows = conn.execute(
+        "SELECT d.id, d.funnel_stage, d.scheduled_date, ci.title as idea_title "
+        "FROM drafts d LEFT JOIN content_ideas ci ON d.idea_id=ci.id "
+        "WHERE d.status='APPROVED' AND d.scheduled_date BETWEEN ? AND ? ORDER BY d.scheduled_date ASC",
+        (today, week_ahead)
+    ).fetchall()
+
+    counts = conn.execute(
+        "SELECT "
+        "(SELECT COUNT(*) FROM drafts WHERE status='PENDING_REVIEW') as pending, "
+        "(SELECT COUNT(*) FROM drafts WHERE status='APPROVED') as approved, "
+        "(SELECT COUNT(*) FROM articles WHERE collected_date >= ?) as new_articles",
+        (week_ago,)
+    ).fetchone()
+
+    conn.close()
+    return {
+        "pending_review": [dict(r) for r in pending_rows],
+        "top_signals": [dict(r) for r in signal_rows],
+        "upcoming_posts": [dict(r) for r in upcoming_rows],
+        "counts": dict(counts) if counts else {},
+    }
 
 
 # ─── Performance ──────────────────────────────────────────────────────────────
