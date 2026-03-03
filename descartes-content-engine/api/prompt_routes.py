@@ -22,14 +22,15 @@ DB_PATH = os.getenv("DB_PATH", str(_PROJECT_ROOT / "data" / "content_engine.db")
 # ─── Prompt registry ────────────────────────────────────────────────────────
 
 PROMPT_REGISTRY = [
-    {"name": "draft_system",    "agent": "Draft",    "label": "System Prompt",       "file": "draft_system.txt"},
-    {"name": "draft_user",      "agent": "Draft",    "label": "Post Generation",     "file": "draft_user.txt"},
-    {"name": "quality_check",   "agent": "Draft",    "label": "Quality Check",       "file": "quality_check.txt"},
-    {"name": "ideate_system",   "agent": "Ideate",   "label": "System Prompt",       "file": "ideate_system.txt"},
-    {"name": "ideate_user",     "agent": "Ideate",   "label": "Idea Generation",     "file": "ideate_user.txt"},
-    {"name": "analyse",         "agent": "Analyse",  "label": "Article Analysis",    "file": "analyse.txt"},
-    {"name": "briefing_system", "agent": "Briefing", "label": "System Prompt",       "file": "briefing_system.txt"},
-    {"name": "briefing_user",   "agent": "Briefing", "label": "Briefing Generation", "file": "briefing_user.txt"},
+    {"name": "draft_system",      "agent": "Draft",    "label": "System Prompt",       "file": "draft_system.txt"},
+    {"name": "draft_user",        "agent": "Draft",    "label": "Post Generation",     "file": "draft_user.txt"},
+    {"name": "quality_check",     "agent": "Draft",    "label": "Quality Check",       "file": "quality_check.txt"},
+    {"name": "ideate_system",     "agent": "Ideate",   "label": "System Prompt",       "file": "ideate_system.txt"},
+    {"name": "ideate_user",       "agent": "Ideate",   "label": "Idea Generation",     "file": "ideate_user.txt"},
+    {"name": "analyse",           "agent": "Analyse",  "label": "Article Analysis",    "file": "analyse.txt"},
+    {"name": "briefing_system",   "agent": "Briefing", "label": "System Prompt",       "file": "briefing_system.txt"},
+    {"name": "briefing_user",     "agent": "Briefing", "label": "Briefing Generation", "file": "briefing_user.txt"},
+    {"name": "visual_thumbnail",  "agent": "Visual",   "label": "DALL-E Prompt",       "file": "visual_thumbnail.txt"},
 ]
 
 _registry_map = {p["name"]: p for p in PROMPT_REGISTRY}
