@@ -298,8 +298,9 @@ def get_dashboard():
     ).fetchall()
 
     signal_rows = conn.execute(
-        "SELECT id, title, vps_score, source, collected_date FROM articles "
-        "WHERE vps_score >= 70 AND collected_date >= ? ORDER BY vps_score DESC LIMIT 5",
+        "SELECT a.id, a.title, a.vps_score, s.name as source, a.collected_date "
+        "FROM articles a LEFT JOIN sources s ON a.source_id=s.id "
+        "WHERE a.vps_score >= 70 AND a.collected_date >= ? ORDER BY a.vps_score DESC LIMIT 5",
         (week_ago,)
     ).fetchall()
 
