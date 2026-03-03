@@ -25,6 +25,7 @@ import anthropic
 
 from core import database as db
 from core.llm import chat as llm_chat
+from api.visual_routes import router as visual_router
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +44,7 @@ app.add_middleware(
 )
 
 db.init_db()
+app.include_router(visual_router, prefix="/api")
 
 
 # ─── Models ───────────────────────────────────────────────────────────────────
@@ -403,6 +405,40 @@ def run_briefing():
         from agents.briefing import run
         result = run()
         return {"success": True, "result": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/run/visual")
+async def run_visual():
+    """Manually trigger Visual Agent."""
+    from openai import AsyncOpenAI
+    from agents.visual import VisualAgent, ensure_visuals_table
+
+    openai_key = os.getenv("OPENAI_API_KEY")
+    if not openai_key:
+        raise HTTPException(status_code=500, detail="OPENAI_API_KEY not configured")
+
+    db_path = os.getenv("DB_PATH", "data/content_engine.db")
+    ensure_visuals_table(db_path)
+
+    async def llm_gen(model, system, user):
+        client = AsyncOpenAI(api_key=openai_key)
+        resp = await client.chat.completions.create(
+            model=model,
+            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+            max_tokens=500, temperature=0.7,
+        )
+        return resp.choices[0].message.content
+
+    try:
+        agent = VisualAgent(
+            db_path=db_path,
+            openai_client=AsyncOpenAI(api_key=openai_key),
+            llm_generate=llm_gen,
+        )
+        await agent.run_async()
+        return {"success": True, "result": "Visual agent complete"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

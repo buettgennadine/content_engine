@@ -20,3 +20,6 @@ PYTHONPATH=/opt/descartes-content-engine
 
 # Briefing: Friday at 15:00
 0 15 * * 5 cd /opt/descartes-content-engine && python scripts/run_briefing.py >> logs/cron.log 2>&1
+
+# Visual: Monday at 06:15 (15 min after Draft Agent)
+15 6 * * 1 cd /opt/descartes-content-engine && python scripts/run_visual.py >> logs/visual_agent.log 2>&1
