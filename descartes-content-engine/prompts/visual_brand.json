@@ -1,0 +1,43 @@
+{
+  "colors": {
+    "cream":       "#F5E6CA",
+    "navy":        "#111F32",
+    "copper":      "#CF5D16",
+    "copper_soft": "#F5E6CA",
+    "success":     "#2F7A2E",
+    "urgent":      "#C53030",
+    "text_muted":  "#8B8680",
+    "white":       "#FFFFFF"
+  },
+  "attribution": {
+    "name": "Stuart Corrigan",
+    "company": "Descartes Consulting",
+    "cta_follow": "Follow Stuart Corrigan"
+  },
+  "funnel_styles": {
+    "tofu": {
+      "label": "Awareness",
+      "bg_primary": "navy",
+      "bg_secondary": "copper",
+      "text_primary": "white",
+      "accent": "copper",
+      "mood": "bold, provocative, high contrast"
+    },
+    "mofu": {
+      "label": "Consideration",
+      "bg_primary": "cream",
+      "bg_secondary": "navy",
+      "text_primary": "navy",
+      "accent": "copper",
+      "mood": "data-driven, analytical, structured"
+    },
+    "bofu": {
+      "label": "Decision",
+      "bg_primary": "cream",
+      "bg_secondary": "copper_soft",
+      "text_primary": "navy",
+      "accent": "success",
+      "mood": "trustworthy, warm, expert"
+    }
+  }
+}

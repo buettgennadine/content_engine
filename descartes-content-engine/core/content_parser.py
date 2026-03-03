@@ -1,14 +1,28 @@
 """
 Content Parser for Visual Agent.
 Extracts structured data from draft content to drive Pillow template rendering.
+Extraction rules loaded from prompts/visual_extraction.json if present.
 """
 
 import re
 import json
 import logging
 from dataclasses import dataclass
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
+
+def _load_extraction_config() -> dict:
+    p = Path(__file__).resolve().parent.parent / "prompts" / "visual_extraction.json"
+    if p.exists():
+        try:
+            with open(p, encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            logger.warning(f"Could not load visual_extraction.json: {e}")
+    return {}
+
+_EX = _load_extraction_config()
 
 
 @dataclass
@@ -35,6 +49,22 @@ class CarouselSlide:
 
 class ContentParser:
     """Extracts visual-relevant data from draft content."""
+
+    # Signature phrases / scoring — loaded from config or hardcoded defaults
+    _qcfg = _EX.get("quote", {})
+    QUOTE_BOOST_PHRASES = _qcfg.get("boost_phrases", ["not a people problem", "design problem", "by design"])
+    QUOTE_BOOST_WORDS   = _qcfg.get("boost_words", ["system", "designed", "design"])
+    QUOTE_REFRAME_WORDS = _qcfg.get("reframe_words", ["not", "isn't", "doesn't", "won't"])
+    QUOTE_AVOID_WORDS   = _qcfg.get("avoid_words", ["click", "follow", "dm me", "comment"])
+    QUOTE_MAX_WORDS     = _qcfg.get("max_words", 25)
+    QUOTE_PREFER_SHORT  = _qcfg.get("prefer_short_under_words", 12)
+    QUOTE_FALLBACK      = _qcfg.get("fallback", "Change the design. Change the results.")
+
+    HEADLINE_MAX_WORDS  = _EX.get("headline", {}).get("max_words", 8)
+    HEADLINE_FALLBACK   = _EX.get("headline", {}).get("fallback", "Systems Thinking")
+    HEADLINE_STRIP      = _EX.get("headline", {}).get("strip_prefixes", ['🔴','🟢','🔥','📊','📋','❓','📖','*','**'])
+
+    QUOTE_TRIGGER_WORDS = _EX.get("quote_trigger_words", ["design", "system", "not", "never", "always"])
 
     # Common number patterns in Stuart's content
     NUMBER_PATTERNS = [
@@ -78,20 +108,22 @@ class ContentParser:
         # Default: no visual for text posts unless manually triggered
         return "none"
 
-    def extract_headline(self, content: str, max_words: int = 8) -> str:
+    def extract_headline(self, content: str, max_words: int = None) -> str:
         """Extract or generate a short headline for thumbnail overlay.
 
         Strategy: Take the first sentence (the hook), compress to max_words.
         """
+        if max_words is None:
+            max_words = self.HEADLINE_MAX_WORDS
         # Get first line/sentence
         lines = [l.strip() for l in content.strip().split('\n') if l.strip()]
         if not lines:
-            return "Systems Thinking"
+            return self.HEADLINE_FALLBACK
 
         first_line = lines[0]
 
         # Remove common prefixes
-        for prefix in ['🔴', '🟢', '🔥', '📊', '📋', '❓', '📖', '*', '**']:
+        for prefix in self.HEADLINE_STRIP:
             first_line = first_line.lstrip(prefix).strip()
 
         # If already short enough
@@ -150,7 +182,7 @@ class ContentParser:
 
         return KeyNumber(number=number_str, context=context[:120], change=change)
 
-    def extract_hook_quote(self, content: str, max_words: int = 25) -> str:
+    def extract_hook_quote(self, content: str, max_words: int = None) -> str:
         """Extract the strongest sentence for Quote Cards.
 
         Strategy:
@@ -158,6 +190,8 @@ class ContentParser:
         2. Prefer short, declarative sentences
         3. Prefer sentences with contrast or reframing
         """
+        if max_words is None:
+            max_words = self.QUOTE_MAX_WORDS
         sentences = self._split_sentences(content)
 
         # Score each sentence
@@ -165,29 +199,27 @@ class ContentParser:
         for s in sentences:
             score = 0
             words = s.split()
+            s_lower = s.lower()
 
             # Short sentences score higher (Stuart's style)
-            if len(words) <= 12:
+            if len(words) <= self.QUOTE_PREFER_SHORT:
                 score += 3
             elif len(words) <= 20:
                 score += 1
 
-            # Stuart's signature patterns
-            if 'not a people problem' in s.lower():
-                score += 5
-            if 'design problem' in s.lower():
-                score += 4
-            if 'by design' in s.lower():
-                score += 3
-            if any(w in s.lower() for w in ['system', 'designed', 'design']):
+            # Stuart's signature patterns (from config)
+            for phrase in self.QUOTE_BOOST_PHRASES:
+                if phrase in s_lower:
+                    score += 4
+            if any(w in s_lower for w in self.QUOTE_BOOST_WORDS):
                 score += 2
-            if any(w in s.lower() for w in ['not', "isn't", "doesn't", "won't"]):
-                score += 1  # Contrarian/reframing
+            if any(w in s_lower for w in self.QUOTE_REFRAME_WORDS):
+                score += 1
 
             # Avoid questions and meta-text
             if s.endswith('?'):
                 score -= 1
-            if any(w in s.lower() for w in ['click', 'follow', 'dm me', 'comment']):
+            if any(w in s_lower for w in self.QUOTE_AVOID_WORDS):
                 score -= 5
 
             if len(words) <= max_words:
@@ -199,7 +231,7 @@ class ContentParser:
                 if len(s.split()) >= 4:
                     words = s.split()[:max_words]
                     return ' '.join(words)
-            return "Change the design. Change the results."
+            return self.QUOTE_FALLBACK
 
         scored.sort(key=lambda x: x[0], reverse=True)
         return scored[0][1]
@@ -309,7 +341,7 @@ class ContentParser:
             words = s.split()
             if 5 <= len(words) <= 20:
                 lower = s.lower()
-                if any(w in lower for w in ['design', 'system', 'not', 'never', 'always']):
+                if any(w in lower for w in self.QUOTE_TRIGGER_WORDS):
                     return True
         return False
 

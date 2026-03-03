@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 from templates.brand import (
-    SIZES, COLORS, FUNNEL_STYLES,
+    SIZES, COLORS, FUNNEL_STYLES, ATTRIBUTION_NAME, ATTRIBUTION_COMPANY, ATTRIBUTION_CTA,
     get_rgb, load_font, get_avatar_path, get_visual_dir
 )
 from core.content_parser import CarouselSlide
@@ -16,6 +16,20 @@ from core.content_parser import CarouselSlide
 logger = logging.getLogger(__name__)
 
 SLIDE_SIZE = SIZES["carousel_slide"]  # (1080, 1080)
+
+# ─── Load layout config ───────────────────────────────────────────────────────
+def _layout():
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent / "prompts" / "visual_layout.json"
+    if p.exists():
+        try:
+            return json.load(open(p, encoding="utf-8")).get("carousel", {})
+        except Exception:
+            pass
+    return {}
+
+_L = _layout()
 
 
 def render_carousel(
@@ -63,7 +77,7 @@ def _render_cover(slide: CarouselSlide, total: int, style: dict) -> Image.Image:
     draw.rectangle([(100, 200), (980, 203)], fill=accent_color)
 
     # Headline
-    heading_font = load_font("heading", 52)
+    heading_font = load_font("heading", _L.get("font_size_cover_heading", 52))
     _draw_wrapped_text(
         draw, slide.headline, heading_font, text_color,
         x=100, y=260, max_width=880, line_spacing=16
@@ -73,11 +87,11 @@ def _render_cover(slide: CarouselSlide, total: int, style: dict) -> Image.Image:
     draw.rectangle([(100, 780), (980, 783)], fill=accent_color)
 
     # Author
-    body_font = load_font("body", 22)
-    draw.text((100, 830), "Stuart Corrigan", font=body_font, fill=text_color)
+    body_font = load_font("body", _L.get("font_size_attribution_name", 22))
+    draw.text((100, 830), ATTRIBUTION_NAME, font=body_font, fill=text_color)
     muted = get_rgb("text_muted")
-    small_font = load_font("body", 18)
-    draw.text((100, 860), "Descartes Consulting", font=small_font, fill=muted)
+    small_font = load_font("body", _L.get("font_size_attribution_role", 18))
+    draw.text((100, 860), ATTRIBUTION_COMPANY, font=small_font, fill=muted)
 
     # Slide number
     _draw_slide_number(draw, slide.number, total)
@@ -152,7 +166,7 @@ def _render_cta(slide: CarouselSlide, total: int, style: dict) -> Image.Image:
 
     # Follow CTA
     body_font = load_font("body", 22)
-    draw.text((100, 690), "Follow Stuart Corrigan", font=body_font, fill=text_color)
+    draw.text((100, 690), ATTRIBUTION_CTA, font=body_font, fill=text_color)
     small_font = load_font("body", 18)
     muted = get_rgb("text_muted")
     draw.text(

@@ -7,12 +7,25 @@ import logging
 from PIL import Image, ImageDraw
 
 from templates.brand import (
-    SIZES, FUNNEL_STYLES,
+    SIZES, FUNNEL_STYLES, ATTRIBUTION_NAME, ATTRIBUTION_COMPANY,
     get_rgb, load_font, get_visual_dir
 )
 from core.content_parser import KeyNumber
 
 logger = logging.getLogger(__name__)
+
+def _layout():
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent / "prompts" / "visual_layout.json"
+    if p.exists():
+        try:
+            return json.load(open(p, encoding="utf-8")).get("data_visual", {})
+        except Exception:
+            pass
+    return {}
+
+_L = _layout()
 
 
 def render_data_visual(
@@ -37,7 +50,7 @@ def render_data_visual(
     draw = ImageDraw.Draw(img)
 
     # ─── Main number ─────────────────────────────────────────────────
-    number_font = load_font("mono", 96)
+    number_font = load_font("mono", _L.get("font_size_number", 96))
     number_text = data.number
 
     # Center the number horizontally
@@ -48,7 +61,7 @@ def render_data_visual(
 
     # ─── Change indicator (if present) ───────────────────────────────
     if data.change:
-        change_font = load_font("mono", 32)
+        change_font = load_font("mono", _L.get("font_size_change", 32))
         change_bbox = change_font.getbbox(data.change)
         change_width = change_bbox[2] - change_bbox[0]
         change_x = (size[0] - change_width) // 2
@@ -72,11 +85,11 @@ def render_data_visual(
     draw.rectangle([(400, 800), (800, 801)], fill=muted_color)
 
     # ─── Attribution ─────────────────────────────────────────────────
-    name_font = load_font("body_bold", 20)
-    role_font = load_font("body", 18)
+    name_font = load_font("body_bold", _L.get("font_size_attribution_name", 20))
+    role_font = load_font("body", _L.get("font_size_attribution_role", 18))
 
-    name_text = "Stuart Corrigan"
-    role_text = "Descartes Consulting"
+    name_text = ATTRIBUTION_NAME
+    role_text = ATTRIBUTION_COMPANY
 
     name_bbox = name_font.getbbox(name_text)
     name_w = name_bbox[2] - name_bbox[0]

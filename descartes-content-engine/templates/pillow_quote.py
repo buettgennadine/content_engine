@@ -7,10 +7,24 @@ import logging
 from PIL import Image, ImageDraw
 
 from templates.brand import (
-    SIZES, get_rgb, load_font, get_avatar_path, get_visual_dir
+    SIZES, ATTRIBUTION_NAME, ATTRIBUTION_COMPANY,
+    get_rgb, load_font, get_avatar_path, get_visual_dir
 )
 
 logger = logging.getLogger(__name__)
+
+def _layout():
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent / "prompts" / "visual_layout.json"
+    if p.exists():
+        try:
+            return json.load(open(p, encoding="utf-8")).get("quote_card", {})
+        except Exception:
+            pass
+    return {}
+
+_L = _layout()
 
 
 def render_quote_card(
@@ -34,11 +48,11 @@ def render_quote_card(
     draw = ImageDraw.Draw(img)
 
     # ─── Decorative opening quote mark ───────────────────────────────
-    quote_mark_font = load_font("heading", 160)
+    quote_mark_font = load_font("heading", _L.get("font_size_quote_mark", 160))
     draw.text((80, 140), "\u201C", font=quote_mark_font, fill=accent_color)
 
     # ─── Quote text ──────────────────────────────────────────────────
-    quote_font = load_font("heading_italic", 40)
+    quote_font = load_font("heading_italic", _L.get("font_size_quote_text", 40))
     _draw_wrapped_text(
         draw, quote, quote_font, text_color,
         x=100, y=340, max_width=1000, line_spacing=18
@@ -84,11 +98,11 @@ def render_quote_card(
     else:
         text_x = 100
 
-    name_font = load_font("body_bold", 24)
-    role_font = load_font("body", 20)
+    name_font = load_font("body_bold", _L.get("font_size_attribution_name", 24))
+    role_font = load_font("body", _L.get("font_size_attribution_role", 20))
 
-    draw.text((text_x, attr_y + 8), "Stuart Corrigan", font=name_font, fill=text_color)
-    draw.text((text_x, attr_y + 40), "Descartes Consulting", font=role_font, fill=muted_color)
+    draw.text((text_x, attr_y + 8), ATTRIBUTION_NAME, font=name_font, fill=text_color)
+    draw.text((text_x, attr_y + 40), ATTRIBUTION_COMPANY, font=role_font, fill=muted_color)
 
     # ─── Save ────────────────────────────────────────────────────────
     filepath = output_dir / "quote_card.png"

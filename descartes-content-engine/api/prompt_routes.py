@@ -31,6 +31,9 @@ PROMPT_REGISTRY = [
     {"name": "briefing_system",   "agent": "Briefing", "label": "System Prompt",       "file": "briefing_system.txt"},
     {"name": "briefing_user",     "agent": "Briefing", "label": "Briefing Generation", "file": "briefing_user.txt"},
     {"name": "visual_thumbnail",  "agent": "Visual",   "label": "DALL-E Prompt",       "file": "visual_thumbnail.txt"},
+    {"name": "visual_brand",      "agent": "Visual",   "label": "Brand & Colours",     "file": "visual_brand.json"},
+    {"name": "visual_layout",     "agent": "Visual",   "label": "Layout & Font Sizes", "file": "visual_layout.json"},
+    {"name": "visual_extraction", "agent": "Visual",   "label": "Extraction Rules",    "file": "visual_extraction.json"},
 ]
 
 _registry_map = {p["name"]: p for p in PROMPT_REGISTRY}

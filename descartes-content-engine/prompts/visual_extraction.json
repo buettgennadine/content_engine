@@ -1,0 +1,30 @@
+{
+  "headline": {
+    "max_words": 8,
+    "fallback": "Systems Thinking",
+    "strip_prefixes": ["🔴", "🟢", "🔥", "📊", "📋", "❓", "📖", "*", "**"]
+  },
+  "quote": {
+    "max_words": 25,
+    "fallback": "Change the design. Change the results.",
+    "boost_phrases": [
+      "not a people problem",
+      "design problem",
+      "by design"
+    ],
+    "boost_words": ["system", "designed", "design"],
+    "reframe_words": ["not", "isn't", "doesn't", "won't"],
+    "avoid_words": ["click", "follow", "dm me", "comment"],
+    "prefer_short_under_words": 12
+  },
+  "quote_trigger_words": ["design", "system", "not", "never", "always"],
+  "number_priority_note": "Order = detection priority. First match wins.",
+  "number_patterns": [
+    "currency: £$€ + digits + optional bn/m/k",
+    "percentage: digits + %",
+    "percentage points: digits + pp",
+    "large numbers: digits with commas",
+    "word-form: digits + billion/million/thousand",
+    "multipliers: digits + × or x"
+  ]
+}
