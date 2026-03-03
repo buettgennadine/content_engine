@@ -73,9 +73,9 @@ def chat(
 def classify_article(title: str, snippet: str, categories: list[str]) -> dict:
     """
     Fast classification using Haiku.
-    Returns: {relevance_score, categories, urgency, content_angle, data_points}
+    Returns: {relevance_score, categories, urgency, content_angle, data_points, content_utility}
     """
-    prompt = f"""Classify this insurance/pension industry article for Stuart Corrigan's content pipeline.
+    prompt = f"""Classify this article for Stuart Corrigan's content pipeline (insurance/pension ops).
 
 Title: {title}
 Snippet: {snippet[:300]}
@@ -88,14 +88,21 @@ Return JSON only:
   "categories": [<list of matching categories from the provided list>],
   "urgency": "<breaking|timely|evergreen>",
   "content_angle": "<one sentence: how could Stuart use this for a contrarian/systems-thinking LinkedIn post?>",
-  "data_points": [<any specific numbers/percentages/monetary values found>]
+  "data_points": [<any specific numbers/percentages/monetary values found>],
+  "content_utility": "<A|B|C|D>"
 }}
+
+content_utility:
+A = Contains a specific number, statistic, data point, or measurable outcome
+B = Describes a system pattern, process failure, or operational design issue
+C = Transfer story — a failure/success from another industry applicable to insurance/pensions ops
+D = None of the above — general news, opinion without data or pattern
 
 Score >= 6 means relevant. Score < 6 = discard.
 Focus: Claims management pain points, pension operations, regulatory pressure, systems thinking opportunities.
 """
     try:
-        text = complete(prompt, model=MODEL_FAST, max_tokens=500, temperature=0.2)
+        text = complete(prompt, model=MODEL_FAST, max_tokens=600, temperature=0.2)
         import json
         # Strip markdown code blocks if present
         text = text.strip()
@@ -111,5 +118,6 @@ Focus: Claims management pain points, pension operations, regulatory pressure, s
             "categories": [],
             "urgency": "evergreen",
             "content_angle": "",
-            "data_points": []
+            "data_points": [],
+            "content_utility": "D",
         }

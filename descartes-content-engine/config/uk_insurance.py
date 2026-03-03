@@ -1,6 +1,6 @@
 """
 Instance 1: Stuart Corrigan — UK Insurance Market
-RSS sources, categories, and config for the UK market.
+Source Layer v2 — repriorisiert nach Content Utility.
 """
 
 INSTANCE_NAME = "uk_insurance"
@@ -8,72 +8,168 @@ CONSULTANT_NAME = "Stuart Corrigan"
 COMPANY = "Descartes Consulting Ltd"
 TARGET_MARKETS = ["UK", "DACH"]
 
-# Categories used for article classification
+# Categories v2 (6 categories, replacing old 10-category system)
 CATEGORIES = [
-    "claims_management",
-    "pension_operations",
-    "regulatory_pressure",
-    "systems_thinking",
-    "toc_lean",
-    "digital_transformation",
-    "consumer_duty",
-    "industry_data",
-    "german_market",
-    "claims_technology",
+    "cross_industry",    # Kat 1: Cross-Industry Ops
+    "claims_pensions",   # Kat 2: Claims/Pensions Pain-Data
+    "research",          # Kat 3: Academic/research
+    "industry",          # Kat 4: Insurance industry news (radikal gekuerzt)
+    "thought_leaders",   # Kat 5: Thought leader feeds
+    "viral_transfer",    # Kat 6: Viral transfer stories
 ]
 
-# RSS Sources — UK (Tier 1 = most important)
-UK_RSS_SOURCES = [
-    {"name": "FCA News", "url": "https://www.fca.org.uk/news/rss.xml", "tier": 1, "categories": ["regulatory_pressure"]},
-    {"name": "Insurance Times", "url": "https://www.insurancetimes.co.uk/feed/", "tier": 1, "categories": ["claims_management", "industry_data"]},
-    {"name": "ABI News", "url": "https://www.abi.org.uk/news/rss/", "tier": 1, "categories": ["industry_data", "regulatory_pressure"]},
-    {"name": "FOS News", "url": "https://www.financial-ombudsman.org.uk/news/rss.xml", "tier": 1, "categories": ["claims_management", "consumer_duty"]},
-    {"name": "Insurance Post", "url": "https://www.postonline.co.uk/feed", "tier": 2, "categories": ["claims_management"]},
-    {"name": "Insurance Age", "url": "https://www.insuranceage.co.uk/feed", "tier": 2, "categories": ["claims_management"]},
-    {"name": "The Actuary", "url": "https://www.theactuary.com/rss", "tier": 2, "categories": ["pension_operations", "industry_data"]},
-    {"name": "TPR Press", "url": "https://www.thepensionsregulator.gov.uk/en/media-hub/press-releases.rss", "tier": 2, "categories": ["pension_operations", "regulatory_pressure"]},
-    {"name": "Modern Insurance", "url": "https://www.modern-insurance-magazine.co.uk/feed/", "tier": 2, "categories": ["claims_technology", "digital_transformation"]},
-    {"name": "Insurance Thought Leadership", "url": "https://insurancethoughtleadership.com/feed/", "tier": 2, "categories": ["systems_thinking", "claims_management"]},
-    {"name": "Clyde & Co Insurance", "url": "https://www.clydeco.com/en/insights/rss?category=Insurance", "tier": 2, "categories": ["regulatory_pressure", "claims_management"]},
-    {"name": "InsTech Podcast", "url": "https://www.instech.london/feed", "tier": 3, "categories": ["claims_technology"]},
+# ─── Kat 1: Cross-Industry Ops (35%) ─────────────────────────────────────────
+
+SOURCES_CROSS_INDUSTRY_RSS = [
+    {"name": "HBR", "url": "https://feeds.feedburner.com/harvardbusiness", "source_type": "rss", "category": "cross_industry", "tier": 1, "frequency": "daily"},
+    {"name": "McKinsey Insights", "url": "https://www.mckinsey.com/insights/rss", "source_type": "rss", "category": "cross_industry", "tier": 1, "frequency": "weekly"},
+    {"name": "Lean Enterprise Inst", "url": "https://www.lean.org/feed/", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "weekly"},
+    {"name": "Farnam Street", "url": "https://fs.blog/feed/", "source_type": "rss", "category": "cross_industry", "tier": 1, "frequency": "weekly"},
+    {"name": "OPS Group Aviation", "url": "https://ops.group/blog/feed/", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "weekly"},
+    {"name": "Mark Graban Lean Blog", "url": "https://www.leanblog.org/feed/", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "weekly"},
+    {"name": "Beyond Lean", "url": "https://beyondlean.wordpress.com/feed/", "source_type": "rss", "category": "cross_industry", "tier": 3, "frequency": "monthly"},
+    {"name": "Science of Business TOC", "url": "https://scienceofbusiness.com/feed/", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "monthly"},
+    {"name": "INFORMS", "url": "https://informs.org/rss/feed/iol_news", "source_type": "rss", "category": "cross_industry", "tier": 3, "frequency": "weekly"},
+    {"name": "BBC Business", "url": "https://feeds.bbci.co.uk/news/business/rss.xml", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "daily"},
 ]
 
-# RSS Sources — DACH
-DACH_RSS_SOURCES = [
-    {"name": "VersicherungsJournal", "url": "https://www.versicherungsjournal.de/rss/versicherungsjournal.rss", "tier": 1, "categories": ["german_market", "claims_management"]},
-    {"name": "GDV Pressemitteilungen", "url": "https://www.gdv.de/rss/presse.rss", "tier": 1, "categories": ["german_market", "regulatory_pressure", "industry_data"]},
-    {"name": "BaFin Meldungen", "url": "https://www.bafin.de/SiteGlobals/Functions/RSS/DE/Feed/RSSNewsFeed_Meldungen.xml", "tier": 1, "categories": ["german_market", "regulatory_pressure"]},
-    {"name": "Versicherungsbote", "url": "https://www.versicherungsbote.de/rss/", "tier": 2, "categories": ["german_market"]},
-    {"name": "Versicherungswirtschaft heute", "url": "https://versicherungswirtschaft-heute.de/feed/", "tier": 2, "categories": ["german_market", "industry_data"]},
-    {"name": "AssCompact", "url": "https://www.asscompact.de/feed", "tier": 2, "categories": ["german_market"]},
-    {"name": "Map-Report", "url": "https://map-report.com/feed", "tier": 2, "categories": ["german_market", "industry_data"]},
-    {"name": "Versicherungsforen Leipzig Blog", "url": "https://blog.versicherungsforen.net/feed/", "tier": 2, "categories": ["german_market", "systems_thinking"]},
-    {"name": "VJ Medienspiegel", "url": "https://www.versicherungsjournal.de/rss/medienspiegel.rss", "tier": 3, "categories": ["german_market"]},
+SOURCES_CROSS_INDUSTRY_GOOGLE = [
+    {"name": "GNews Operational Failure", "url": "https://news.google.com/rss/search?q=operational+failure+backlog&hl=en-GB", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "daily"},
+    {"name": "GNews Service Ops Failure", "url": "https://news.google.com/rss/search?q=%22service+operations%22+failure+OR+backlog&hl=en-GB", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "daily"},
+    {"name": "GNews WIP Limits", "url": "https://news.google.com/rss/search?q=%22work+in+progress%22+limits+operations&hl=en-GB", "source_type": "rss", "category": "cross_industry", "tier": 3, "frequency": "daily"},
+    {"name": "GNews TOC", "url": "https://news.google.com/rss/search?q=%22theory+of+constraints%22&hl=en-GB", "source_type": "rss", "category": "cross_industry", "tier": 1, "frequency": "daily"},
 ]
 
-# Substacks & Blogs
-SUBSTACK_SOURCES = [
-    {"name": "Claims Journal", "url": "https://www.claimsjournal.com/feed/", "tier": 2, "categories": ["claims_management"]},
-    {"name": "Think Different (FlowChainSensei)", "url": "https://flowchainsensei.wordpress.com/feed/", "tier": 2, "categories": ["systems_thinking", "toc_lean"]},
-    {"name": "Squire to the Giants", "url": "https://squiretothegiant.com/feed/", "tier": 2, "categories": ["systems_thinking", "toc_lean"]},
-    {"name": "Dragan's Newsletter TOC", "url": "https://dragannastic.substack.com/feed", "tier": 3, "categories": ["toc_lean"]},
-    {"name": "TOC for Startups", "url": "https://tocforstartups.substack.com/feed", "tier": 3, "categories": ["toc_lean"]},
+SOURCES_CROSS_INDUSTRY_SUBSTACK = [
+    {"name": "Scott Galloway", "url": "https://www.profgalloway.com/feed/", "source_type": "rss", "category": "cross_industry", "tier": 1, "frequency": "weekly"},
+    {"name": "FlowChainSensei", "url": "https://flowchainsensei.substack.com/feed", "source_type": "rss", "category": "cross_industry", "tier": 2, "frequency": "weekly"},
 ]
 
-# Reddit RSS
-REDDIT_SOURCES = [
-    {"name": "r/UKPersonalFinance", "url": "https://www.reddit.com/r/UKPersonalFinance.rss?limit=25", "tier": 2, "categories": ["consumer_duty", "pension_operations"]},
-    {"name": "r/ActuaryUK", "url": "https://www.reddit.com/r/ActuaryUK.rss?limit=25", "tier": 2, "categories": ["pension_operations"]},
-    {"name": "r/insurance", "url": "https://www.reddit.com/r/Insurance.rss?limit=25", "tier": 3, "categories": ["claims_management"]},
-    {"name": "r/systemsthinking", "url": "https://www.reddit.com/r/systemsthinking.rss?limit=25", "tier": 3, "categories": ["systems_thinking"]},
+SOURCES_CROSS_INDUSTRY_PODCASTS = [
+    {"name": "More or Less BBC", "url": "https://podcasts.files.bbci.co.uk/p02nrss1.rss", "source_type": "rss", "category": "cross_industry", "tier": 3, "frequency": "weekly"},
+    {"name": "LEI Podcast", "url": "https://feed.podbean.com/lei/feed.xml", "source_type": "rss", "category": "cross_industry", "tier": 3, "frequency": "weekly"},
 ]
 
-ALL_RSS_SOURCES = UK_RSS_SOURCES + DACH_RSS_SOURCES + SUBSTACK_SOURCES + REDDIT_SOURCES
-SOURCES = ALL_RSS_SOURCES
+# ─── Kat 2: Claims/Pensions Pain-Data (25%) ──────────────────────────────────
+
+SOURCES_PAIN_DATA_REGULATORY = [
+    {"name": "FCA News", "url": "https://www.fca.org.uk/news/rss.xml", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+    {"name": "FOS News", "url": "https://www.financial-ombudsman.org.uk/news/rss", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "weekly"},
+    {"name": "NHS England", "url": "https://www.england.nhs.uk/feed/", "source_type": "rss", "category": "claims_pensions", "tier": 2, "frequency": "daily"},
+]
+
+SOURCES_PAIN_DATA_GOOGLE = [
+    {"name": "GNews Claims Backlog UK", "url": "https://news.google.com/rss/search?q=claims+insurance+UK+backlog&hl=en-GB", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+    {"name": "GNews Consumer Duty", "url": "https://news.google.com/rss/search?q=%22Consumer+Duty%22+complaints+insurance&hl=en-GB", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+    {"name": "GNews Pension Backlog", "url": "https://news.google.com/rss/search?q=pension+administration+backlog+UK&hl=en-GB", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+    {"name": "GNews Failure Demand", "url": "https://news.google.com/rss/search?q=%22failure+demand%22&hl=en-GB", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+    {"name": "GNews Customer Effort", "url": "https://news.google.com/rss/search?q=%22customer+effort%22+service+redesign&hl=en-GB", "source_type": "rss", "category": "claims_pensions", "tier": 2, "frequency": "daily"},
+    {"name": "GNews Schadenbearbeitung DE", "url": "https://news.google.com/rss/search?q=Schadenbearbeitung+Versicherung&hl=de", "source_type": "rss", "category": "claims_pensions", "tier": 2, "frequency": "daily"},
+    {"name": "GNews bAV Digitalisierung DE", "url": "https://news.google.com/rss/search?q=bAV+Digitalisierung+betriebliche+Altersversorgung&hl=de", "source_type": "rss", "category": "claims_pensions", "tier": 2, "frequency": "daily"},
+    {"name": "GNews Combined Ratio DE", "url": "https://news.google.com/rss/search?q=Versicherung+Schadenquote+Combined+Ratio&hl=de", "source_type": "rss", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+]
+
+SOURCES_PAIN_DATA_IMAP = [
+    {"name": "Oxbow Partners", "url": "", "source_type": "imap", "category": "claims_pensions", "tier": 1, "frequency": "weekly"},
+    {"name": "Insurance Insider", "url": "", "source_type": "imap", "category": "claims_pensions", "tier": 1, "frequency": "daily"},
+]
+
+SOURCES_PAIN_DATA_PDF = [
+    {"name": "FCA Complaints Data", "url": "", "source_type": "pdf_scrape", "category": "claims_pensions", "tier": 1, "frequency": "biannual"},
+    {"name": "FOS Annual Report", "url": "", "source_type": "pdf_scrape", "category": "claims_pensions", "tier": 1, "frequency": "annual"},
+]
+
+# ─── Kat 3: Research (10%) ────────────────────────────────────────────────────
+
+SOURCES_RESEARCH = [
+    {"name": "Behavioral Scientist", "url": "https://behavioralscientist.org/feed/", "source_type": "rss", "category": "research", "tier": 2, "frequency": "weekly"},
+    {"name": "BMJ Quality Safety", "url": "https://qualitysafety.bmj.com/rss/current.xml", "source_type": "rss", "category": "research", "tier": 2, "frequency": "monthly"},
+    {"name": "BMJ Open Quality", "url": "https://bmjopenquality.bmj.com/rss/current.xml", "source_type": "rss", "category": "research", "tier": 3, "frequency": "monthly"},
+    {"name": "INFORMS Research", "url": "https://informs.org/rss/feed/iol_news", "source_type": "rss", "category": "research", "tier": 3, "frequency": "weekly"},
+]
+
+# ─── Kat 4: Industry News (10%) — radikal gekuerzt ────────────────────────────
+
+SOURCES_INDUSTRY = [
+    {"name": "Versicherungsbote", "url": "https://www.versicherungsbote.de/feed/", "source_type": "rss", "category": "industry", "tier": 2, "frequency": "daily"},
+    {"name": "VW heute", "url": "https://versicherungswirtschaft-heute.de/feed/", "source_type": "rss", "category": "industry", "tier": 2, "frequency": "daily"},
+    {"name": "Pulse Today", "url": "https://www.pulsetoday.co.uk/feed/", "source_type": "rss", "category": "industry", "tier": 3, "frequency": "daily"},
+    {"name": "FT Companies", "url": "https://www.ft.com/companies?format=rss", "source_type": "rss", "category": "industry", "tier": 2, "frequency": "daily"},
+]
+
+# ─── Kat 5: Thought Leader Feeds (10%) ───────────────────────────────────────
+
+SOURCES_THOUGHT_LEADERS = [
+    {"name": "Lencioni At The Table", "url": "https://feeds.captivate.fm/at-the-table/", "source_type": "rss", "category": "thought_leaders", "tier": 2, "frequency": "weekly"},
+    {"name": "Deming Institute", "url": "https://deming.org/feed/", "source_type": "rss", "category": "thought_leaders", "tier": 1, "frequency": "monthly"},
+    {"name": "Beyond Command Control Seddon", "url": "https://beyondcommandandcontrol.com/feed/", "source_type": "rss", "category": "thought_leaders", "tier": 1, "frequency": "monthly"},
+    {"name": "Seth Godin", "url": "https://feeds.feedblitz.com/SethsBlog", "source_type": "rss", "category": "thought_leaders", "tier": 2, "frequency": "daily"},
+    {"name": "Simon Sinek", "url": "https://simonsinek.com/feed/", "source_type": "rss", "category": "thought_leaders", "tier": 2, "frequency": "weekly"},
+    {"name": "Science of Business TOC TL", "url": "https://scienceofbusiness.com/feed/", "source_type": "rss", "category": "thought_leaders", "tier": 2, "frequency": "monthly"},
+]
+
+# ─── Kat 6: Viral Transfer Stories (10%) ─────────────────────────────────────
+
+SOURCES_VIRAL_TRANSFER = [
+    {"name": "GNews Business Failure Lessons", "url": "https://news.google.com/rss/search?q=business+failure+lessons+learned&hl=en-GB", "source_type": "rss", "category": "viral_transfer", "tier": 2, "frequency": "daily"},
+    {"name": "GNews Operational Turnaround", "url": "https://news.google.com/rss/search?q=company+turnaround+OR+%22operational+turnaround%22&hl=en-GB", "source_type": "rss", "category": "viral_transfer", "tier": 2, "frequency": "daily"},
+    {"name": "GNews Backlog Crisis", "url": "https://news.google.com/rss/search?q=backlog+crisis+UK+2025+OR+2026&hl=en-GB", "source_type": "rss", "category": "viral_transfer", "tier": 2, "frequency": "daily"},
+]
+
+# ─── Aggregation ──────────────────────────────────────────────────────────────
+
+ALL_SOURCES = (
+    SOURCES_CROSS_INDUSTRY_RSS
+    + SOURCES_CROSS_INDUSTRY_GOOGLE
+    + SOURCES_CROSS_INDUSTRY_SUBSTACK
+    + SOURCES_CROSS_INDUSTRY_PODCASTS
+    + SOURCES_PAIN_DATA_REGULATORY
+    + SOURCES_PAIN_DATA_GOOGLE
+    + SOURCES_PAIN_DATA_IMAP
+    + SOURCES_PAIN_DATA_PDF
+    + SOURCES_RESEARCH
+    + SOURCES_INDUSTRY
+    + SOURCES_THOUGHT_LEADERS
+    + SOURCES_VIRAL_TRANSFER
+)
+
+# Dead feeds to deactivate (status='broken') — 22 URLs + Reddit
+DEAD_FEEDS_TO_REMOVE = [
+    "Insurance Times",
+    "Insurance Post",
+    "Insurance Age",
+    "The Actuary",
+    "ABI News",
+    "Clyde & Co Insurance",
+    "InsTech Podcast",
+    "Modern Insurance",
+    "Insurance Thought Leadership",
+    "TPR Press",
+    "VersicherungsJournal",
+    "VJ Medienspiegel",
+    "BaFin Meldungen",
+    "GDV Pressemitteilungen",
+    "AssCompact",
+    "Map-Report",
+    "Versicherungsforen Leipzig Blog",
+    "Claims Journal",
+    "Think Different (FlowChainSensei)",
+    "Squire to the Giants",
+    "Dragan's Newsletter TOC",
+    "TOC for Startups",
+    "r/UKPersonalFinance",
+    "r/ActuaryUK",
+    "r/insurance",
+    "r/systemsthinking",
+]
 
 
 def get_all_sources():
-    return ALL_RSS_SOURCES
+    return ALL_SOURCES
+
+
+def get_rss_sources():
+    return [s for s in ALL_SOURCES if s["source_type"] == "rss" and s["url"]]
 
 
 def get_categories():

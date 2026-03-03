@@ -49,57 +49,65 @@ def _text_has_numbers(title: str, snippet: str) -> bool:
 
 def calculate_vps(article: dict) -> float:
     """
-    Viral Potential Score (0-100).
-    pain_intensity(25) + audience_fit(20) + timeliness(18) +
-    contrarian_angle(15) + data_richness(12) + systems_thinking(7) + engagement_history(3)
+    Viral Potential Score (0-100). Source Layer v2 weights.
+    pain_intensity(20) + audience_fit(15) + transfer_potential(20) +
+    data_strength(15) + contrarian_angle(15) + personal_hook(10) + timeliness(5)
     """
     score = 0
     categories = _parse_categories(article.get("categories", []))
 
-    # Pain intensity (25%) — from relevance score and categories
+    # Pain intensity (20%) — direct pain signal from claims/pensions sector
     relevance = article.get("relevance_score", 0)
-    pain_cats = {"claims_management", "pension_operations", "consumer_duty", "regulatory_pressure"}
+    # Supports both v1 and v2 category names
+    pain_cats = {"claims_pensions", "claims_management", "pension_operations",
+                 "consumer_duty", "regulatory_pressure"}
     pain_match = len(pain_cats & categories)
-    # AI claims automation, FCA enforcement = high pain signal
-    high_pain_cats = {"claims_management", "claims_technology", "regulatory_pressure"}
-    high_pain_match = len(high_pain_cats & categories)
-    pain_intensity = min(100, relevance * 8 + pain_match * 15 + high_pain_match * 10)
-    score += pain_intensity * 0.25
+    pain_intensity = min(100, relevance * 8 + pain_match * 15)
+    score += pain_intensity * 0.20
 
-    # Audience fit (20%) — Claims Directors, COOs, Pension Ops + systems thinkers
-    audience_cats = {"claims_management", "pension_operations", "claims_technology"}
+    # Audience fit (15%) — Claims Directors, COOs, Pension Ops
+    audience_cats = {"claims_pensions", "claims_management", "pension_operations"}
     audience_match = len(audience_cats & categories)
-    # claims_mgmt + systems_thinking = automatic 75+ for Stuart's audience
-    stuart_combo = {"claims_management", "systems_thinking"}
-    combo_bonus = 35 if stuart_combo.issubset(categories) else 0
+    # Stuart combo: thought_leaders or systems_thinking + pain category = bonus
+    combo_cats = {"thought_leaders", "systems_thinking", "toc_lean"}
+    combo_bonus = 30 if (combo_cats & categories) and (audience_cats & categories) else 0
     audience_fit = min(100, audience_match * 35 + combo_bonus)
-    score += audience_fit * 0.20
+    score += audience_fit * 0.15
 
-    # Timeliness (18%)
-    urgency = article.get("urgency", "evergreen")
-    timeliness_map = {"breaking": 100, "timely": 80, "evergreen": 40}
-    score += timeliness_map.get(urgency, 40) * 0.18
+    # Transfer potential (20%) — cross-industry applicability to insurance/pensions ops
+    # content_utility C = explicit transfer story
+    content_utility = article.get("content_utility", "D")
+    utility_base = {"A": 70, "B": 80, "C": 100, "D": 30}.get(content_utility, 30)
+    xfer_cats = {"cross_industry", "viral_transfer", "research", "thought_leaders",
+                 "systems_thinking", "toc_lean"}
+    xfer_match = len(xfer_cats & categories)
+    transfer_potential = min(100, utility_base + xfer_match * 10)
+    score += transfer_potential * 0.20
+
+    # Data strength (15%) — specific numbers, stats, measurable outcomes
+    data_points = _parse_list(article.get("data_points", []))
+    data_strength = min(100, len(data_points) * 25)
+    if _text_has_numbers(article.get("title", ""), article.get("snippet", "")):
+        data_strength = max(data_strength, 60)
+    # content_utility A = confirmed data point
+    if content_utility == "A":
+        data_strength = max(data_strength, 70)
+    score += data_strength * 0.15
 
     # Contrarian angle (15%) — from content_angle field
     contrarian = 60 if article.get("content_angle") else 20
     score += contrarian * 0.15
 
-    # Data richness (12%) — from data_points + title/snippet number scan
-    data_points = _parse_list(article.get("data_points", []))
-    data_richness = min(100, len(data_points) * 25)
-    # If title/snippet contains numbers or percentages, floor at 60
-    if _text_has_numbers(article.get("title", ""), article.get("snippet", "")):
-        data_richness = max(data_richness, 60)
-    score += data_richness * 0.12
+    # Personal hook (10%) — connection to Stuart's methodology (TOC, Vanguard, systems)
+    hook_cats = {"thought_leaders", "systems_thinking", "toc_lean"}
+    hook_match = len(hook_cats & categories)
+    personal_hook = min(100, hook_match * 40 + 20)
+    score += personal_hook * 0.10
 
-    # Systems thinking fit (7%)
-    toc_cats = {"systems_thinking", "toc_lean"}
-    toc_match = len(toc_cats & categories)
-    systems_fit = min(100, toc_match * 50 + 20)
-    score += systems_fit * 0.07
-
-    # Engagement history (3%) — static for now, will learn over time
-    score += 50 * 0.03
+    # Timeliness (5%) — evergreen preferred over breaking news
+    urgency = article.get("urgency", "evergreen")
+    timeliness_map = {"breaking": 70, "timely": 85, "evergreen": 100}
+    score += timeliness_map.get(urgency, 100) * 0.05
 
     return round(score, 1)
 
@@ -168,13 +176,27 @@ Stuart's voice: Straight-talking, British English, contrarian, dry humour.
 Anti-language: never use "transformation journey", "stakeholder buy-in", "leverage", "synergies".
 Core rule: Never blame individuals — always blame system design.
 
+transfer_potential (0-10): How well does this story/data translate to insurance or pensions operations?
+  10 = Direct insurance/pensions case with data
+  7 = Adjacent industry (healthcare, aviation, finance) with clear parallel
+  4 = General business with some transferability
+  1 = No meaningful transfer possible
+
+personal_hook (0-10): Does this connect to Stuart's known methodology or experience?
+  10 = Direct TOC/Vanguard/CCPM application with documented results
+  7 = Systems thinking angle Stuart has written about
+  4 = General ops improvement Stuart could comment on
+  1 = No connection to Stuart's expertise
+
 Provide a richer analysis in JSON:
 {{
   "refined_angle": "<one sentence: the strongest contrarian angle for a LinkedIn post>",
   "hook_options": ["<hook 1: direct challenge>", "<hook 2: personal experience>", "<hook 3: data-led>"],
   "system_design_insight": "<what system condition is causing the problem described>",
   "suggested_template": "<Old vs New|Contrarian Take|Data Hook|Case Study|Provocative Question|Story Format>",
-  "urgency_for_content": "<post this week|next week|evergreen>"
+  "urgency_for_content": "<post this week|next week|evergreen>",
+  "transfer_potential": <0-10>,
+  "personal_hook": <0-10>
 }}
 """
     try:

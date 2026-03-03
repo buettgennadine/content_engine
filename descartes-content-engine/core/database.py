@@ -151,10 +151,12 @@ def init_db():
         # Migrations: add columns if missing (safe to run on existing DBs)
         for migration in [
             "ALTER TABLE articles ADD COLUMN vps_score REAL DEFAULT 0",
+            "ALTER TABLE articles ADD COLUMN content_utility TEXT DEFAULT 'D'",
             "ALTER TABLE drafts ADD COLUMN funnel_stage TEXT DEFAULT 'TOFU'",
             "ALTER TABLE drafts ADD COLUMN image_path TEXT",
             "ALTER TABLE drafts ADD COLUMN thumbnail_concept TEXT",
             "ALTER TABLE sources ADD COLUMN language TEXT DEFAULT 'EN'",
+            "ALTER TABLE sources ADD COLUMN frequency TEXT DEFAULT 'daily'",
         ]:
             try:
                 conn.execute(migration)
@@ -242,8 +244,8 @@ def insert_article(data: dict) -> Optional[int]:
         conn.execute("""
             INSERT OR IGNORE INTO articles
             (url_hash, title, url, source_id, published_date, snippet,
-             relevance_score, categories, urgency, content_angle, data_points)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?)
+             relevance_score, categories, urgency, content_angle, data_points, content_utility)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
         """, (
             h,
             data.get("title", ""),
@@ -256,6 +258,7 @@ def insert_article(data: dict) -> Optional[int]:
             data.get("urgency", "evergreen"),
             data.get("content_angle"),
             json.dumps(data.get("data_points", [])),
+            data.get("content_utility", "D"),
         ))
         conn.commit()
         row = conn.execute("SELECT id FROM articles WHERE url_hash = ?", (h,)).fetchone()
@@ -292,6 +295,7 @@ def get_recent_articles(hours: int = 24, min_score: float = 6.0, limit: int = 10
 
 
 def get_week_articles(min_score: float = 7.0) -> list[dict]:
+    """Return this week's articles with relevance >= min_score and content_utility A, B, or C."""
     conn = get_connection()
     try:
         rows = conn.execute("""
@@ -300,6 +304,7 @@ def get_week_articles(min_score: float = 7.0) -> list[dict]:
             LEFT JOIN sources s ON a.source_id = s.id
             WHERE a.collected_date >= datetime('now', '-7 days')
             AND a.relevance_score >= ?
+            AND (a.content_utility IN ('A', 'B', 'C') OR a.content_utility IS NULL)
             ORDER BY a.relevance_score DESC
         """, (min_score,)).fetchall()
         return [dict(r) for r in rows]

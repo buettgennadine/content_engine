@@ -76,6 +76,7 @@ def run(config_module, dry_run: bool = False):
                     "urgency": classification.get("urgency", "evergreen"),
                     "content_angle": classification.get("content_angle", ""),
                     "data_points": classification.get("data_points", []),
+                    "content_utility": classification.get("content_utility", "D"),
                 })
 
                 if not dry_run:
@@ -110,6 +111,7 @@ def run(config_module, dry_run: bool = False):
                     "urgency": classification.get("urgency", "evergreen"),
                     "content_angle": classification.get("content_angle", ""),
                     "data_points": classification.get("data_points", []),
+                    "content_utility": classification.get("content_utility", "D"),
                 })
                 if not dry_run:
                     db.insert_article(article)
@@ -124,16 +126,24 @@ def run(config_module, dry_run: bool = False):
 
 def _seed_sources(config_module):
     """Seed RSS sources from config into DB."""
-    import sqlite3
     import json
     conn = db.get_connection()
     try:
-        for s in config_module.get_all_sources():
+        sources = [s for s in config_module.get_all_sources() if s.get("url")]
+        for s in sources:
+            # Support both old format (categories list) and new format (category string)
+            cats = s.get("categories") or ([s["category"]] if s.get("category") else [])
             conn.execute("""
-                INSERT OR IGNORE INTO sources (name, url, source_type, tier, default_categories)
-                VALUES (?, ?, 'rss', ?, ?)
-            """, (s["name"], s["url"], s.get("tier", 2), json.dumps(s.get("categories", []))))
+                INSERT OR IGNORE INTO sources (name, url, source_type, tier, frequency, default_categories)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (
+                s["name"], s["url"],
+                s.get("source_type", "rss"),
+                s.get("tier", 2),
+                s.get("frequency", "daily"),
+                json.dumps(cats),
+            ))
         conn.commit()
-        logger.info(f"Seeded {len(config_module.get_all_sources())} sources")
+        logger.info(f"Seeded {len(sources)} sources")
     finally:
         conn.close()
